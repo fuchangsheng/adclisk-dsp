@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/icon/favicon.ico">
+
+  <title>AdClick DSP 业务系统</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Custom styles for this template -->
+  <link href="/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+  <link href="/bootstrap/css/navbar-fixed-side.css" rel="stylesheet" />
+  <link href="/css/main.css" rel="stylesheet"/>
+  <link href="/css/user.css" rel="stylesheet" >
+  <link href="/css/fileinput.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+  <!--Nav part-->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+      <img alt="Brand" class="navbar-brand-logo  navbar-left" src="/icon/logo.png">
+      <a class="navbar-brand" href="/">AdClick投放系统</a>
+    </div>
+    <ul id="navbar" class="nav navbar-nav">
+      <li><a href="#"><span id="weluser">欢迎您：</span></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出&nbsp;</a></li>
+    </ul>
+  
+  </nav>
+</div>
+  <div id="sidenav" class="sidenav">
+  </div>
+
+  <!--your main panel-->
+  <div id="main">
+    <div id="tabs" class="row"></div>
+    <div id="content">
+      <div id="err-msg"></div>
+      <div id="user-main"> 
+        <div class="lump">
+          <div class="lump-hd">
+            <h3>基本信息</h3>
+          </div>
+          <div class="lump-bd">
+            <div class="infomations">
+              <div class="info-bd"> 
+                <span>广告主基本信息</span>
+              </div>
+              <ul class="account-list">
+                  <li>
+                    <div class="account-list-name">广告主名</div>
+                    <div class="account-list-con">
+                      <p class="account-text" id="user-name"></p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="account-list-name">公司名</div>
+                    <div class="account-list-con">
+                      <p class="account-text" id="company-name"></p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="account-list-name">公司电话</div>
+                    <div class="account-list-con">
+                      <p class="account-text" id="phone"></p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="account-list-name">公司地址</div>
+                    <div class="account-list-con">
+                      <p class="account-text" id="address"></p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="account-list-name">营业执照类型</div>
+                    <div class="account-list-con">
+                      <p class="account-text" id="qualification-type"></p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="account-list-name">营业执照编号</div>
+                    <div class="account-list-con">
+                      <p class="account-text" id="license-number"></p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="account-list-name">营业执照有效时间</div>
+                    <div class="account-list-con">
+                      <p class="account-text" id="start-to-end-time"></p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="account-list-name">公司营业执照</div>
+                    <div class="account-list-con">
+                      <img src="" alt="" id="company-license">
+                    </div>
+                  </li>
+              </ul>
+                  
+            </div>
+            <div class="infomations">
+              <div class="info-bd"> 
+                <span>联系人信息</span>
+              </div>
+              <ul class="account-list">
+                <li>
+                  <div class="account-list-name">联系人姓名</div>
+                  <div class="account-list-con">
+                    <p class="account-text" id="contact-name"></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="account-list-name">联系人电话</div>
+                  <div class="account-list-con">
+                    <p class="account-text" id="contact-mobile"></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="account-list-name">联系人邮箱</div>
+                  <div class="account-list-con">
+                    <p class="account-text" id="contact-email"></p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding-left:28px;padding-top:15px;"> 
+            <button class="btn btn-primary" id="user-edit" style="display: none;">编辑</button>
+          </div>
+        </div>
+            
+      </div>
+      
+      <!-- user-modal -->
+      <div class="modal fade" id="user-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" style="width:650px;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title">编辑用户信息</h4>
+            </div>
+                    
+            <div class="modal-body small" style="user-select:none;">    
+              <form action="" class="form-horizontal" role="form">
+                <fieldset>
+                  <legend class="sr-only">基本信息</legend>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2">*广告主名</label>
+                    <div class="col-sm-4">
+                      <input type="text" id="edit-user-name" class="form-control" placeholder="请输入用户名">
+                    </div>
+                    <label class="control-label col-sm-2">*公司名</label>
+                    <div class="col-sm-4">
+                      <input type="text" id="edit-company-name" class="form-control" placeholder="请输入公司名">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2">*公司电话</label>
+                    <div class="col-sm-4">
+                      <input type="text" id="edit-phone" class="form-control" placeholder="请输入公司电话">
+                    </div>
+                    <label class="control-label col-sm-2">*公司地址</label>
+                    <div class="col-sm-4">
+                      <input type="text" id="edit-address" class="form-control" placeholder="请输入公司地址">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="" class="control-label col-sm-2">*资质类型</label>
+                    <div class="col-sm-4"> 
+                      <select id="edit-qualification-type" class="form-control">
+                        <option value="0">请选择资质类型</option>
+                        <option value="1">大陆个体工商类客户</option>
+                        <option value="2">大陆企业单位类客户</option>
+                        <option value="3">香港主体类客户</option>
+                        <option value="4">台湾主体类客户</option>
+                        <option value="5">澳门主体类客户</option>
+                        <option value="6">大陆事业单位类客户</option>
+                        <option value="7">民办企业类客户</option>
+                        <option value="8">社会团体类客户</option>
+                        <option value="9">学校类客户</option>
+                        <option value="10">国外主体类客户</option>
+                      </select>
+                    </div>
+                    <label for="" class="control-label col-sm-2">*营业执照编号</label>
+                    <div class="col-sm-4">
+                      <input type="text" id="edit-license-number" class="form-control" placeholder="请输入营业执照编号">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2">*有效时间</label>
+                    <div class="col-sm-5 col-md-5 col-lg-5">
+                      <div class="input-group date form_datetime">
+                        <input id="input-starttime" class="form-control input-sm" size="16" type="text" value="" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                      </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5 col-lg-5">
+                      <div class="input-group date form_datetime">
+                        <input id="input-endtime" class="form-control input-sm" size="16" type="text" value="" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2">营业执照url</label>
+                    <div class="col-sm-10">
+                      <span id="edit-company-license-url" style="display:inline-block;margin-top:6px;"></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2">*上传营业执照</label>
+                    <div class="col-sm-10">
+                      <input type="file" id="edit-company-license" name="upload-file" class="file input-file">
+                    </div>
+                  </div>
+                </fieldset>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2">*联系人姓名</label>
+                    <div class="col-sm-4">
+                      <input type="text" id="edit-contact-name" class="form-control" placeholder="请输入联系人姓名">
+                    </div>
+                    <label class="control-label col-sm-2">*联系人电话</label>
+                    <div class="col-sm-4">
+                      <input type="text" id="edit-contact-mobile" class="form-control" placeholder="请输入联系人地址">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2">*联系人邮箱</label>
+                    <div class="col-sm-4">
+                      <input type="text" id="edit-contact-email" class="form-control" placeholder="请输入联系人邮箱">
+                    </div>
+                  </div>
+                <fieldset>  
+                
+                </fieldset>
+              </form>
+              <div id="submit-err"></div>
+            </div>
+                    
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="submit" class="btn btn-primary" id="submit-user-form">确认</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="/jquery/jquery.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script>window.current_tab = "user";window.current_nav = "user";</script>
+  <script src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+  <script src="/js/fileinput.js"></script>
+  <script src="/js/zh.js"></script>
+  <script src="/js/constants.js"></script>
+  <script src="/js/tools.js"></script>
+  <script src="/js/component.js"></script>
+  <script src="/js/tools.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/cate.js"></script>
+  <script src="/js/tab-config.js"></script>
+  <script src="/js/user/user-info.js"></script>
+</body>
+</html>

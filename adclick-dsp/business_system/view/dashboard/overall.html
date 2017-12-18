@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/icon/favicon.ico">
+
+    <title>AdClick DSP 业务系统</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="/bootstrap/css/navbar-fixed-side.css" rel="stylesheet" />
+    <link href="/bootstrap/css/bootstrap-treeview.min.css" rel="styleshtte" />
+    <link href="/css/main.css" rel="stylesheet" />
+    <link href="/css/dashboard.css" rel="stylesheet" />
+
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <!--Nav part-->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <img alt="Brand" class="navbar-brand-logo  navbar-left" src="/icon/logo.png">
+          <a class="navbar-brand" href="/">AdClick投放系统</a>
+        </div>
+        <ul id="navbar" class="nav navbar-nav">
+          <li>
+            <a href="#"><span id="weluser">欢迎您：</span></a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出&nbsp;</a>
+          </li>
+        </ul>
+    </div>
+    </nav>
+
+    <div id="sidenav" class="sidenav"></div>
+
+    <!--your main panel-->
+    <div id="main">
+      <div class="main-menu" id="treeview"></div>
+      <div class="row " style="margin-left: 200px">
+        <div class="col-md-12 col-xs-12 " id="main_panel">
+          <div class="showechart">
+            <div class="panel panel-default">
+              <div class="panel-heading clearfix">
+                <h3 class="panel-title">
+                                整体情况 <span class="subtit">（以下数据有两小时的统计延迟）</span> 
+                </h3>
+                <div class="pull-right">
+                  <select id='timezone' class="input-sm" onchange="selectchange()">
+                    <option value='30'>过去30天</option>
+                    <option value='7'>过去7天</option>
+                    <option value='1'>昨天</option>
+                  </select>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="showdata">
+                  <ul class="datalist">
+                    <li>
+                      <p>展现量(次)</p>
+                      <p id="total_imp">-</p>
+                    </li>
+                    <li>
+                      <p>点击量(次)</p>
+                      <p id="total_click">-</p>
+                    </li>
+                    <li>
+                      <p>平均点击率</p>
+                      <p id="ave_rate">-</p>
+                    </li>
+                    <li>
+                      <p>花费(元)</p>
+                      <p id="total_cost">-</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="clearfix form-choose">
+                  <select id='l_con' class="input-sm pull-left" onchange="selectchange()">
+                    <option value='3' selected='selected'>展现量</option>
+                    <option value='4'>点击量</option>
+                    <option value='5'>点击率</option>
+                    <option value='6'>CPC</option>
+                    <option value='7'>CPM</option>
+                    <option value='8'>花费</option>
+                  </select>
+                  <select id='r_con' class="input-sm pull-right" onchange="selectchange()">
+                    <option value='3'>展现量</option>
+                    <option value='4'>点击量</option>
+                    <option value='5' selected='selected'>点击率</option>
+                    <option value='6'>CPC</option>
+                    <option value='7'>CPM</option>
+                    <option value='8'>花费</option>
+                  </select>
+                  <button class="btn btn-default btn-sm pull-right" style="margin-right:20px;" onclick="selectchange()">刷新</button>
+                </div>
+                <div id="user_overall" style="width: 100%; height: 280px">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="display: none;" id="idea_div">
+            <p class="tit" style="margin-left: 20px">创意排名</p>
+            <div class="showechart">
+              <div class="col-md-4 col-xs-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                                    展现量<small>(top5)</small><i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="展现量排行榜是您所选时间范围内，展现量排名前五位的广告，其中曝光占比是指该广告展现量与账户展现量之比"></i>
+                  </div>
+                  <div class="panel-body" id="top5_imp"></div>
+                </div>
+              </div>
+              <div class="col-md-4 col-xs-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                                    点击量<small>(top5)</small><i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="点击量排行榜是您所选时间范围内，点击量排名前5位的广告，其中点击占比是指该广告点击量与账户点击量之比"></i>
+                  </div>
+                  <div class="panel-body" id="top5_click"></div>
+                </div>
+              </div>
+              <div class="col-md-4 col-xs-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                                    点击率<small>(top5)</small><i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="点击率排行榜是您所选时间范围内，点击率排名前5位的广告，"></i>
+                  </div>
+                  <div class="panel-body" id="top5_rate"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="display: none;" id="unit_div">
+            <p class="tit" style="margin-left: 20px">单元排名</p>
+            <div class="showechart">
+              <div class="col-md-4 col-xs-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                                    展现量<small>(top5)</small><i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="展现量排行榜是您所选时间范围内，展现量排名前五位的广告，其中曝光占比是指该广告展现量与账户展现量之比"></i>
+                  </div>
+                  <div class="panel-body" id="top5_imp_unit"></div>
+                </div>
+              </div>
+              <div class="col-md-4 col-xs-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                                    点击量<small>(top5)</small><i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="点击量排行榜是您所选时间范围内，点击量排名前5位的广告，其中点击占比是指该广告点击量与账户点击量之比"></i>
+                  </div>
+                  <div class="panel-body" id="top5_click_unit"></div>
+                </div>
+              </div>
+              <div class="col-md-4 col-xs-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                                    点击率<small>(top5)</small><i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="点击率排行榜是您所选时间范围内，点击率排名前5位的广告，"></i>
+                  </div>
+                  <div class="panel-body" id="top5_rate_unit"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <p class="tit" style="margin-left: 20px">计划排名</p>
+            <div class="showechart">
+              <div class="col-md-4 col-xs-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                                    展现量<small>(top5)</small><i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="展现量排行榜是您所选时间范围内，展现量排名前五位的广告，其中曝光占比是指该广告展现量与账户展现量之比"></i>
+                  </div>
+                  <div class="panel-body" id="top5_imp_plan"></div>
+                </div>
+              </div>
+              <div class="col-md-4 col-xs-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                                    点击量<small>(top5)</small><i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="点击量排行榜是您所选时间范围内，点击量排名前5位的广告，其中点击占比是指该广告点击量与账户点击量之比"></i>
+                  </div>
+                  <div class="panel-body" id="top5_click_plan"></div>
+                </div>
+              </div>
+              <div class="col-md-4 col-xs-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                                    点击率<small>(top5)</small><i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="点击率排行榜是您所选时间范围内，点击率排名前5位的广告，"></i>
+                  </div>
+                  <div class="panel-body" id="top5_rate_plan"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-12 col-md-12 hidden" id="other_panel">
+          <div class="showechart">
+            <div class="panel panel-default">
+              <div class="panel-heading clearfix">
+                <h3 class="panel-title">
+                  <a id="other_idea_name_0">XXX</a> 
+                </h3>
+                <select id='timezone_idea' class="input-sm pull-right" onchange="other_selectchange()">
+                  <option value='30'>过去30天</option>
+                  <option value='7'>过去7天</option>
+                  <option value='1'>昨天</option>
+                  <option value='0' selected='delected'></option>
+                </select>
+              </div>
+              <div class="panel-body">
+                <div>
+                  <p id="other_status">
+                                   投放状态：<span>XX</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;广告出价：<span>6.2元</span>
+                  </p>
+                </div>
+                <div class="showdata">
+                  <ul class="datalist">
+                    <li>
+                      <p>展现量(次)</p>
+                      <p id="other_total_imp">-</p>
+                    </li>
+                    <li>
+                      <p>点击量(次)</p>
+                      <p id="other_total_click">-</p>
+                    </li>
+                    <li>
+                      <p>平均点击率</p>
+                      <p id="other_ave_rate">-</p>
+                    </li>
+                    <li>
+                      <p>花费(元)</p>
+                      <p id="other_total_cost">-</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 col-xs-12 " style="padding-left:0;" id="other_view">
+                    <h4>
+                      <strong>广告详情</strong>
+                    </h4>
+                    <div class="info">
+                      <span class="item">广告名称</span><span class="itemcon" id="other_idea_name_1">XXX</span>
+                    </div>
+                    <div class="info">
+                      <span class="item">广告ID</span><span class="itemcon" id="other_idea_id">XXX</span>
+                    </div>
+                    <div class="info">
+                      <span class="item">广告位置</span>
+                      <div class="itemcon" id="other_idea_slots">
+                        <ul>
+                          <li>横幅-固定型</li>
+                          <li>开屏</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="info">
+                      <span class="item">创意类型</span><span class="itemcon" id="other_idea_type">XXX</span>
+                    </div>
+                    <div class="info">
+                      <span class="item">落地页</span> <span class="itemcon" id="other_land_page">http://XXX</span>
+                    </div>
+                    <div class="info">
+                      <span class="item">资产</span><span class="itemcon" id="other_assets">XX</span>
+                    </div>
+                    <div class="info">
+                      <span class="item">展现形式</span>
+                      <div class="itemcon" id="other_adview_type">
+                        <ul>
+                          <li>Web</li>
+                          <li>APP</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="info">
+                      <span class="item">广告贸易</span> <span class="itemcon" id="other_idea_trade">XX</span>
+                    </div>
+                    <div class="info">
+                      <span class="item">展现监控地址</span>
+                      <div class="itemcon" id="other_imp_monitor_urls">
+                        <ul>
+                          <li>http://XXX</li>
+                          <li>http://XXX</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="info">
+                      <span class="item">点击监控地址</span>
+                      <div class="itemcon" id="other_click_monitor_urls">
+                        <ul>
+                          <li>http://XXX</li>
+                          <li>http://XXX</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 col-xs-12" style="padding-left:0;">
+                    <div class="clearfix form-choose">
+                      <select id='other_l_con' class="input-sm pull-left" onchange="other_selectchange()">
+                        <option value='3' selected='selected'>展现量</option>
+                        <option value='4'>点击量</option>
+                        <option value='5'>点击率</option>
+                        <option value='6'>CPC</option>
+                        <option value='7'>CPM</option>
+                        <option value='8'>花费</option>
+                      </select>
+                      <select id='other_r_con' class="input-sm pull-right" onchange="other_selectchange()">
+                        <option value='3'>展现量</option>
+                        <option value='4'>点击量</option>
+                        <option value='5' selected='selected'>点击率</option>
+                        <option value='6'>CPC</option>
+                        <option value='7'>CPM</option>
+                        <option value='8'>花费</option>
+                      </select>
+                      <button class="btn btn-default btn-sm" style="float: right;margin-right:20px" onclick="other_selectchange()">刷新</button>
+                    </div>
+                    <div id="user_overall_other" style="width: 100%; height: 280px">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/echarts/echarts.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/bootstrap/js/bootstrap-treeview.js"></script>
+    <script src="/js/moment.min.js"></script>
+    <script>
+      window.current_nav = "dashboardoverall";
+    </script>
+    <script src="/js/constants.js"></script>
+    <script src="/js/tools.js"></script>
+    <script src="/js/component.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/dashboard/overall.js"></script>
+  </body>
+
+</html>

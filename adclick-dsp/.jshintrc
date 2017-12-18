@@ -1,0 +1,32 @@
+{
+	//JSHint Configuration File
+
+	"globals": {
+		"jQuery": true,
+		"node": true,
+		"module": true,
+		"devel": true,
+		"console": true,
+		"browser": true,
+		"require": true,
+		"$": true,
+		"window": true
+	},
+	"strict": false,
+	"immed": true,
+	"camelcase": false,
+	"curly": true,
+	"eqeqeq": false,
+	"freeze": true,
+	"indent": 4,
+	"noempty": true,
+	"undef": true,
+	"latedef": true,
+	"unused": true,
+	"noarg": true,
+	"nonbsp": true,
+	"nonew": true,
+	"maxlen": 120,
+	"shadow": true,
+	"plusplus": false
+}

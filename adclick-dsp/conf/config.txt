@@ -1,0 +1,121 @@
+{
+  "db": {
+    "adclickDsp": {
+      "host": "180.76.153.68",
+      "port": 3306,
+      "database": "adclick_dsp_business",
+      "user": "dmtec",
+      "password": "adclickZaq!2wsx",
+      "connection": 20,
+      "queue": 30
+    },
+    "realTime": {
+      "host": "180.76.153.68",
+      "port": 3306,
+      "database": "adclick_dsp_dashboard",
+      "user": "dmtec",
+      "password": "adclickZaq!2wsx",
+      "connection": 20,
+      "queue": 30
+    },
+    "adclickMgr": {
+      "host": "180.76.153.68",
+      "port": 3306,
+      "database": "adclick_dsp_mgr",
+      "user": "dmtec",
+      "password": "adclickZaq!2wsx",
+      "connection": 20,
+      "queue": 30
+    },
+    "adlibAudit": {
+      "host": "180.76.153.68",
+      "port": 3306,
+      "database": "dsp_audit",
+      "user": "dmtec",
+      "password": "adclickZaq!2wsx",
+      "connection": 20,
+      "queue": 30
+    },
+    "adlibDashboard": {
+      "host": "180.76.153.68",
+      "port": 3306,
+      "database": "dsp_dashboard",
+      "user": "dmtec",
+      "password": "adclickZaq!2wsx",
+      "connection": 20,
+      "queue": 30
+    },
+    "adlibPalo": {
+      "host": "factory.baidu.com",
+      "port": 7306,
+      "database": "test_dsp_palo",
+      "user": "superuser@669477389",
+      "password": "Zaq1xsw2110",
+      "connection": 20,
+      "queue": 30
+    },
+    "adlibAD": {
+      "host": "180.76.153.68",
+      "port": 3306,
+      "database": "dsp_adlib",
+      "user": "dmtec",
+      "password": "adclickZaq!2wsx",
+      "connection": 20,
+      "queue": 30
+    },
+    "adlibAdx": {
+      "host": "180.76.153.68",
+      "port": 3306,
+      "database": "dsp_adx",
+      "user": "dmtec",
+      "password": "adclickZaq!2wsx",
+      "connection": 20,
+      "queue": 30
+    },
+    "task": {
+      "host": "180.76.153.68",
+      "port": 3306,
+      "database": "dsp_task",
+      "user": "dmtec",
+      "password": "adclickZaq!2wsx",
+      "connection": 20,
+      "queue": 30
+    },
+    "controller": {
+      "host": "180.76.153.68",
+      "port": 3306,
+      "database": "dsp_controller",
+      "user": "dmtec",
+      "password": "adclickZaq!2wsx",
+      "connection": 20,
+      "queue": 30
+    },
+    "adlibTags":{
+      "host": "180.76.153.68",
+      "port": 3306,
+      "database": "dsp_tags",
+      "user": "dmtec",
+      "password": "adclickZaq!2wsx",
+      "connection": 20,
+      "queue": 30
+    },
+    "adxConfig": {
+      "host": "180.76.153.68",
+      "port": 3306,
+      "database": "adx_config",
+      "user": "dmtec",
+      "password": "adclickZaq!2wsx",
+      "connection": 30,
+      "queue": 30
+    },
+    "adxPalo": {
+      "host": "factory.baidu.com",
+      "port": 7306,
+      "database": "adx_palo",
+      "user": "superuser@669477389",
+      "password": "Zaq1xsw2110",
+      "connection": 30,
+      "queue": 30
+    }
+  }
+}

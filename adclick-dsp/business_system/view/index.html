@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<!--
+                       ::
+                      :;J7, :,                        ::;7:
+                      ,ivYi, ,                       ;LLLFS:
+                      :iv7Yi                       :7ri;j5PL
+                     ,:ivYLvr                    ,ivrrirrY2X,
+                     :;r@Wwz.7r:                :ivu@kexianli.
+                    :iL7::,:::iiirii:ii;::::,,irvF7rvvLujL7ur
+                   ri::,:,::i:iiiiiii:i:irrv177JX7rYXqZEkvv17
+                ;i:, , ::::iirrririi:i:::iiir2XXvii;L8OGJr71i
+              :,, ,,:   ,::ir@mingyi.irii:i:::j1jri7ZBOS7ivv,
+                 ,::,    ::rv77iiiriii:iii:i::,rvLq@huhao.Li
+             ,,      ,, ,:ir7ir::,:::i;ir:::i:i::rSGGYri712:
+           :::  ,v7r:: ::rrv77:, ,, ,:i7rrii:::::, ir7ri7Lri
+          ,     2OBBOi,iiir;r::        ,irriiii::,, ,iv7Luur:
+        ,,     i78MBBi,:,:::,:,  :7FSL: ,iriii:::i::,,:rLqXv::
+        :      iuMMP: :,:::,:ii;2GY7OBB0viiii:i:iii:i:::iJqL;::
+       ,     ::::i   ,,,,, ::LuBBu BBBBBErii:i:i:i:i:i:i:r77ii
+      ,       :       , ,,:::rruBZ1MBBqi, :,,,:::,::::::iiriri:
+     ,               ,,,,::::i:  @arqiao.       ,:,, ,:::ii;i7:
+    :,       rjujLYLi   ,,:::::,:::::::::,,   ,:i,:,,,,,::i:iii
+    ::      BBBBBBBBB0,    ,,::: , ,:::::: ,      ,,,, ,,:::::::
+    i,  ,  ,8BMMBBBBBBi     ,,:,,     ,,, , ,   , , , :,::ii::i::
+    :      iZMOMOMBBM2::::::::::,,,,     ,,,,,,:,,,::::i:irr:i:::,
+    i   ,,:;u0MBMOG1L:::i::::::  ,,,::,   ,,, ::::::i:i:iirii:i:i:
+    :    ,iuUuuXUkFu7i:iii:i:::, :,:,: ::::::::i:i:::::iirr7iiri::
+    :     :rk@Yizero.i:::::, ,:ii:::::::i:::::i::,::::iirrriiiri::,
+     :      5BMBBBBBBSr:,::rv2kuii:::iii::,:i:,, , ,,:,:i@petermu.,
+          , :r50EZ8MBBBBGOBBBZP7::::i::,:::::,: :,:,::i;rrririiii::
+              :jujYY7LS0ujJL7r::,::i::,::::::::::::::iirirrrrrrr:ii:
+           ,:  :@kevensun.:,:,,,::::i:i:::::,,::::::iir;ii;7v77;ii;i,
+           ,,,     ,,:,::::::i:iiiii:i::::,, ::::iiiir@xingjief.r;7:i,
+        , , ,,,:,,::::::::iiiiiiiiii:,:,:::::::::iiir;ri7vL77rrirri::
+         :,, , ::::::::i:::i:::i:i::,,,,,:,::i:i:::iir;@Secbone.ii:::
+     
+-->
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="renderer" content="webkit">
+  <link rel="icon" href="/icon/favicon.ico">
+  
+  <title>AdClick login</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="/css/login-regist.css" rel="stylesheet"/>
+
+</head>
+<body>
+    
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+      <img alt="Brand" class="navbar-brand-logo  navbar-left" src="/icon/logo.png">
+      <a class="navbar-brand" href="/">AdClick投放系统</a>
+    </div>
+  <ul id="navbar" class="nav navbar-nav"> 
+    <li class="active"> 
+    <a href="#" style="background-color:#222;"> 
+      <span id="weluser"></span>
+    </a>
+    </li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li>   
+      <a href="javascript:;" id="login-btn" class="nav-btn" style="outline:none !important;"> 
+      <span class="glyphicon glyphicon-log-in"></span>
+      &nbsp;登录&nbsp;
+    </a>
+
+    </li>
+  </ul>
+    
+  </nav>
+
+   <div id="content">
+    <div id="myCarousel" class="carousel slide">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="../img/pic-01.jpg" alt="second" >
+        </div>
+        <div class="item" >
+          <img src="../img/pic-02.jpg" alt="third" >
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    
+    
+  <!-- Small modal -->
+  
+
+  <div id="login-modal-form" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4 class="modal-title" id="myModalLabel">登录AdClick</h4>
+    </div>
+      
+    <div class="modal-body login">
+      <form action="" role="form" class="form-horizontal" method="post">
+      <fieldset> 
+        <legend class="sr-only">登录</legend>
+        <div class="form-group has-feedback">
+        <label for="username" class="control-label sr-only">用户名</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        
+        <div class="form-group has-feedback">
+        <label for="password" class="control-label sr-only"> 密 码</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码(包含大小写，数字，长度6-16)">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        
+        <div class="form-group">
+        <label for="" class="control-label sr-only">图片验证码</label>
+        <input type="text" class="form-control sms-pic" id="inputSmscode" placeholder="请输入图片中的验证码">
+        <img src="" alt="" class="img-rounded" id="inputImg">
+          <a href="#" id="getSms-pic">换一张</a>
+        </div>
+        <span id="verify-img-info"></span>
+      </fieldset>
+      </form>
+      <div id="err-msg"></div>
+    </div>
+    <div class="modal-footer">
+      <div>
+      <button type="submit" class="btn btn-primary btn-block" id="login" disabled>登录</button>
+      </div>
+      <div class="bottom"> 
+      <a href="/operator/forgetPass.html">忘记密码？</a>
+      <span class="dotted">|</span>
+      <a href="/operator/regist.html">注册新账号</a>
+      </div>
+    </div>
+    </div>
+  </div>
+  </div>  
+  
+  <footer class="footer">
+    <div class="container footer-text">
+      <p class="text-muted">Copyright © 2012-2017 上海数凹文化传媒有限公司. 版权所有</p>
+    </div>
+  </footer>
+  
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="/jquery/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/js/sha1.js"></script>
+  <script src="/js/constants.js"></script>
+  <script src="/js/tools.js"></script>
+  <script src="/js/operator/login.js"></script>
+  <script type="text/javascript">
+    $("#myCarousel").carousel(
+          {interval:4000}
+      );
+    var bheight=$(window).height();
+    var bwidth=$(window).width();
+    var footerHeight=$("footer").css("height");
+    var navHeight=$("nav").css("height");
+    var imgHeight=bheight-parseInt(footerHeight)-parseInt(navHeight);
+    $("#myCarousel img").css("height",imgHeight+"px");
+    $("#myCarousel img").css("width",bwidth+"px");
+
+    $(window).resize(function(event) {
+      var bheight=$(window).height();
+      var imgHeight=bheight-parseInt(footerHeight)-parseInt(navHeight);
+      var bwidth=$(window).width();
+      /*$("#myCarousel img").css("height",imgHeight+"px");*/
+      $("#myCarousel img").css("width",bwidth+"px");
+      $("#myCarousel img").css("height",imgHeight+"px");
+    });
+  </script>
+</body>
+</html>

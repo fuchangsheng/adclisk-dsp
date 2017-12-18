@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/icon/favicon.ico">
+  <title>AdClick resetPass</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="/css/main.css" rel="stylesheet" />
+  <style>.item{margin-bottom:10px;}label{width:120px;text-align:left}input[type='password']{display:inline-block;width:320px;}</style>
+
+</head>
+<body>
+  
+  <!--Nav part-->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="navbar-header">
+        <img alt="Brand" class="navbar-brand-logo  navbar-left"
+          src="/icon/logo.png"> <a class="navbar-brand" href="/">AdClick投放系统</a>
+      </div>
+      <ul id="navbar" class="nav navbar-nav">
+        <li><a href="#"><span id="weluser">欢迎您：</span></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/logout"><span
+            class="glyphicon glyphicon-log-out"></span>&nbsp;退出&nbsp;</a></li>
+      </ul>
+  </nav>
+
+  <div id="sidenav" class="sidenav"></div>
+  
+  <div id="main">
+    <div id="tabs" class="row"></div>
+    <div id="content"> 
+      <!-- <form action="" class="form-horizontal">
+        <div class="form-group">
+          <label for="" class="col-md-2 col-lg-2 control-label">当前密码：</label>
+          <div class="col-md-4 col-lg-4"> 
+            <input type="password" class="form-control" id="inputOldPassword" placeholder="请输入当前密码" autocomplete="new-password">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-md-2 col-lg-2 control-label">请输入新密码：</label>
+          <div class="col-md-4 col-lg-4"> 
+            <input type="password" class="form-control" id="inputPassword" placeholder="请输入新密码(包含大小写，数字，长度6-16)" autocomplete="new-password">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-md-2 col-lg-2 control-label">确认密码：</label>
+          <div class="col-md-4 col-lg-4"> 
+            <input type="password" class="form-control" id="inputRePassword" placeholder="请确认密码" autocomplete="new-password">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-md-2 col-lg-2 control-label"></label>
+          <div class="col-md-4 col-lg-4"> 
+            <input type="button" class="btn btn-primary btn-sm" id="resetPass" value="提交">
+          </div>
+        </div>
+      </form> -->
+      <div id="regist-form" style="font-family:'Microsoft YaHei'">
+        <div class="item">
+          <label>当前密码：</label>
+          <input type="password" class="form-control" id="inputOldPassword" placeholder="请输入当前密码" autocomplete="new-password">
+        </div>
+        <div class="item">
+          <label>请输入新密码：</label>
+          <input type="password" class="form-control" id="inputPassword" placeholder="请输入新密码(包含大小写，数字，长度6-16)" autocomplete="new-password">
+        </div>
+        <div class="item">
+          <label>确认密码：</label>
+          <input type="password" class="form-control" id="inputRePassword" placeholder="请确认密码" autocomplete="new-password">
+        </div>
+        <div class="item">
+          <label></label>
+          <input type="button" class="btn btn-primary btn-sm" id="resetPass" value="提交">
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="/jquery/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/js/sha1.js"></script>
+  <script>window.current_tab = "resetpass";window.current_nav = "user";</script>
+  <script src="/js/component.js"></script>
+  <script src="/js/constants.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/tools.js"></script>
+  <script src="/js/tab-config.js"></script>
+  <script src="/js/user/resetPass.js"></script>
+  
+</body>
+</html>

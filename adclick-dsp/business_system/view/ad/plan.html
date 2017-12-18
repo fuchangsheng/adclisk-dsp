@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/icon/favicon.ico">
+
+  <title>AdClick DSP 业务系统</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Custom styles for this template -->
+  <link href="/bootstrap/css/bootstrap-switch.min.css" rel="stylesheet"/>
+  <link href="/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+  <link href="/bootstrap/css/navbar-fixed-side.css" rel="stylesheet" />
+  <link href="/css/main.css" rel="stylesheet"/>
+  <link href="/css/ad.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container-fluid">
+  <!--Nav part-->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+      <img alt="Brand" class="navbar-brand-logo  navbar-left" src="/icon/logo.png">
+      <a class="navbar-brand" href="/">AdClick投放系统</a>
+    </div>
+    <ul id="navbar" class="nav navbar-nav">
+      <li><a href="#"><span id="weluser">欢迎您：</span></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出&nbsp;</a></li>
+    </ul>
+  </div>
+  </nav>
+
+  <div id="sidenav" class="sidenav">
+  </div>
+
+  <!--your main panel-->
+  <div id="main">
+    <div id="tabs" class="row"></div>
+    <div id="content">
+      <div class="clearfix table-choose">
+        <div class="btn-toolbar pull-left">
+          <div class="btn-group">
+            <button type="button" id="create-plan" class="btn btn-primary btn-sm">新建广告计划</button>
+          </div>
+        </div>
+        <div class="pull-right" style="margin-left: 20px;"> 
+          <select class="form-control input-sm" id="data-sort">
+            <option value="创建时间减序">创建时间减序</option>
+            <option value="创建时间增序">创建时间增序</option>
+            <option value="更新时间减序">更新时间减序</option>
+          </select>
+        </div>
+        <div class="pull-right">
+          <select class="form-control input-sm" id="plan-status">
+            <option value="全部">全部</option>
+            <option value="启动">启动</option>
+            <option value="未启动">未启动</option>
+          </select>
+        </div>
+      </div>
+      <div class="clear-fix">
+        <table id="plan-list" class="table table-striped table-bordered table-hover table-condensed small">
+          <thead>
+            <tr class="text-muted">
+              <th>广告计划</th>
+              <th>状态</th>
+              <th>每日预算</th>
+              <th>投放起始</th>
+              <th>投放截至</th>
+              <th>创建时间</th>
+              <th>更新时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot></tfoot>
+        </table>
+      </div>
+<!-- modals start -->
+      <div class="modal fade" id="modal-plan-form" tabindex="-1" role="dialog" aria-labelledby="plan-form-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="plan-form-label"></h4>
+            </div>
+            <div class="modal-body small" id="plan-form-modal-body">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="input-plan-name" class="col-sm-2 col-md-2 col-lg-2 control-label">*计划名称</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5">
+                    <input type="text" id="input-plan-name" class="form-control input-sm">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="input-starttime" class="col-sm-2 col-md-2 col-lg-2 control-label">*起止时间</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5">
+                    <div class="input-group date form_datetime">
+                      <input id="input-starttime" class="form-control input-sm" size="16" type="text" value="" readonly>
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                    </div>
+                  </div>
+                  <div class="col-sm-5 col-md-5 col-lg-5">
+                    <div class="input-group date form_datetime">
+                      <input id="input-endtime" class="form-control input-sm" size="16" type="text" value="" readonly>
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="input-budget" class="col-sm-2 col-md-2 col-lg-2 control-label">*每日预算(元)</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5">
+                    <input type="text" id="input-budget" class="form-control input-sm">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label">投放时段</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10">
+                    <div class="schedule" unselectable="on" onselectstart="return false;">
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div id="err-msg"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取消</button>
+              <button type="button" id="submit-plan-form" class="btn btn-primary btn-sm">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- modals finish -->
+    </div>
+  </div>
+</div>
+  <!-- Bootstrap core JavaScript ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="/jquery/jquery.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/bootstrap/js/bootstrap-switch.min.js"></script>
+  <script src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+  <script>window.current_tab = "plan";window.current_nav = "ad";</script>
+  <script src="/js/constants.js"></script>
+  <script src="/js/component.js"></script>
+  <script src="/js/tools.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/tab-config.js"></script>
+  <script src="/js/ad/ad.js"></script>
+</body>
+</html>

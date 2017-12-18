@@ -1,0 +1,19 @@
+#!/bin/sh
+
+grunt --force
+
+git ls-files -z -- *.js common/*.js back/*/*.js back/*.js back/*/*.html back/*/*.css console/*.js |
+xargs -0 sh -c '
+
+    e=""
+    for f; do
+        if ! git show :"$f" |
+             iconv -f UTF-8 -t UTF-8 >/dev/null 2>&1; then
+            e=1
+            echo "Not UTF-8: $f"
+            #exit 255 # to abort after first non-UTF-8 file
+        fi
+    done
+    test -z "$e"
+
+' -

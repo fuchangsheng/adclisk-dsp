@@ -1,0 +1,27 @@
+{
+  "name": "adclick-dsp",
+  "description": "adclick dsp project",
+  "main": "adclick_index.js",
+  "authors": [
+    "zhouyaowei@dmtec.cn"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "adclick",
+    "dsp"
+  ],
+  "homepage": "dsp.adclick.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "jquery": "1.9.1",
+    "iCheck": "^1.0.2"
+  }
+}

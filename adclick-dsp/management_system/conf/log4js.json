@@ -1,0 +1,21 @@
+{
+  "appenders": [
+    {
+      "type": "file",
+      "filename": "./adclickdsp.log",
+      "maxLogSize": 20480,
+      "backups": 100,
+      "pattern": "-yyyy-MM-dd-hh:mm:ss.%c.log",
+      "category": "filelog"
+    },
+    {
+      "type": "console",
+      "category": "console"
+    }
+  ],
+  "replaceConsole": true,
+  "levels": {
+    "console": "ALL",
+    "filelog": "ALL"
+  }
+}

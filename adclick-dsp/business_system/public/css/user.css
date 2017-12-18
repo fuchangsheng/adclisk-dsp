@@ -1,0 +1,133 @@
+.lump{
+  border: 1px solid #DDDFE1;
+  background-color: #fff;
+  margin-bottom: 15px;
+  padding-bottom: 100px;
+  box-shadow: 0 1px 0 rgba(230,231,232,1);
+}
+.lump-hd{
+  border-bottom: 1px solid #E5E6E7;
+  height: 30px;
+  padding: 0 0 0 20px;
+}
+.lump-hd h3{
+  font-size:16px;
+  color: #343434;
+  font-weight: 700;
+}
+.lump-bd{
+  margin:0;
+  padding:0;
+}
+.infomations{
+  margin: 0 30px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.info-bd{
+  padding-top:23px;
+}
+.info-bd span{
+  color: #000;
+  font-weight: 700;
+  font-size: 14px;
+}
+.account-list{
+  padding: 20px 0 0 28px;
+  padding-bottom: 15px;
+}
+.account-list li{
+  margin-bottom:15px;
+  list-style:none;
+}
+.account-list .account-list-name{
+  color: #999;
+}
+.account-list .account-list-con{
+  margin-top:4px;
+}
+.account-list .account-list-con .account-text{
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.account-list .account-list-con .enlarge{
+  position: absolute;
+  z-index: 9;
+  height: 20px;
+  width: 20px;
+  overflow: hidden;
+  bottom: 0;
+  right: 0;
+  font-size: 0;
+  text-indent: -999em;
+  background: rgba(0,0,0,.6);
+}
+
+.operator-t{
+  height: 315px;
+  border: 1px solid #DDDFE1;
+  box-shadow: 0 1px 0 #E3E4E5;
+}
+.op-title{
+  border-bottom: 1px solid #E5E6E7;
+  line-height: 40px;
+  padding-left: 16px;
+  color: #494949;
+  font-size: 14px;
+}
+.op-con{
+  padding: 20px 0 0 20px;
+  font-size: 12px;
+}
+.op-con-r{
+  background: url(../img/icon-numlist.png) no-repeat left top;
+  margin: 20px 0 0 20px;
+  height:200px;
+}
+.op-con-r p{
+  height: 29px;
+  padding-top: 3px;
+  padding-left: 35px;
+  font-size: 12px;
+  color: #797979;
+}
+.op-item{
+  display: inline-block;
+  color: #666;
+  width: 100px;
+  text-align: left;
+  font-weight: bold;
+}
+.choiceline{
+  margin-top: 20px;
+  margin-bottom:20px;
+}
+.s{
+  width:265px;  
+  height:25px;
+}
+
+.operator-field{
+  display: inline;
+  width: auto;
+}
+
+/* user qual */
+#qual-modal select{
+  width: 200px;
+}
+
+#categoriesse{
+  display: inline-block;
+  margin-right: 64px;
+}
+
+#subcategoriesse{
+  display: inline-block;
+}
+
+.modal .alert{
+  margin-bottom: 0;
+  padding: 10px 35px 10px 15px;
+}

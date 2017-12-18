@@ -1,0 +1,58 @@
+﻿依赖：
+  1.thrift
+  2.boost
+  
+  
+百度CTR模块结构：
+          高层函数
+             |
+            \|/(调用)
+  BiddingModule.h(结构体BidRequest,BidResponse与BceCtrHandler的CtrRequest,CtrResponse相互转换)
+            /|\(组合)
+             | 
+  bce_ctr_handler.h(将CtrRequest,CtrResponse与json相互转换)
+            /|\(组合)
+             |
+  http_client.h(发送http请求)
+            /|\(关联)
+             |
+  ......(其他http通讯实现文件)
+
+	
+替换方案：
+          高层函数
+             |
+            \|/(调用)
+  BiddingModule.h(结构体BidRequest,BidResponse与thrift协议的CtrRequest,CtrResponse相互转换)
+            /|\(组合)
+             | 
+  dmtec_ctr_handler.h(无实际意义)
+            /|\(组合)
+             |
+  dmtec_client.h(发送rpc请求)
+            /|\(关联)
+             |
+  gen-cpp文件夹(rpc通讯实现文件)
+  
+	
+	
+文件修改:
+  1.修改了cloud-dsp/src/BiddingModule/ctr_module.h文件。通过宏定义DMTEC_CTR,可以替换原本百度CTR的服务器。(默认未定义DMTEC_CTR,可在cloud-dsp/src/BiddingModule/ctr_module.h中定义)
+
+  
+文件增加：
+  1.增加cloud-dsp/src/BiddingModule/ctr.thrift文件,thrift接口定义文件,定义了rpc调用所需的数据结构和函数接口。
+  2.增加cloud-dsp/src/BiddingModule/gen-cpp文件夹,通过命令“thrift --gen cpp ctr.thrift"生成。
+  3.增加cloud-dsp/src/api/dmtec_ctr_handler.h, cloud-dsp/src/api/dmetc_ctr_handler.cpp文件,用于替代cloud-dsp/src/api/bce_ctr_handler.h, cloud-dsp/src/api/bce_ctr_handler.cpp文件。
+  4.增加cloud-dsp/src/api/dmtec_client.h, clout_dsp/src/api/dmtec_client.cpp文件,用于替代cloud-dsp/dep/bce/include/bce/http_client.h文件。
+
+  
+配置文件/参数：
+  1.与使用百度CTR的配置相同。只是在指定CTR服务器地址时,请勿添加端口号（NO:"127.0.0.1:1080"/"localhost:1080", YES:"127.0.0.1"/"localhost")。目前默认使用的9090端口。
+  2.ctr中超时（timeout_ms)与重连(max_retry)两个配置参数目前没有生效。
+
+  
+其他：
+  1.为了匹配cloude-dsp的命名规则,若使用"thrift --gen cpp ctr.thrift"命令重新生成gen-cpp文件夹,须将DmtecCtr.h, DmtecCtr.cpp分别重命名为dmetc_ctr.h, dmtec_ctr.cpp以及将DmtecCtr.cpp中#include "DmtecCtr.h"替换为#include "dmtec_ctr.h"方可使用。
+  2.Ctr server端宕机会导致程序崩溃。
+  3.编译程序需加入”-lthrift“参数

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/icon/favicon.ico">
+
+  <title>AdClick DSP 广告创意</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Custom styles for this template -->
+  <link href="/bootstrap/css/bootstrap-switch.min.css" rel="stylesheet"/>
+  <link href="/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+  <link href="/bootstrap/css/navbar-fixed-side.css" rel="stylesheet" />
+  <link href="/css/main.css" rel="stylesheet"/>
+  <link href="/css/jquery-editable-select.min.css" rel="stylesheet" />
+  <link href="/css/fileinput.css" rel="stylesheet">
+  <link href="/css/ad.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container-fluid">
+  <!--Nav part-->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+      <img alt="Brand" class="navbar-brand-logo  navbar-left" src="/icon/logo.png">
+      <a class="navbar-brand" href="/">AdClick投放系统</a>
+    </div>
+    <ul id="navbar" class="nav navbar-nav">
+      <li><a href="#"><span id="weluser">欢迎您：</span></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出&nbsp;</a></li>
+    </ul>
+  </div>
+  </nav>
+
+  <div id="sidenav" class="sidenav">
+  </div>
+
+  <!--your main panel-->
+  <div id="main">
+    <div id="tabs" class="row"></div>
+    <div id="content">
+      <div class="clearfix table-choose">
+        <div class="btn-toolbar pull-left">
+          <div class="btn-group">
+            <button type="button" id="create-idea" class="btn btn-primary btn-sm">新建广告创意</button>
+          </div>
+        </div>
+        <div class="pull-right" style="margin-left: 20px;"> 
+          <select class="form-control input-sm" id="data-sort">
+            <option value="创建时间减序">创建时间减序</option>
+            <option value="创建时间增序">创建时间增序</option>
+            <option value="更新时间减序">更新时间减序</option>
+          </select>
+        </div>
+        <div class="pull-right">
+          <select class="form-control input-sm" id="idea-status">
+            <option value="全部">全部</option>
+            <option value="启动">启动</option>
+            <option value="未启动">未启动</option>
+          </select>
+        </div>
+      </div>
+      <div class="clear-fix">
+        <table id="idea-list" class="table table-striped table-bordered table-hover table-condensed small">
+          <thead>
+            <tr class="text-muted">
+              <th>广告创意</th>
+              <th>状态</th>
+              <th>广告单元</th>
+              <th>广告计划</th>
+              <th>创意类型</th>
+              <th>流量类型</th>
+              <th>审核状态</th>
+              <th>拒绝原因</th>
+              <th>创建时间</th>
+              <th>修改时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot></tfoot>
+        </table>
+      </div>
+      <!-- modals start -->
+      <div class="modal fade" id="modal-idea-form" tabindex="-1" role="dialog" aria-labelledby="idea-form-label" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div id="outerdiv" style="position:absolute;top:0;left:0;background:rgba(0,0,0,0.7);z-index:9999;width:100%;height:100%;display:none;">
+              <div id="innerdiv" style="position:absolute;">
+                <img id="bigimg" style="border:1px solid #fff;" src="" />
+              </div>
+            </div>
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="idea-form-label"></h4>
+            </div>
+            <div id="idea-form-modal-body" class="modal-body small" style="user-select:none;">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="input-idea-name" class="col-sm-2 col-md-2 col-lg-2 control-label">*创意名称</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5">
+                    <input type="text" id="input-idea-name" class="form-control input-sm">
+                  </div>
+                  <div class="col-sm-5 col-md-5 col-lg-5" style="padding:6px 15px 0px 5px;">
+                    <span>*创意名称一旦创建，将无法修改</span>
+                  </div>                  
+                </div>
+                <div class="form-group">
+                  <label for="input-unit-id" class="col-sm-2 col-md-2 col-lg-2 control-label">*广告单元</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5">
+                    <input type="text" class="hidden" id="input-unit-id">
+                    <select id="input-unit-name" class="form-control select-sm">
+                    </select>                     
+                  </div>
+                  <div class="col-sm-5 col-md-5 col-lg-5"> 
+                    <button type="button" id="search-unit-list" class="btn btn-primary">搜索</button>
+                  </div>
+                </div>                
+                <div class="form-group">
+                  <label for="input-plan-id" class="col-sm-2 col-md-2 col-lg-2 control-label">*广告计划</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5">
+                    <input type="text" id="input-plan-id" class="form-control input-sm hidden">
+                    <input type="text" id="input-plan-name" class="form-control input-sm" disabled style="user-select:none;">
+                  </div>
+                  <div class="col-sm-5 col-md-5 col-lg-5" style="padding:6px 15px 0px 5px;">
+                    <span>*搜索选择广告单元，将自动填写广告计划</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="input-adview-type" class="col-sm-2 col-md-2 col-lg-2 control-label">*流量类型</label>
+                  <div class="col-sm-8 col-md-8 col-lg-8 btn-group" id="view-type-btn-group">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:120px;" value="WEB">
+                    <input type="button" class="select-btn btn btn-default" style="width:120px;" value="WAP">
+                    <input type="button" class="select-btn btn btn-default" style="width:120px;" value="APP">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="input-idea-type" class="col-sm-2 col-md-2 col-lg-2 control-label">*创意类型</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group" id="idea-type-btn-group">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:60px;" value="文字">
+                    <input type="button" class="select-btn btn btn-default" style="width:60px;" value="图片">
+                    <input type="button" class="select-btn btn btn-default" style="width:60px;" value="flash">
+                    <input type="button" class="select-btn btn btn-default" style="width:60px;" value="视频">
+                    <input type="button" class="select-btn btn btn-default" style="width:60px;" value="原生">
+                    <input type="button" class="select-btn btn btn-default" style="width:60px;" value="图文">
+                  </div>                  
+                  
+                </div>
+
+                <div class="form-group">
+                  <label for="input-open-type" class="col-sm-2 col-md-2 col-lg-2 control-label">*打开方式</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group" id="open-type-btn-group">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:120px;" value="站内">
+                    <input type="button" class="select-btn btn btn-default" style="width:120px;" value="站外">
+                  </div>                  
+                  
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label">*广告位</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" id="not-slot" class="select-btn btn btn-default" style="width:120px;" value="不限制"> 
+                    <input type="button" id="slot" class="select-btn btn btn-default btn-primary" style="width:120px;" value="限制">         
+                  </div>
+
+                </div>
+                <div class="form-group">
+                  <label for="input-idea-slots" class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="checkbox col-sm-10 col-md-10 col-lg-10" style="padding-top:0;">
+                    <label style="margin-right:5px;"><input class="input-idea-slots" type="checkbox" value="横幅-固定型横幅">横幅-固定型横幅</label>
+                    <label style="margin-right:5px;"><input class="input-idea-slots" type="checkbox" value="开屏">开屏</label>
+                    <label style="margin-right:5px;"><input class="input-idea-slots" type="checkbox" value="插屏">插屏</label>
+                    <label style="margin-right:5px;"><input class="input-idea-slots" type="checkbox" value="视频">视频</label>
+                    <label style="margin-right:5px;"><input class="input-idea-slots" type="checkbox" value="信息流">信息流</label>
+                    <label style="margin-right:5px;"><input class="input-idea-slots" type="checkbox" value="横幅-悬浮型横幅">横幅-悬浮型横幅</label>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="input-idea-trade" class="col-sm-2 col-md-2 col-lg-2 control-label">*广告样式</label>
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                    <select id="ad-style" class="form-control select-sm">
+                      <option value="默认">默认</option>
+                      <option value="上图下文">上图下文</option>
+                      <option value="纯图">纯图</option>
+                      <option value="左图右文">左图右文</option>
+                      <option value="左图中文右按钮">左图中文右按钮</option>
+                      <option value="嵌入式">嵌入式</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="input-idea-trade" class="col-sm-2 col-md-2 col-lg-2 control-label">*创意行业</label>
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                    <select id="input-idea-trade-father" class="form-control select-sm">
+                    </select>
+                  </div>
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                    <select id="input-idea-trade" class="form-control select-sm">
+                    </select>                  
+                  </div>                  
+                </div>   
+                
+                <div class="form-group">
+                  <label for="input-landing-page" class="col-sm-2 col-md-2 col-lg-2 control-label">*落地页</label>
+                  <div class="col-sm-6 col-md-6 col-lg-6">
+                    <input type="text" id="input-landing-page" class="form-control input-sm">
+                  </div>
+                </div>
+                
+                <div id="imp-url-part">
+                <!-- 展现监控url -->
+                <div class="form-group">
+                  <label for="input-imp-monitor-url" class="col-sm-2 col-md-2 col-lg-2 control-label">展现监控</label>
+                  <div class="col-sm-6 col-md-6 col-lg-6">
+                    <input type="text" id="input-imp-monitor-url" class="form-control input-sm imp-url">                  
+                  </div>
+                  <div class="col-sm-1 col-md-1 col-lg-1">
+                    <button type="button" id="imp-monitor-url-btn" class="btn btn-sm" style="line-height: 1.42857143;">+</button>
+                  </div>                  
+                  <div class="col-sm-3 col-md-3 col-lg-3" style="padding:6px 15px 0px 5px;">
+                    <span style="padding-left:10px;">*url,最多可以添加三个</span>
+                  </div>                 
+                </div>
+                </div>                
+                 
+                
+                <!-- click monitor url -->
+                <div id="click-url-part">
+                <div class="form-group">
+                  <label for="input-click-monitor-url" class="col-sm-2 col-md-2 col-lg-2 control-label">点击监控</label>
+                  <div class="col-sm-6 col-md-6 col-lg-6">
+                    <input type="text" id="input-click-monitor-url" class="form-control input-sm click-url">                  
+                  </div>
+                  <div class="col-sm-1 col-md-1 col-lg-1">
+                    <button type="button" id="click-monitor-url-btn" class="btn btn-sm" style="line-height: 1.42857143;">+</button>
+                  </div>                   
+                  <div class="col-sm-3 col-md-3 col-lg-3" style="padding:6px 15px 0px 5px;">
+                    <span style="padding-left:10px;">*url,最多可以添加三个</span>
+                  </div>                 
+                </div>                
+                </div>
+               
+                
+                <div id="assets" style="position:relative">
+                
+                  <div class="panel panel-primary" id="material-lib" style="position:absolute; z-index:99;width:570px;height:360px; top:-230px; padding:10px;">
+                    <div>
+                      <button type="button" id="material-choose-cancel" class="btn btn-xs btn-link">&lt;取消</button>
+                      <button type="button" id="material-choose" class="btn btn-xs btn-link" style="float:right;">确定&gt;</button>
+                    </div>
+                    <div id="material-main" style="padding:5px;height:300px;">
+                      
+                      <div id="material-main-body" style="height:220px;padding:2px 2px;border:1px solid #dee0e2;"></div>
+                      <div id="material-main-footer">
+                        <!-- <nav class="pull-right"><ul class="pagination"><li class="disabled"><a href="#0">«</a></li><li class="disabled"><a href="#0">‹</a></li><li class="active"><a href="#0">1</a></li><li><a href="#1">2</a></li><li><a href="#1">›</a></li><li><a href="#1">»</a></li></ul></nav> -->
+                      </div>
+                    </div>
+                    
+                  </div>
+                
+                  <!-- 物料为图片 -->
+                  <div id="img" class="hidden 图片">
+                    <div class="form-group" > 
+                      <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">*标题</label>
+                      <div class="col-sm-6 col-md-6 col-lg-6"> 
+                        <input type="text" id="input-assets-img-title" class="form-control input-sm" placeholder="">
+                      </div>                      
+                    </div>
+                    <div class="form-group source-view hidden">
+                      <label class="col-sm-2 col-md-2 col-lg-2 control-label">图片的url</label>
+                      <div class="col-sm-10 col-md-10 col-lg-10" style="margin-top:8px;margin-bottom:10px;">
+                        <span id="img-url-display"></span>
+                        <a id="input-assets-img-url" href="#" target="_blank" style="text-decoration:none">查看</a>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="input-assets" class="col-sm-2 col-md-2 col-lg-2 control-label">*主图片</label>
+                      <div class="col-sm-8 col-md-8 col-lg-8">                       
+                        <input type="file" id="input-assets-img" class="form-control input-sm input-img" name="upload-file">
+                      </div> 
+                      <div class="col-sm-2 col-md-2 col-lg-2">
+                        <input type="button" class="btn btn-primary material-lib-btn" value="素材库">
+                      </div>
+                    </div>
+                    <div class="form-group" > 
+                      <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">*宽度(px)</label>
+                      <div class="col-sm-2 col-md-2 col-lg-2"> 
+                        <input type="text" id="input-assets-img-width" class="form-control input-sm" placeholder="">
+                      </div>
+                      <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">*高度(px)</label>
+                      <div class="col-sm-2 col-md-2 col-lg-2"> 
+                        <input type="text" id="input-assets-img-height" class="form-control input-sm" placeholder="">
+                      </div>                       
+                    </div>
+                  </div>
+                  
+                  <!-- 物料为flash -->
+                  <div id="flash" class="hidden flash">
+                    <div class="form-group" > 
+                      <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">*标题</label>
+                      <div class="col-sm-6 col-md-6 col-lg-6"> 
+                        <input type="text" id="input-assets-flash-title" class="form-control input-sm" placeholder="">
+                      </div>                      
+                    </div>
+                    <div class="form-group source-view hidden">
+                      <label class="col-sm-2 col-md-2 col-lg-2 control-label">Flash的url</label>
+                      <div class="col-sm-10 col-md-10 col-lg-10" style="margin-top:8px;">
+                        <span id="flash-url-display"></span>
+                        <a id="input-assets-flash-url" href="#" target="_blank" style="text-decoration:none">查看</a>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="input-assets" class="col-sm-2 col-md-2 col-lg-2 control-label">*Flash</label>
+                      <div class="col-sm-8 col-md-8 col-lg-8">                       
+                        <input type="file" id="input-assets-flash" class="form-control input-sm" name="upload-file">
+                      </div>
+                      <div class="col-sm-2 col-md-2 col-lg-2">
+                        <input type="button" class="btn btn-primary material-lib-btn" value="素材库">
+                      </div>
+                    </div>
+                    <div class="form-group" > 
+                      <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">*宽度(px)</label>
+                      <div class="col-sm-2 col-md-2 col-lg-2"> 
+                        <input type="text" id="input-assets-flash-width" class="form-control input-sm" placeholder="">
+                      </div>
+                      <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">*高度(px)</label>
+                      <div class="col-sm-2 col-md-2 col-lg-2"> 
+                        <input type="text" id="input-assets-flash-height" class="form-control input-sm" placeholder="">
+                      </div>                       
+                    </div>
+                  </div>
+                  
+                  
+                  <!-- 物料为视频 -->
+                  <div id="video" class="hidden 视频">
+                    <div class="form-group" > 
+                      <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">*标题</label>
+                      <div class="col-sm-6 col-md-6 col-lg-6"> 
+                        <input type="text" id="input-assets-video-title" class="form-control input-sm" placeholder="">
+                      </div>                      
+                    </div>
+                    <div class="form-group source-view hidden">
+                      <label class="col-sm-2 col-md-2 col-lg-2 control-label">视频的url</label>
+                      <div class="col-sm-10 col-md-10 col-lg-10" style="margin-top:8px;">
+                        <span id="video-url-display"></span>
+                        <a id="input-assets-video-url" href="" target="_blank" style="text-decoration:none">查看</a>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="input-assets-video" class="col-sm-2 col-md-2 col-lg-2 control-label">*视频</label>
+                      <div class="col-sm-8 col-md-8 col-lg-8">                       
+                        <input type="file" id="input-assets-video" class="form-control input-sm" name="upload-file">
+                      </div>
+                      <div class="col-sm-2 col-md-2 col-lg-2">
+                        <input type="button" class="btn btn-primary material-lib-btn" value="素材库">
+                      </div>
+                    </div>
+                    <div class="form-group" > 
+                      <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">*宽度</label>
+                      <div class="col-sm-2 col-md-2 col-lg-2"> 
+                        <input type="text" id="input-assets-video-width" class="form-control input-sm" placeholder="">
+                      </div>
+                      <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">*高度</label>
+                      <div class="col-sm-2 col-md-2 col-lg-2"> 
+                        <input type="text" id="input-assets-video-height" class="form-control input-sm" placeholder="">
+                      </div>                        
+                    </div>
+                    <div class="form-group">
+                      <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">*时长(秒)</label>
+                      <div class="col-sm-2 col-md-2 col-lg-2"> 
+                        <input type="text" id="input-assets-video-duration" class="form-control input-sm" placeholder="">
+                      </div>
+                      <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">*长宽比</label>
+                      <div class="col-sm-3 col-md-3 col-lg-3"> 
+                        <select name="" id="input-assets-video-xyradio" class="form-control">
+                          <option value="AD_16:9" selected>16:9</option>
+                          <option value="AD_4:3">4:3</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>                  
+                  
+                  <!-- native assets -->
+                  <div id="native" class="hidden 原生">
+                    <div class="form-group">
+                      <label for="input-assets-native-title" class="col-sm-2 col-md-2 col-lg-2 control-label">*标题</label>
+                      <div class="col-sm-4 col-md-4 col-lg-4">
+                        <input type="text" id="input-assets-native-title" class="form-control input-sm">
+                      </div>                    
+                    </div>
+                    <div class="form-group">
+                      <label for="input-assets-native-desc" class="col-sm-2 col-md-2 col-lg-2 control-label">*描述</label>
+                      <div class="col-sm-4 col-md-4 col-lg-4">
+                        <input type="text" id="input-assets-native-desc" class="form-control input-sm">
+                      </div>
+                      <label for="input-assets-native-desc2" class="col-sm-2 col-md-2 col-lg-2 control-label">*补充说明</label>
+                      <div class="col-sm-4 col-md-4 col-lg-4">
+                        <input type="text" id="input-assets-native-desc2" class="form-control input-sm">
+                      </div>
+                    </div>                    
+                    <div class="form-group">
+                      <label for="input-assets-native-price" class="col-sm-2 col-md-2 col-lg-2 control-label">*原始价格</label>
+                      <div class="col-sm-4 col-md-4 col-lg-4">
+                        <input type="text" id="input-assets-native-price" class="form-control input-sm">
+                      </div>
+                      <label for="input-assets-native-sale-price" class="col-sm-2 col-md-2 col-lg-2 control-label">*折后价格</label>
+                      <div class="col-sm-4 col-md-4 col-lg-4">
+                        <input type="text" id="input-assets-native-sale-price" class="form-control input-sm">
+                      </div>
+                    </div>                                                                                    
+
+                    <div class="form-group">
+                      <label for="input-assets-native-phone" class="col-sm-2 col-md-2 col-lg-2 control-label">*联系电话</label>
+                      <div class="col-sm-4 col-md-4 col-lg-4">
+                        <input type="text" id="input-assets-native-phone" class="form-control input-sm">
+                      </div>
+                      <label for="input-assets-native-address" class="col-sm-2 col-md-2 col-lg-2 control-label">*联系地址</label>
+                      <div class="col-sm-4 col-md-4 col-lg-4">
+                        <input type="text" id="input-assets-native-address" class="form-control input-sm">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="input-assets-native-display-url" class="col-sm-2 col-md-2 col-lg-2 control-label">*广告链接</label>
+                      <div class="col-sm-10 col-md-10 col-lg-10">
+                        <input type="text" id="input-assets-native-display-url" class="form-control input-sm">
+                      </div>                    
+                    </div>
+                  </div>                  
+                  
+                  <!-- 物料为文字 -->
+                  <div id="words" class="hidden 文字">
+                    <div class="form-group">
+                      <label for="input-assets" class="col-sm-2 col-md-2 col-lg-2 control-label">*标题</label>
+                      <div class="col-sm-5 col-md-5 col-lg-5">
+                        <input type="text" id="input-assets-words-title" class="form-control input-sm">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="input-assets" class="col-sm-2 col-md-2 col-lg-2 control-label">*描述</label>
+                      <div class="col-sm-10 col-md-10 col-lg-10">
+                        <input type="text" id="input-assets-words-desc" class="form-control input-sm">
+                      </div>
+                    </div>                 
+                  </div>
+                  
+                  <div id="wordsImg" class="hidden 图文">
+                    <div class="form-group">
+                      <label for="input-assets" class="col-sm-2 col-md-2 col-lg-2 control-label">*标题</label>
+                      <div class="col-sm-6 col-md-6 col-lg-6">
+                        <input type="text" id="input-assets-wordsImg-title" class="form-control input-sm">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="input-assets" class="col-sm-2 col-md-2 col-lg-2 control-label">*描述</label>
+                      <div class="col-sm-10 col-md-10 col-lg-10">
+                        <input type="text" id="input-assets-wordsImg-desc" class="form-control input-sm">
+                      </div>
+                    </div>
+                    <div class="form-group source-view hidden">
+                      <label class="col-sm-2 col-md-2 col-lg-2 control-label">图片的url</label>
+                      <div class="col-sm-10 col-md-10 col-lg-10" style="margin-top:8px;margin-bottom:10px;">
+                        <span id="wordsImg-url-display"></span>
+                        <a id="input-assets-wordsImg-url" href="#" target="_blank" style="text-decoration:none">查看</a>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="input-assets" class="col-sm-2 col-md-2 col-lg-2 control-label">*主图片</label>
+                      <div class="col-sm-8 col-md-8 col-lg-8">                       
+                        <input type="file" id="input-assets-wordsImg" class="form-control input-sm input-img" name="upload-file">
+                      </div>
+                      <div class="col-sm-2 col-md-2 col-lg-2">
+                        <input type="button" class="btn btn-primary material-lib-btn" value="素材库">
+                      </div>
+                    </div>
+                    <div class="form-group" > 
+                      <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">*宽度(px)</label>
+                      <div class="col-sm-2 col-md-2 col-lg-2"> 
+                        <input type="text" id="input-assets-wordsImg-width" class="form-control input-sm" placeholder="">
+                      </div>
+                      <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">*高度(px)</label>
+                      <div class="col-sm-2 col-md-2 col-lg-2"> 
+                        <input type="text" id="input-assets-wordsImg-height" class="form-control input-sm" placeholder="">
+                      </div>                       
+                    </div>                 
+                  </div>                  
+                
+                </div>
+                
+                <!-- h5 -->
+                <div class="form-group">
+                  <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">H5</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10">
+                    <input type="text" id="input-assets-h5" class="form-control input-sm">
+                  </div>
+                </div>
+                
+              </form>
+              <div id="err-msg"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取消</button>
+              <button type="button" id="submit-idea-form" class="btn btn-primary btn-sm">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- modals finish -->
+      <!-- conversion form -->
+      <div class="modal fade" id="modal-conversion-form" tabindex="-1" role="dialog" aria-labelledby="conversion-form-label" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="idea-form-label"></h4>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label">*导入方式</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group" id="conversion-type-btn-group">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width: 120px;" value="手动录入">
+                    <input type="button" class="select-btn btn btn-default" style="width: 120px;" value="导入csv文件" disabled title="开发中">
+                  </div>
+                </div>
+                <!-- 手动录入 -->
+                <div id="conversion-manual">
+                  <div class="form-group">
+                    <label class="col-sm-2 col-md-2 col-lg-2 control-label">*日期</label>
+                    <div class="col-sm-6 col-md-6 col-lg-6">
+                      <div class="input-group date form_datetime">
+                        <input id="conversion-date" class="form-control input-sm" size="16" type="text" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                      </div>
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-2">
+                      <input type="button" id="conversion-query" class="form-control input-sm btn-primary" value="查询">
+                    </div>
+                    <label id="conversion-result" class="col-sm-2 col-md-2 col-lg-2 control-label" style="font-weight: normal;text-align: left;"></label>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 col-md-2 col-lg-2 control-label">*转化量</label>
+                    <div class="col-sm-6 col-md-6 col-lg-6">
+                      <input type="text" id="conversion-amount" class="form-control input-sm" placeholder="重复录入会覆盖之前的数据，为0无需录入">
+                    </div>
+                  </div>
+                </div>
+                <!-- 导入csv文件 -->
+                <div id="conversion-auto" class="hidden">
+                  
+                </div>
+              </form>
+              <div id="conversion-err-msg"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取消</button>
+              <button type="button" id="submit-conversion-form" class="btn btn-primary btn-sm">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- Bootstrap core JavaScript ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="/jquery/jquery.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/bootstrap/js/bootstrap-switch.min.js"></script>
+  <script src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+  <script src="/js/fileinput.js"></script>
+  <script src="/js/zh.js"></script>
+  <script>window.current_tab = "idea";window.current_nav = "ad";</script>
+  <script src="/js/jquery-editable-select.min.js"></script>
+  <script src="/js/constants.js"></script>
+  <script src="/js/component.js"></script>
+  <script src="/js/tools.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/tab-config.js"></script>
+  <!-- <script src="/js/iab.js"></script> -->
+  <script src="/js/cate.js"></script>
+  <script src="/js/ad/idea.js"></script>
+  <script> 
+    $("#input-unit-name").editableSelect({
+        effects: 'slide'
+    })
+  </script>
+</body>
+</html>

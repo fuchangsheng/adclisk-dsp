@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/icon/favicon.ico">
+  <title>AdClick DSP 管理中心 消息列表</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Custom styles for this template -->
+  <link href="/bootstrap/css/navbar-fixed-side.css" rel="stylesheet" />
+  <link href="/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet"/>
+  <style type="text/css">
+  #msg-list .list-group-item:hover{background: #f9f9f9;cursor: pointer;}
+  .unread{font-weight: bold;}
+  #msg-head li{border: none;border-bottom: #ddd solid 2px;font-size: 16px;}
+  #msg-list li{border-left: none;border-right: none;}
+  .list-group{margin-bottom: 0;}
+  .list-group-item-text{margin-top: 20px;}
+  </style>
+</head>
+<body>
+<div class="container-fluid">
+      <!-- Nav part-->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <img class="navbar-brand-logo navbar-left" alt="Brand" src="/icon/logo.png">
+          <a class="navbar-brand" href="/">AdClick 管理中心</a>
+        </div>
+        <ul class="nav navbar-nav" id="navbar">
+          <li><a href="#"><span id="weluser">欢迎您:</span></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a id="logout"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>
+        </ul>
+      </nav>
+    </div>
+<!--sidenav part-->
+  <div id="sidenav" class="sidenav"></div>
+<!--your main panel-->
+  <div id="main">
+    <div id="tabs" class="row"></div><!--set and list-->
+    <div id="content" class="container-fluid">
+    <!--message list information begin-->
+      <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+          <div>
+            <div class="pull-left">
+              <div class="nav navbar-default">
+                <ul class="nav navbar-nav" id="pHead">
+                  <li class="active"><a href="#">所有消息</a></li>
+                  <li><a href="#">告警消息</a></li>
+                  <li><a href="#"></a> </li>
+                  <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">全部<span class="caret"></span></a>
+                    <ul class="dropdown-menu" id="msg-status">
+                      <li><a tabindex="-1" href="#">全部</a> </li>
+                      <li><a tabindex="-1" href="#">未读</a> </li>
+                      <li><a tabindex="-1" href="#">已读</a> </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="pull-right" style="margin-top:10px;">
+              <form class="form-inline">
+                <div class="form-group input-group date form_datetime">
+                  <input id="input-starttime" class="form-control input-sm" size="18" type="text" value="" readonly="">
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+                <div class="form-group input-group date form_datetime">
+                  <input id="input-endtime" class="form-control input-sm" size="18" type="text" value="" readonly="">
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+                <button type="button" id="search" class="form-group btn btn-primary btn-sm">搜索</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <ul class="list-group" id="msg-head">
+            <li class="list-group-item unread">
+              <div class="row">
+                <div class="col-sm-1 col-md-1"><i class="glyphicon glyphicon-envelope"></i></div>
+                <div class="col-sm-3 col-md-2">消息类别</div>
+                <div class="col-sm-4 col-md-6">消息主题</div>
+                <div class="col-sm-4 col-md-2" id="time-sort" >
+                  <a href="#" style="color:#000">时间<span class='glyphicon glyphicon-arrow-down' style="font-size:10px"></span>
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="list-group" id="msg-list"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Bootstrap core JavaScript ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/jquery/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/moment.min.js"></script>
+<script src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>window.current_tab = "msgList";window.current_nav = "message";</script>
+<script src="/js/constants.js"></script>
+<script src="/js/tools.js"></script>
+<script src="/js/component.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/msg_list.js"></script>
+</body>
+</html>

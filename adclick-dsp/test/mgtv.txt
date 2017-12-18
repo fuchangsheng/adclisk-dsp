@@ -1,0 +1,46 @@
+{
+  "version": 3,
+  "bid": "a3ce769b-906e-4f23-7ed1-1816afa2652c",
+  "request_type": 0,
+  "device": {
+    "os": "Windows_7",
+    "sw": 768,
+    "sh": 1366,
+    "ip": "192.168.8.90",
+    "city_code": 1000000000,
+    "ua": "mozilla/5.0 (windows nt 6.1; win64; x64; rv:50.0) gecko/20100101 firefox/50.0",
+    "type": 1,
+    "version": "pcweb_WIN 23,0,0,207",
+    "duid": "2BE199F6-5200-329B-3F88-D0103FF6945E"
+  },
+  "imp": [
+    {
+      "space_id": "200000",
+      "width": 300,
+      "height": 250,
+      "min_cpm_price": 100,
+      "player_id": 4388,
+      "ctype": [
+        1
+      ],
+      "playtime": 80,
+      "min_playtime": 15,
+      "max_playtime": 100,
+      "location": 1,
+      "order": 0,
+      "pmp": []
+    }
+  ],
+  "video": {
+    "video_id": 3734000,
+    "video_name": "http%3%2Fwww%2Fb%2F298442%2F3734000.html",
+    "collection_id": 298442,
+    "item_ids": "2859501,1657120,2836094,",
+    "area_id": 49,
+    "channel_id": 1,
+    "grades": "B",
+    "year": 2016,
+    "duration": 5561,
+    "type": 1
+  }
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/icon/favicon.ico">
+
+  <title>AdClick DSP 业务系统</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Custom styles for this template -->
+  <link href="/bootstrap/css/navbar-fixed-side.css" rel="stylesheet" />
+  <link href="/css/main.css" rel="stylesheet"/>
+  <link href="/css/account.css" rel="stylesheet"/>
+  
+</head>
+<body>
+<div class="container-fluid">
+  <!--Nav part-->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+      <img alt="Brand" class="navbar-brand-logo  navbar-left" src="/icon/logo.png">
+      <a class="navbar-brand" href="/">AdClick投放系统</a>
+    </div>
+    <ul id="navbar" class="nav navbar-nav">
+      <li><a href="#"><span id="weluser">欢迎您：</span></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出&nbsp;</a></li>
+    </ul>
+  </div>
+  </nav>
+
+  <div id="sidenav" class="sidenav">
+  </div>
+
+  <!--your main panel-->
+  <div id="main">
+    <div id="tabs" class="row"></div>
+    <div id="content" class="container-fluid">
+       <!--start: basic information pannel-->    
+       <div id="basic-pannel" class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">基本信息</h3>
+        </div>
+        <div class="panel-body">
+          <div class="container-fluid">
+            <div class="row">
+              <span class="col-md-2 col-lg-1 text-left">账户余额</span>
+              <span id="account-balance" class="text-danger text-right">0.00</span>
+              <span style="padding-left:6px;">元</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end: basic information pannel -->
+      <!--start: recharge main pannel-->
+      <div id="rechage-pannel" class="panel panel-default" style="display: none;">
+        <div class="panel-heading">
+          <h3 class="panel-title">账户充值</h3>
+        </div>
+        <div class="panel-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div id="rechage-help" class="panel panel-default">
+                <div class="panel-body">
+                  <dl>
+                    <dt>充值成功以后，因账户余额不足而暂停的广告会自动开始投放，请关注!</dt>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="row hidden">
+              <span class="col-md-2 col-lg-1 text-left">账户名称</span>
+              <span id="rechargeAccount" class="col-md-2 col-lg-2 text-left"></span>
+            </div>
+            <div class="row">
+              <span class="col-md-2 col-lg-1">充值金额</span>
+              <div class="container-fluid col-md-10 col-lg-11">
+                <div class="row">
+                    <button id="recharge-1" type="button" class="btn btn-default btn-sm recharge-btn" value="1000.00">1,000.00</button>                  
+                    <button id="recharge-2" type="button" class="btn btn-default btn-sm recharge-btn" value="5000.00">5,000.00</button>                   
+                    <button id="recharge-3" type="button" class="btn btn-default btn-sm recharge-btn" value="10000.00">10,000.00</button>                    
+                    <button id="recharge-4" type="button" class="btn btn-default btn-sm recharge-btn">其它金额</button>
+                </div>
+                <div class="row">
+                  <form style="margin-top:10px">
+                    <div id="amount-form" aria-hidden="true">
+                      <label>具体金额</label>
+                      <input type="text" class="form-control" id="recharge-amount" value="500.00"></input>
+                      <label>元</label>
+                      <small class="form-text text-muted">请输入充值金额，100元起充，最高精确到0.01元</small>
+                    </div>
+                    <button id="alipaysubmit" type="button" class="btn  btn-primary btn-sm" disabled>支付宝扫码充值</button>
+                    <button id="wxpaysubmit" type="button" class="btn  btn-primary btn-sm" disabled>微信扫码充值</button>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end: recharge main pannel-->
+    </div>
+  </div>
+</div>
+  <!-- Bootstrap core JavaScript ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="/jquery/jquery.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script>window.current_tab = "info";window.current_nav = "finance";</script>
+  <script src="/js/component.js"></script>
+  <script src="/js/constants.js"></script>
+  <script src="/js/tools.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/account/account.js"></script>
+  <script src="/js/account/account_info.js"></script>
+</body>
+</html>

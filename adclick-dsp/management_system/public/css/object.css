@@ -1,0 +1,157 @@
+.hidden{
+    display: none;
+}
+.lump{
+    border: 1px solid #DDDFE1;
+    background-color: #fff;
+    margin-bottom: 15px;
+    padding-bottom: 100px;
+    box-shadow: 0 1px 0 rgba(230,231,232,1);
+}
+.lump-hd{
+    border-bottom: 1px solid #E5E6E7;
+    height: 30px;
+    padding: 0 0 0 20px;
+}
+.lump-hd h3{
+    font-size:16px;
+    color: #343434;
+    font-weight: 700;
+}
+.lump-bd{
+    margin:0;
+    padding:0;
+}
+.infomations{
+    margin: 0 30px;
+    border-bottom: 1px solid #e6e6e6;
+}
+.info-bd{
+    padding-top:23px;
+}
+.info-bd span{
+    color: #000;
+    font-weight: 700;
+    font-size: 14px;
+}
+.object-list{
+    padding: 20px 0 0 28px;
+    padding-bottom: 15px;
+}
+.object-list li{
+    margin-bottom:15px;
+    list-style:none;
+}
+.object-list .object-list-name{
+    color: #999;
+}
+.object-list .object-list-con{
+    margin-top:4px;
+}
+.object-list .object-list-con .object-text{
+    color: #333;
+    font-size: 16px;
+    font-weight: 700;
+}
+.object-list .object-list-con .uprove{
+    height: 112px;
+    line-height: 110px;
+    width: 156px;
+    border: 1px solid #cbcbcb;
+    zoom:1;
+    float: left;
+    margin-right: 14px;
+    margin-top: 3px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+}
+.clearfix{
+    zoom:1;
+    *position:relative;
+}
+.clearfix:after{
+    zoom:1;
+    content:"";
+    display:block;
+    height:0;
+    line-height:0;
+    clear:both;
+    visibility:hidden
+}
+.object-list .object-list-con .enlarge{
+    position: absolute;
+    z-index: 9;
+    height: 20px;
+    width: 20px;
+    overflow: hidden;
+    bottom: 0;
+    right: 0;
+    font-size: 0;
+    text-indent: -999em;
+    background: rgba(0,0,0,.6);
+}
+
+.buttons{
+    margin: 24px 0 0 50px;
+}
+.input-group{
+    width: 530px;
+}
+.upload-paperwork{
+    background-color: #f8f9fb;
+    border: 1px solid #dcdee3;
+    color: #b0b4bd;
+    height: auto;
+    transition: all .5s;
+    width: 528px;
+    border-radius: 2px;
+}
+.uper{
+    text-align: center;
+    width: 100%;
+}
+.operator-t{
+    height: 315px;
+    border: 1px solid #DDDFE1;
+    box-shadow: 0 1px 0 #E3E4E5;
+    margin-top: 30px;
+}
+.op-title{
+    border-bottom: 1px solid #E5E6E7;
+    line-height: 40px;
+    padding-left: 16px;
+    color: #494949;
+    font-size: 14px;
+}
+.op-con{
+    padding: 20px 0 0 20px;
+    font-size: 12px;
+}
+.op-con-r{
+    background: url(../img/icon-numlist.png) no-repeat left top;
+    margin: 20px 0 0 20px;
+    height:200px;
+}
+.op-con-r p{
+    height: 29px;
+    padding-top: 3px;
+    padding-left: 35px;
+    font-size: 12px;
+    color: #797979;
+}
+.op-item{
+    display: inline-block;
+    color: #666;
+    width: 100px;
+    text-align: left;
+    font-weight: bold;
+}
+.choiceline{
+    margin-top: 20px;
+    margin-bottom:20px;
+}
+.s{
+    width:265px;  
+    height:25px;
+}

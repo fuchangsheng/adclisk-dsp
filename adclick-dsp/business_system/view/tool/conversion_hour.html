@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/icon/favicon.ico">
+
+  <title>AdClick 素材转化数据</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="/css/main.css" rel="stylesheet"/>
+  <style type="text/css">
+    .price-edit{opacity: 0; cursor: pointer;}
+    .price-edit:hover{opacity: 1;}
+    .switch-tab.active{border:1px solid #eee;}
+  </style>
+  
+</head>
+<body style="padding-top: 0;">
+  <div style="padding: 20px 20px 0;">
+    <a id="show-dsp-data" href="javascript:;" class="switch-tab active">DSP业务系统</a>
+    <a id="show-adx-data" href="javascript:;" class="switch-tab">ADX-DSP</a>
+  </div>
+  <div id="dsp-data">
+    <div style="padding: 20px 20px 0; max-width: 1200px;">
+      <input type="text" id="date" name="date" class="input-sm">
+      <button id="conversion-btn" class="btn-primary btn-sm">确认</button>
+      <button id="download" class="btn-primary btn-sm">下载报表</button>
+
+      <select id="f-position" class="input-sm pull-right">
+        <option value="all">位置（全部）</option>
+        <option value="1">首页通栏</option>
+        <option value="2">播放页底层</option>
+        <option value="3">移动前贴片</option>
+      </select>
+      <select id="f-os" class="input-sm pull-right">
+        <option value="all">设备类型（全部）</option>
+        <option value="1">IOS</option>
+        <option value="2">ANDROID</option>
+      </select>
+      <select id="f-price-type" class="input-sm pull-right">
+        <option value="all">出价类型（全部）</option>
+        <option value="1">CPM</option>
+        <option value="2">CPA</option>
+      </select>
+    </div>
+    <div style="padding: 20px 20px 0; max-width: 1200px;">
+      <table id="conversion" class="table table-striped table-bordered table-hover table-condensed small">
+        <thead>
+          <tr>
+            <th>广告主名</th>
+            <th>创意名称</th>
+            <th>设备</th>
+            <th>位置</th>
+            <th>展现</th>
+            <th>点击</th>
+            <th>点击率</th>
+            <th>转化数</th>
+            <th>转化率</th>
+            <th>单位激活所需CPM</th>
+            <th>消耗金额</th>
+            <th>单位CPM收入</th>
+            <th>操作</th>
+            <th>当前单价</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+      </table>
+    </div>
+    <div style="padding: 20px 20px 0; max-width: 1200px;">
+      创意名：<span id="choosed-idea-name"></span>
+      <table id="conversion-detail" class="table table-striped table-bordered table-hover table-condensed small">
+        <thead>
+          <tr>
+            <th>时间</th>
+            <th>展现</th>
+            <th>点击</th>
+            <th>点击率</th>
+            <th>转化数</th>
+            <th>转化率</th>
+            <th>单位激活所需CPM</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+      </table>
+    </div>
+
+    <div class="modal fade bs-example-modal-sm" id="price-modal" tabindex="-1" role="dialog" aria-labelledby="idea-form-label" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">设置创意单价</h4>
+          </div>
+                      
+          <div class="modal-body small" style="user-select:none;">
+            <form class="form-horizontal" action="" role="form">
+              <fieldset>
+                <legend class="sr-only">基本信息</legend>
+                <div class="form-group">
+                  <label class="control-label col-sm-3">类型</label>
+                  <div class="col-sm-9 audit-content">
+                    <select id="price-type" class="form-control input-sm">
+                      <option value="1">CPM</option>
+                      <option value="2">CPA</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-3">价格</label>
+                  <div class="col-sm-9 audit-content">
+                    <input type="text" id="price" class="form-control input-sm">
+                  </div>
+                </div>
+              </fieldset>
+            </form>      
+          </div>
+                      
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取消</button>
+            <button type="button" id="price-submit-btn" class="btn btn-primary btn-sm">确认</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="adx-data" class="hidden">
+    <div style="padding: 20px 20px 0; max-width: 1200px;">
+      <input type="text" id="adx-date" name="adx-date" class="input-sm">
+      <button id="adx-data-btn" class="btn-primary btn-sm">确认</button>
+      <!-- <button id="adx-download-btn" class="btn-primary btn-sm">下载报表</button> -->
+    </div>
+
+    <div style="padding: 20px 20px 0; max-width: 1200px;">
+      <table id="adx-data-list" class="table table-striped table-bordered table-hover table-condensed small">
+        <thead>
+          <tr>
+            <th>DSP ID</th>
+            <th>DSP名称</th>
+            <th>展示</th>
+            <th>点击</th>
+            <th>点击率</th>
+            <th>花费</th>
+            <th>收益</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+      </table>
+    </div>
+
+    <div style="padding: 20px 20px 0; max-width: 1200px;">
+      DSP名：<span id="choosed-adx-name"></span>
+      <table id="adx-data-detail" class="table table-striped table-bordered table-hover table-condensed small">
+        <thead>
+          <tr>
+            <th>时间</th>
+            <th>展现</th>
+            <th>点击</th>
+            <th>点击率</th>
+            <th>花费</th>
+            <th>收益</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+      </table>
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="/jquery/jquery.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/js/component.js"></script>
+  <script src="/js/tools.js"></script>
+  <script src="/js/tool/conversion_hour.js"></script>
+</body>
+</html>

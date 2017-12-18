@@ -1,0 +1,22 @@
+{
+    "attr-name-style": "lowercase",
+    "attr-no-dup": true,
+    "attr-no-unsafe-char": true,
+    "attr-quote-style": "double",
+    "attr-req-value": true,
+    "class-no-dup": true,
+    "doctype-first": true,
+    "head-req-title": true,
+    "id-class-no-ad": true,
+    "id-class-style": false,
+    "doctype-html5": true,
+    "indent-style": false,
+    "indent-width": 2,
+    "line-max-len": 120,
+    "spec-char-escape": false,
+    "tag-close": true,
+    "tag-name-lowercase": true,
+    "title-no-dup": true,
+    "attr-bans": false,
+    "line-end-style": false
+}

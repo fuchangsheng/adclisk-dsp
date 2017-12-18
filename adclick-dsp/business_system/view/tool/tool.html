@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/icon/favicon.ico">
+
+  <title>AdClick 工具箱</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Custom styles for this template -->
+  <link href="/bootstrap/css/navbar-fixed-side.css" rel="stylesheet" />
+  <link href="/css/main.css" rel="stylesheet"/>
+  <link href="/css/tool.css" rel="stylesheet">
+  
+</head>
+<body>
+  <div class="container-fluid">
+    <!--Nav part-->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="navbar-header">
+        <img alt="Brand" class="navbar-brand-logo  navbar-left" src="/icon/logo.png">
+        <a class="navbar-brand" href="/">AdClick投放系统</a>
+      </div>
+      <ul id="navbar" class="nav navbar-nav">
+        <li><a href="#"><span id="weluser">欢迎您：</span></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出&nbsp;</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div id="sidenav" class="sidenav">
+  </div>
+
+  <!--your main panel-->
+  <div id="main">
+    <div id="content">
+      <div class="tool-unit">
+        <div class="tool-hd">
+          <h3 class="tool-title">账户辅助</h3>
+        </div>
+
+        <div class="tool-bd clearfix"> 
+          <div class="bd-item">
+            <a href="/user/user.html"><img src="/img/account.png" alt=""></a>
+            <div class="bd-item-r">
+              <a href="/user/user.html"><strong>账号中心</strong></a>
+              <p><a href="/user/user.html">账号信息查看以维护</a></p>
+            </div>
+          </div>
+        
+          <!-- <div class="bd-item">
+            <a href="/user/auth.html"><img src="/img/authority.png" alt=""></a>
+            <div class="bd-item-r">
+              <a href="/user/auth.html"><strong>权限管理</strong></a>
+              <p><a href="/user/auth.html">多人多角色精细化协作管理账户</a></p>
+            </div>
+          </div> -->
+        
+          <div class="bd-item">
+            <a href="/message/set.html"><img src="/img/info.png" alt=""></a>
+            <div class="bd-item-r">
+              <a href="/message/set.html"><strong>通知设置</strong></a>
+              <p><a href="/message/set.html">多种消息通道设置</a></p>
+            </div>
+          </div>
+        
+          <div class="bd-item">
+            <a href="/user/qual.html"><img src="/img/qualification.png" alt=""></a>
+            <div class="bd-item-r">
+              <a href="/user/qual.html"><strong>广告资质</strong></a>
+              <p><a href="/user/qual.html">广告相关资质的管理</a></p>
+            </div>
+          </div>
+      
+          <div class="bd-item">
+            <a href="/message/opLog.html"><img src="/img/log.png" alt=""></a>
+            <div class="bd-item-r">
+              <a href="/message/opLog.html"><strong>操作日志</strong></a>
+              <p><a href="/message/opLog.html">多维度查看消息通道</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="tool-unit">
+        <div class="tool-hd">
+          <h3 class="tool-title">投放辅助</h3>
+        </div>
+    
+        <div class="tool-bd clearfix">
+          <!-- item start -->
+          <div class="bd-item">
+            <a href="/tool/targetPackage.html"><img src="/img/track.png" alt=""></a>
+            <div class="bd-item-r">
+              <a href="/tool/targetPackage.html"><strong>定向模板管理</strong></a>
+              <p><a href="/tool/targetPackage.html">多定向集合快速复用</a></p>
+            </div>
+          </div>
+          <!-- end -->
+          <!-- item start -->
+          <!-- <div class="bd-item">
+            <a href="#"><img src="/img/orient.png" alt=""></a>
+            <div class="bd-item-r">
+              <a href="#"><strong>自定义人群管理</strong></a>
+              <p><a href="#">找回网站访客、上传自定义人群</a></p>
+            </div>
+          </div> -->
+          <!-- end -->
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+
+  <!-- Bootstrap core JavaScript ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="/jquery/jquery.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script>window.current_nav = "tool";</script>
+  <script src="/js/constants.js"></script>
+  <script src="/js/tools.js"></script>
+  <script src="/js/main.js"></script>
+  <script> 
+    $(document).ready(function(){
+      $('.bd-item').click(function(){
+        var href = $(this).find('a').eq(0).attr("href");
+        window.location.href = href;
+      })
+    })
+  </script>
+</body>
+</html>

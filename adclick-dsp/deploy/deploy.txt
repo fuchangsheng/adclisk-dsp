@@ -1,0 +1,32 @@
+1、配置数据库
+将“dsp-adclick数据库”下的数据库结构导入到你所部署的环境里，在conf/config.txt里配置数据库信息，包括host，port，user，password等。
+
+2、配置域名，端口
+2.1、配置服务端
+在common/config.js里
+HOST修改为本机域名/IP,默认域名为：http://dsp.adclick.com.cn
+PORT为业务系统的端口，默认为6188
+MGRPORT为管理系统的端口，默认为6189
+FILEPORT为下载服务器端口，默认为9000
+GRADES_DASHBOARD_HOST为后台管理平台多粒度dashboard服务器地址
+BES_HOST为百度BES ADX服务器地址
+MGTV_HOST为芒果TV ADX服务器地址
+如果启动沙盒模式，需要设置环境变量ADX_SANBOX为adx_sandbox
+
+
+2.2、配置前端
+业务系统：business_system/public/js/constant.js(155行、156行)
+HOST为访问后端的域名/IP，默认域名为：http://dsp.adclick.com.cn
+PORT为访问后端的默认端口，默认为6188
+管理系统：management_system/public/js/constant.js(151行、152行)
+HOST为访问后端的域名/IP，默认域名为：http://dsp.adclick.com.cn
+PORT为访问后端的默认端口，默认为6189
+
+3、配置realtime_dashboard
+导入数据库realtime_data里的adclick_dsp_dashboard.sql和event_on.sql;
+按照realtime_data里的readme.txt执行操作
+
+4、配置ffmpeg
+ffmpeg是供生成视频/flash缩略图使用的
+以root权限运行当前文件下的"ffmpeg_build.sh",配置时间较长，大约20分钟。
+运行完，输入命令ffmpeg version确认是否按照成功。

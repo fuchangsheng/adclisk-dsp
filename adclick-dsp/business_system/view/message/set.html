@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/icon/favicon.ico">
+  <title>AdClick DSP 业务系统</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Custom styles for this template -->
+  <link href="/bootstrap/css/navbar-fixed-side.css" rel="stylesheet" />
+  <link href="/css/main.css" rel="stylesheet"/>
+  <style>.input-group{float:left !important;}.btn-link:focus,.btn-link:active:focus{outline: none;}</style>
+</head>
+<body>
+<div class="container-fluid">
+  <!--Nav part-->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+      <img alt="Brand" class="navbar-brand-logo  navbar-left" src="/icon/logo.png">
+      <a class="navbar-brand" href="/">AdClick投放系统</a>
+    </div>
+    <ul id="navbar" class="nav navbar-nav">
+      <li><a href="#"><span id="weluser">欢迎您：</span></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出&nbsp;</a></li>
+    </ul>
+  </div>
+  </nav>
+
+  <!--sidenav part-->
+  <div id="sidenav" class="sidenav"></div>
+
+<!--your main panel-->
+  <div id="main">
+    <div id="tabs" class="row"></div><!--set and list-->
+    <div id="content" class="container-fluid">
+      <!--set message information begin-->
+      <div class="panel panel-default" style="display: none;" id="contact_panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">联系方式</h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-horizontal" role="form" action="#" id="email">
+            <div class="form-group">
+              <label class="col-md-1 col-lg-1 control-label"><span>邮箱：</span></label>
+              <div class="col-md-4 col-lg-4 input-group">
+                <p class="form-control"></p>
+                <span class="input-group-btn">
+                  <button class="btn btn-default delete-email" data-toggle="modal" data-target="#delete-contact-modal" disabled>X</button>
+                </span>
+              </div>
+              <div class='col-md-2 col-lg-2'></div>
+            </div>
+          </div>
+          <div class="form-horizontal">
+            <div class="form-group">
+              <label class="col-md-1 col-lg-1"></label>
+              <button id="add-email-button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#new-email">添加邮箱地址</button>
+            </div>
+          </div>
+          <div id="tel-num" class="form-horizontal" role="form" action="#">
+            <div class="form-group">
+              <label class="col-md-1 col-lg-1 control-label"><span>手机：</span></label>
+              <div class="col-md-4 col-lg-4 input-group">
+                <p class="form-control"></p>
+                <span class="input-group-btn">
+                  <button class="btn btn-default delete-tel"  data-toggle="modal" data-target="#delete-contact-modal" disabled>X</button>
+                </span>
+              </div>
+              <div class='col-md-2 col-lg-2'></div>
+            </div>
+          </div>
+          <div class="form-horizontal">
+            <div class="form-group">
+              <label class="col-md-1 col-lg-1"></label>
+              <button id="add-tel-button" class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#new-tel">添加手机号码</button>
+            </div>
+          </div>
+        </div>
+        <!--modal begin-->
+        <!--add email modal-->
+        <div class="modal fade" id="new-email" tabindex="-1" role="dialog" aria-labelledby="new-email-label" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <!--<button class="close" data-dismiss="modal" arial-hidden="true">&times;</button>-->
+                <h4 class="modal-title">添加电子邮箱<span style="font-size:12px;">（如果收件箱中未收到邮件，请查看垃圾箱!）</span></h4>
+              </div>
+              <div class="modal-body">
+                <div class="form-horizontal" role="form" id="add-email-panel">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">电子邮箱</label>
+                    <div class="col-sm-6">
+                      <input type="email" class="form-control" name="email">
+                    </div>
+                    <span class="col-sm-4 tip" id="email-tip"></span>
+                  </div>
+                </div>
+                <div class="row" id="add-email-info" style="display: none">
+                  <label class="col-sm-2"></label>
+                  <span class="glyphicon glyphicon-exclamation-sign" style="color: #FFCC33"></span>
+                  <span>我们已将验证邮件发送至您的邮箱，请打开邮件中的链接进行验证！</span>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div id="add-email-next">
+                  <button class="btn btn-default" data-dismiss="modal" name="dismiss">取消</button>
+                  <button class="btn btn-primary" id="add-email" disabled>下一步</button>
+                </div>
+                <div style="display: none" id="add-email-sure">
+                  <button class="btn btn-primary" data-dismiss="modal" name="add-email-sure">确定</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--delete contact modal-->
+        <div class="modal fade" id="delete-contact-modal" tabindex="-1" role="dialog" aria-labelledby="delete-contact-label" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <label class="col-sm-3"></label>
+                  <span class="glyphicon glyphicon-exclamation-sign" style="color: #FFCC33"></span>
+                  <span>确定要删除以下联系人吗？</span>
+                </div>
+                <div class="row">
+                  <label class="col-sm-3"></label>
+                  <span id="delete-contact-info"></span>
+                  <span id="contant-id" style="display:none"></span>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal" name="dismiss">取消</button>
+                <button class="btn btn-primary" data-dismiss="modal" id="delete-contact">确定</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--add tel modal-->
+        <div class="modal fade" id="new-tel" tabindex="-1" role="dialog" aria-labelledby="new-tel-label" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">添加手机号码</h4>
+              </div>
+              <div class="modal-body">
+                <div class="form-horizontal" role="form" action="#">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">手机号码</label>
+                    <div class="col-sm-6">
+                      <input type="tel" class="form-control">
+                    </div>
+                    <span class="col-sm-4 tip" id="tel-tip"></span>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control" disabled name="sms">
+                    </div>
+                    <div class="col-sm-2">
+                      <button class="btn btn-primary btn-sm" id="tel-verify" disabled>获取验证码</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal" name="dismiss" id="cancel-verify">取消</button>
+                <button class="btn btn-primary" id="add-tel" data-dismiss="modal" disabled>确定</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--modal end-->
+        
+        <!--resend tel sms modal-->
+        <div class="modal fade" id="resend-tel-sms" tabindex="-1" role="dialog" aria-labelledby="new-tel-label" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">重新获取手机验证码</h4>
+              </div>
+              <div class="modal-body">
+                <div class="form-horizontal" role="form" action="#">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">手机号码</label>
+                    <div class="col-sm-6">
+                      <input type="text" id="mobile" class="form-control" disabled>
+                    </div>
+                    <span class="col-sm-4 tip" id="tel-tip"></span>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-2 control-label">验证码</label>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control" id="sms-code" name="sms">
+                    </div>
+                    <div class="col-sm-2">
+                      <button type="button" class="btn btn-primary btn-sm" id="resend-tel-verify">获取验证码</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal">取消</button>
+                <button class="btn btn-primary" data-dismiss="modal" id="re-verify" disabled>确定</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--modal end-->
+      </div>
+      <div class="panel panel-default" style="display: none;" id="channel_panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">通知渠道</h3>
+        </div>
+        <div class="panel-body">
+          <table id="msgConInfo" class="table">
+            <thead>
+              <tr class="text-muted">
+                <th>消息类别</th><th>消息名称</th><th>站内信</th><th>手机短信</th><th>邮件</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>系统消息</td><td>系统通知</td>
+                <td><span class='glyphicon glyphicon-ok' style='color: #5cb85c'></span></td>
+                <td></td><td></td>
+              </tr>
+              <tr>
+                <td>审核消息</td><td>广告审核不通过</td>
+                <td><span class='glyphicon glyphicon-ok' style='color: #5cb85c'></span></td>
+                <td></td><td></td>
+              </tr>
+              <tr>
+                <td rowspan="4" style="vertical-align: inherit">账户消息</td><td>账户消耗达到日限额</td>
+                <td><span class='glyphicon glyphicon-ok' style='color: #5cb85c'></span></td>
+                <td></td><td></td>
+              </tr>
+              <tr>
+                <td style="display: none">账户消息</td><td>推广计划消耗达到日限额</td>
+                <td><span class='glyphicon glyphicon-ok' style='color: #5cb85c'></span></td>
+                <td></td><td></td>
+              </tr>
+              <tr>
+                <td style="display: none">账户消息</td><td>创意定制完成通知</td>
+                <td><span class='glyphicon glyphicon-ok' style='color: #5cb85c'></span></td>
+                <td></td><td></td>
+              </tr>
+              <tr>
+                <td style="display: none">账户消息</td><td>广告投放到期预警</td>
+                <td><span class='glyphicon glyphicon-ok' style='color: #5cb85c'></span></td>
+                <td></td><td></td>
+              </tr>
+              <tr>
+                <td rowspan="4" style="vertical-align: inherit">财务消息</td><td>账户余额为零提醒</td>
+                <td><span class='glyphicon glyphicon-ok' style='color: #5cb85c'></span></td>
+                <td></td><td></td>
+              </tr>
+              <tr>
+                <td style="display: none">财务消息</td><td>账户余额不足500元预警</td>
+                <td><span class='glyphicon glyphicon-ok' style='color: #5cb85c'></span></td>
+                <td></td><td></td>
+              </tr>
+              <tr>
+                <td style="display: none">财务消息</td><td>账户余额不足3日消耗预警</td>
+                <td><span class='glyphicon glyphicon-ok' style='color: #5cb85c'></span></td>
+                <td></td><td></td>
+              </tr>
+              <tr>
+                <td style="display: none">财务消息</td><td>资金到账提醒</td>
+                  <td><span class='glyphicon glyphicon-ok' style='color: #5cb85c'></span></td>
+                  <td></td><td></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td id='edit-set' colspan="5">
+                  <button class='btn btn-primary btn-sm' id="edit-btn" data->编辑</button>
+                </td>
+                <td id="edit-info" style="display: none" colspan="5">
+                  <button class='btn btn-default btn-sm' id='edit-dismiss' data-toggle="modal" data-target="#edit-dismiss-modal">取消</button>
+                  <button class='btn btn-primary btn-sm' id='edit-save' data-toggle="modal" data-target="#edit-save-modal">保存</button>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div class="modal fade bs-example-modal-sm" id="edit-dismiss-modal" tabindex="-1" role="dialog" aria-labelledby="edit-dismiss-label" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button class="close" data-dismiss="modal" arial-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <label class="col-sm-3"></label>
+                  <span class="glyphicon glyphicon-exclamation-sign" style="color: #FFCC33"></span>
+                  <span>确定要放弃修改吗?</span>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal" name="dismiss">取消</button>
+                <button class="btn btn-primary" id="edit-change-dismiss" data-dismiss="modal">放弃</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="edit-save-modal" tabindex="-1" role="dialog" aria-labelledby="edit-dismiss-label" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button class="close" data-dismiss="modal" arial-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <label class="col-sm-3"></label>
+                  <span class="glyphicon glyphicon-exclamation-sign" style="color: #FFCC33"></span>
+                  <span>确定要保存修改吗?</span>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal" name="dismiss">取消</button>
+                <button class="btn btn-primary" id="edit-change-save" data-dismiss="modal">确定</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Bootstrap core JavaScript ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/jquery/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script>window.current_tab = "set";window.current_nav = "message";</script>
+<script src="/js/constants.js"></script>
+<script src="/js/tools.js"></script>
+<script src="/js/component.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/message/message_set.js"></script>
+<script src="/js/message/message.js"></script>
+</body>
+</html>

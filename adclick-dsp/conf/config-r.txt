@@ -1,0 +1,121 @@
+{
+  "db": {
+    "adclickDsp": {
+      "host": "adclick-dsp-mysql-mgr.rdsmqk7xgimb70z.rds.bj.baidubce.com",
+      "port": 3306,
+      "database": "adclick_dsp_business",
+      "user": "shuao",
+      "password": "Zaq1xsw2110",
+      "connection": 50,
+      "queue": 50
+    },
+    "realTime": {
+      "host": "adclick-dsp-mysql-dashboard.rdsmsujj2jg70ro.rds.bj.baidubce.com",
+      "port": 3306,
+      "database": "adclick_dsp_dashboard",
+      "user": "shuao",
+      "password": "Zaq1xsw2110",
+      "connection": 50,
+      "queue": 50
+    },
+    "adclickMgr": {
+      "host": "adclick-dsp-mysql-mgr.rdsmqk7xgimb70z.rds.bj.baidubce.com",
+      "port": 3306,
+      "database": "adclick_dsp_mgr",
+      "user": "shuao",
+      "password": "Zaq1xsw2110",
+      "connection": 50,
+      "queue": 50
+    },
+    "adlibAudit": {
+      "host": "adclick-dsp-mysql-business.rdsmwtpk9wozqu6.rds.bj.baidubce.com",
+      "port": 3306,
+      "database": "dsp_audit",
+      "user": "shuao",
+      "password": "Zaq1xsw2110",
+      "connection": 30,
+      "queue": 30
+    },
+    "adlibDashboard": {
+      "host": "adclick-dsp-mysql-dashboard.rdsmsujj2jg70ro.rds.bj.baidubce.com",
+      "port": 3306,
+      "database": "dsp_dashboard",
+      "user": "shuao",
+      "password": "Zaq1xsw2110",
+      "connection": 50,
+      "queue": 50
+    },
+    "adlibPalo": {
+      "host": "factory.baidu.com",
+      "port": 7306,
+      "database": "dsp_palo",
+      "user": "superuser@669477389",
+      "password": "Zaq1xsw2110",
+      "connection": 30,
+      "queue": 30
+    },
+    "adlibAD": {
+      "host": "adclick-dsp-mysql-business.rdsmwtpk9wozqu6.rds.bj.baidubce.com",
+      "port": 3306,
+      "database": "dsp_adlib",
+      "user": "shuao",
+      "password": "Zaq1xsw2110",
+      "connection": 50,
+      "queue": 50
+    },
+    "adlibAdx": {
+      "host": "adclick-dsp-mysql-business.rdsmwtpk9wozqu6.rds.bj.baidubce.com",
+      "port": 3306,
+      "database": "dsp_adx",
+      "user": "shuao",
+      "password": "Zaq1xsw2110",
+      "connection": 30,
+      "queue": 30
+    },
+    "task": {
+      "host": "adclick-dsp-mysql-business.rdsmwtpk9wozqu6.rds.bj.baidubce.com",
+      "port": 3306,
+      "database": "dsp_task",
+      "user": "shuao",
+      "password": "Zaq1xsw2110",
+      "connection": 30,
+      "queue": 30
+    },
+    "controller": {
+      "host": "adclick-dsp-mysql-business.rdsmwtpk9wozqu6.rds.bj.baidubce.com",
+      "port": 3306,
+      "database": "dsp_controller",
+      "user": "shuao",
+      "password": "Zaq1xsw2110",
+      "connection": 30,
+      "queue": 30
+    },
+    "adlibTags":{
+      "host": "adclick-dsp-mysql-business.rdsmwtpk9wozqu6.rds.bj.baidubce.com",
+      "port": 3306,
+      "database": "dsp_tags",
+      "user": "shuao",
+      "password": "Zaq1xsw2110",
+      "connection": 30,
+      "queue": 30
+    },
+    "adxConfig": {
+      "host": "adclick-dsp-mysql-business.rdsmwtpk9wozqu6.rds.bj.baidubce.com",
+      "port": 3306,
+      "database": "adx_config",
+      "user": "shuao",
+      "password": "Zaq1xsw2110",
+      "connection": 30,
+      "queue": 30
+    },
+    "adxPalo": {
+      "host": "factory.baidu.com",
+      "port": 7306,
+      "database": "adx_palo",
+      "user": "superuser@669477389",
+      "password": "Zaq1xsw2110",
+      "connection": 30,
+      "queue": 30
+    }
+  }
+}

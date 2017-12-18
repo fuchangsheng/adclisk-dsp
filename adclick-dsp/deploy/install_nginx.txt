@@ -1,0 +1,5 @@
+1. yum install -y nginx
+2. use the nginx.conf by copy to /etc/nginx/nginx.conf
+3. service nginx start
+4. chkconfig --add nginx
+5. chkconfig nginx on

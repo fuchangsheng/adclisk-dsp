@@ -1,0 +1,44 @@
+.tool-unit{
+  margin-bottom: 20px;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", verdana, "Microsoft Yahei", sans-serif;
+}
+
+.tool-unit a{
+  text-decoration:none;
+}
+
+.tool-hd{
+  padding-bottom: 10px;
+}
+
+.tool-hd h3{
+  margin-top: 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.bd-item{
+  width: 320px;
+  height: 100px;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 15px;
+  padding: 20px;
+  cursor: pointer;
+  border: 1px solid #DDDFE1;
+}
+
+.bd-item:hover{
+  background-color: #f8f8f8;
+}
+.bd-item img{
+  width:60px;
+  height:60px;
+  vertical-align:middle;
+}
+
+.bd-item-r{
+  width: 210px;
+  height: 60px;
+  float: right;
+}

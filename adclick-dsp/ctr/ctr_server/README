@@ -1,0 +1,7 @@
+1.需要安装nginx，修改/usr/local/nginx/conf/nginx.conf路由配置
+2.需要安装python3，flask，uwsgi
+3.需要修改动态库的format.cpp format.h 数据接口文件
+4.重新编译动态库(./ctr_handler/ctr_so 由于c++编译器会修改函数名，需要找到nm *.so 找到实际的函数名称)
+5.需要修改uwsgi.ini uwsgi配置文件
+
+

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/icon/favicon.ico">
+
+  <title>AdClick DSP 业务系统</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Custom styles for this template -->
+  <link href="/bootstrap/css/bootstrap-switch.min.css" rel="stylesheet"/>
+  <link href="/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+  <link href="/bootstrap/css/navbar-fixed-side.css" rel="stylesheet" />
+  <link href="/css/main.css" rel="stylesheet"/>
+  <link href="/css/user.css" rel="stylesheet" >
+  <link href="/css/fileinput.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+  <!--Nav part-->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+      <img alt="Brand" class="navbar-brand-logo  navbar-left" src="/icon/logo.png">
+      <a class="navbar-brand" href="/">AdClick投放系统</a>
+    </div>
+    <ul id="navbar" class="nav navbar-nav">
+      <li><a href="#"><span id="weluser">欢迎您：</span></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出&nbsp;</a></li>
+    </ul>
+  </div>
+  </nav>
+
+  <div id="sidenav" class="sidenav">
+  </div>
+
+  <!--your main panel-->
+  <div id="main">
+    <div id="tabs" class="row"></div>
+    <div id="content">
+      <div id="err-msg"></div>
+      <div id="qualifition-main">
+        <div class="lump">
+          <div class="lump-hd">
+            <h3>行业资质信息</h3>
+          </div>
+          <div class="lump-bd">
+            <div class="infomations">
+              <div class="info-bd"> 
+                <span>广告主资质信息</span>
+              </div>
+              <ul class="account-list">
+                <li>
+                  <div class="account-list-name">资质名称</div>
+                  <div class="account-list-con">
+                    <p class="account-text" id="qulification-name"></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="account-list-name">主站名</div>
+                  <div class="account-list-con">
+                    <p class="account-text" id="site-name"></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="account-list-name">主站地址</div>
+                  <div class="account-list-con">
+                    <p class="account-text" id="site-url"></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="account-list-name">行业分类</div>
+                  <div class="account-list-con">
+                    <p class="account-text" id="cate-subcate"></p>
+                  </div>
+                </li>
+                <!-- <li>
+                  <div class="account-list-name">资质类型</div>
+                  <div class="account-list-con">
+                    <p class="account-text" id="qualification-type"></p>
+                  </div>
+                </li> -->
+                <li>
+                  <div class="account-list-name">资质编号</div>
+                  <div class="account-list-con">
+                    <p class="account-text" id="qualification_number"></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="account-list-name">资质有效时间</div>
+                  <div class="account-list-con">
+                    <p class="account-text" id="start-to-end-time"></p>
+                  </div>
+                </li>
+                <li>
+                  <div class="account-list-name">行业资质</div>
+                  <div class="account-list-con">
+                    <img src="" alt="" id="qualification">
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding-left:28px;padding-top:15px;"> 
+            <button id="qual-edit" class="btn btn-primary" style="display: none;">编辑</button>
+          </div>
+        </div> 
+      </div>
+      
+      <!-- qual-modal -->
+      <div class="modal fade" id="qual-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title">编辑资质信息</h4>
+            </div>
+                    
+            <div class="modal-body small" style="user-select:none;">    
+              <form action="" class="form-horizontal" role="form">
+                <fieldset>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2">*资质名称</label>
+                    <div class="col-sm-10">
+                      <input type="text" id="edit-qualification-name" class="form-control" placeholder="请输入资质名称">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2">*主站名</label>
+                    <div class="col-sm-10">
+                      <input type="text" id="edit-site-name" class="form-control" placeholder="请输入主站名">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2">*主站url</label>
+                    <div class="col-sm-10">
+                      <input type="text" id="edit-site-url" class="form-control" placeholder="请输入Url">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2">*行业分类</label>
+                    <div class="col-sm-10">
+                      <select id="categoriesse" class="form-control"></select>
+                      <select id="subcategoriesse" class="form-control"></select>
+                    </div>
+                  </div>
+                  <!-- <div class="form-group">
+                    <label for="" class="control-label col-sm-2">*资质类型</label>
+                    <div class="col-sm-4"> 
+                      <select id="edit-qualification-type" class="form-control" style="width:200px;">
+                        <option value="0">请选择资质类型</option>
+                        <option value="1">大陆个体工商类客户</option>
+                        <option value="2">大陆企业单位类客户</option>
+                        <option value="3">香港主体类客户</option>
+                        <option value="4">台湾主体类客户</option>
+                        <option value="5">澳门主体类客户</option>
+                        <option value="6">大陆事业单位类客户</option>
+                        <option value="7">民办企业类客户</option>
+                        <option value="8">社会团体类客户</option>
+                        <option value="9">学校类客户</option>
+                        <option value="10">国外主体类客户</option>
+                      </select>
+                    </div>
+                  </div> -->
+                  <div class="form-group">
+                    <label class="control-label col-sm-2">*资质编号</label>
+                    <div class="col-sm-10">
+                      <input type="text" id="eidt-qualification-number" class="form-control" placeholder="请输入上传资质文件的编号">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2">*有效时间</label>
+                    <div class="col-sm-5 col-md-5 col-lg-5">
+                      <div class="input-group date form_datetime">
+                        <input id="input-starttime" class="form-control input-sm" size="16" type="text" value="" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                      </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5 col-lg-5">
+                      <div class="input-group date form_datetime">
+                        <input id="input-endtime" class="form-control input-sm" size="16" type="text" value="" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2">行业资质url</label>
+                    <div class="col-sm-10">
+                      <span id="edit-qualification-url" style="display:inline-block;margin-top:6px;"></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2">*上传资质</label>
+                    <div class="col-sm-10">
+                      <input type="file" id="edit-qualification" name="upload-file" class="file input-file">
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+              <div id="submit-err"></div>
+            </div>
+                    
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="submit" class="btn btn-primary" id="submit-qual-form">确认</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="/jquery/jquery.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script>window.current_tab = "qual";window.current_nav = "user";</script>
+  <script src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+  <script src="/js/fileinput.js"></script>
+  <script src="/js/zh.js"></script>
+  <script src="/js/constants.js"></script>
+  <script src="/js/tools.js"></script>
+  <script src="/js/component.js"></script>
+  <script src="/js/tools.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/cate.js"></script>
+  <script src="/js/tab-config.js"></script>
+  <script src="/js/user/qual.js"></script>
+</body>
+</html>

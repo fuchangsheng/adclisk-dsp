@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/icon/favicon.ico">
+
+  <title>AdClick DSP 业务系统</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Custom styles for this template -->
+  <link href="/bootstrap/css/bootstrap-switch.min.css" rel="stylesheet"/>
+  <link href="/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+  <link href="/bootstrap/css/navbar-fixed-side.css" rel="stylesheet" />
+  <link href="/jquery/css/jquery-editable-select.min.css" rel="stylesheet"/>
+  <link href="/css/main.css" rel="stylesheet"/>
+  <link href="/css/ad.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container-fluid">
+  <!--Nav part-->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+      <img alt="Brand" class="navbar-brand-logo  navbar-left" src="/icon/logo.png">
+      <a class="navbar-brand" href="/">AdClick投放系统</a>
+    </div>
+    <ul id="navbar" class="nav navbar-nav">
+      <li><a href="#"><span id="weluser">欢迎您：</span></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出&nbsp;</a></li>
+    </ul>
+  </div>
+  </nav>
+
+  <div id="sidenav" class="sidenav">
+  </div>
+
+  <!--your main panel-->
+  <div id="main">
+    <div id="tabs" class="row"></div>
+    <div id="content">
+      <div class="clearfix table-choose">
+        <div class="btn-toolbar pull-left">
+          <div class="btn-group">
+            <button type="button" id="create-unit" class="btn btn-primary btn-sm">新建广告单元</button>
+          </div>
+        </div>
+        <div class="pull-right" style="margin-left: 20px;"> 
+          <select class="form-control input-sm" id="data-sort">
+            <option value="创建时间减序">创建时间减序</option>
+            <option value="创建时间增序">创建时间增序</option>
+            <option value="更新时间减序">更新时间减序</option>
+          </select>
+        </div>
+        <div class="pull-right">
+          <select class="form-control input-sm" id="unit-status">
+            <option value="全部">全部</option>
+            <option value="启动">启动</option>
+            <option value="未启动">未启动</option>
+          </select>
+        </div>
+      </div>
+      <div class="clear-fix">
+        <table id="unit-list" class="table table-striped table-bordered table-hover table-condensed small">
+          <thead>
+            <tr class="text-muted">
+              <th>广告单元</th>
+              <th>状态</th>
+              <th>广告计划</th>
+              <th>流量类型</th>
+              <th>出价(元)</th>
+              <th>出价类型</th>
+              <th>创建时间</th>
+              <th>更新时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot></tfoot>
+        </table>
+      </div>
+<!-- modals start -->
+ <div class="modal fade" id="modal-unit-form" tabindex="-1" role="dialog" aria-labelledby="idea-form-label" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="unit-form-label"></h4>
+            </div>
+            <div class="modal-body small" id="unit-form-modal-body">
+              <form class="form-horizontal" role="form" id="unitForm">
+              <div class="form-group">
+                  <label for="input-unit-name" class="col-sm-2 col-md-2 col-lg-2 control-label">*单元名称</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5">
+                    <input type="text" id="input-unit-name" class="form-control input-sm">
+                  </div>
+                  <div class="col-sm-5 col-md-5 col-lg-5" style="padding:6px 15px 0px 5px;">
+                    <span>*单元名称一旦创建，将无法修改</span>
+                  </div>
+                </div>
+              <div class="form-group" id="plan-choose">
+                  <label for="input-plan-id" class="col-sm-2 col-md-2 col-lg-2 control-label">*广告计划</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5">
+                    <select id="input-plan-id" class="form-control select-sm" data-effects="slide" ><!-- onblur="selblur()" -->
+                    </select> 
+                    
+                  </div>
+                  <div class="col-sm-5 col-md-5 col-lg-5">
+                    <button type="button" id="input-plan-search" class="btn btn-primary ">搜索</button>
+                  </div>
+                </div>
+                <div class="form-group" id="target-choose">
+                  <label for="input-target-id" class="col-sm-2 col-md-2 col-lg-2 control-label">快捷定向</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5">
+                    <select id="input-target-id" class="form-control select-sm" data-effects="slide" >
+                    </select> 
+                  </div>
+                  <div class="col-sm-5 col-md-5 col-lg-5">
+                    <button type="button" id="input-target-clear" class="btn btn-primary">清除</button>
+                  </div>
+                </div>
+                <div class="form-group" id="adview-type">
+                    <label  class="col-sm-2 col-md-2 col-lg-2 control-label">流量类型</label>
+                    <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                      <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;" data-value="0" value="WEB" >
+                      <input type="button" class="select-btn btn btn-default " style="width:110px;" data-value="1" value="WAP" >
+                      <input type="button" class="select-btn btn btn-default " style="width:110px;" data-value="2" value="APP" >
+                    </div> 
+                </div>
+                <div class="form-group">
+                  <label for="input-unit-bid" class="col-sm-2 col-md-2 col-lg-2 control-label">*出价(元)</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5">
+                    <input type="text" id="input-unit-bid" class="form-control input-sm">
+                  </div>
+                </div>
+                <div class="form-group" id="input-bid-type">
+                  <label for="input-bid-type" class="col-sm-2 col-md-2 col-lg-2 control-label">*出价类型</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group" >
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;" value="CPM">
+                    <input type="button" class="select-btn btn btn-default" style="width:110px;" value="CPC">
+                    <input type="button" class="select-btn btn btn-default" style="width:110px;" value="CPD">
+                    <input type="button" class="select-btn btn btn-default" style="width:110px;" value="CPT">
+                  </div>
+                </div>
+                
+                <div class="form-group" id="control">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label">投放控制</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group" >
+			        <input type="button" class="select-btn btn btn-default " style="width:110px;" value="启用控制" id="control-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;" value="不限制" id="control-off">        
+                  </div>
+                  </div>
+                  <div class="form-group hidden" id="control-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="on-imp"  >每人每天看到&nbsp;<input type="text" id="control-on-imp" value="" style="width:40px;" />&nbsp;次后不再展现</label>
+                    </div>
+                    <div class="checkbox">
+                        <label ><input type="checkbox" id="on-click"  >每人每天点击&nbsp;<input type="text" id="control-on-click" value="" style="width:40px;" />&nbsp;次后不再展现</label>
+                    </div>    
+                  </div>
+                  </div>
+                  <div id="unit-form-modal-body-con"></div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取消</button>
+              <button type="button" id="submit-unit-form" class="btn btn-primary btn-sm">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- modals finish -->
+
+
+<!-- modals 定向start -->
+ <div class="modal fade" id="modal-unit-target-form" tabindex="-1" role="dialog" aria-labelledby="idea-form-label" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="unit-target-form-label"></h4>
+            </div>
+            <div class="modal-body small" id="target-form-modal-body">
+              <form class="form-horizontal" role="form">
+              <!-- adx -->
+              <div class="form-group" id="valid-adx">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">AdExchange</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;" value="启用定向" id="valid-adx-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;" value="不限制" id="valid-adx-off">
+                  </div> 
+              </div>
+              <div class="form-group hidden" id="valid-adx-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                  
+                  </div>
+              </div>
+              <!-- regions -->
+              <div class="form-group" id="regions">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">地域</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="regions-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="regions-off">
+                  </div> 
+              </div>
+               <div class="form-group hidden" id="regions-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10">
+                   
+                  </div>
+              </div>
+              <!-- blocked-regions -->
+              <div class="form-group" id="blocked-regions">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">地域黑名单</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="blocked-regions-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="blocked-regions-off">
+                  </div> 
+              </div>
+               <div class="form-group hidden" id="blocked-regions-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                   
+                  </div>
+              </div>
+              <!-- sex -->
+              <div class="form-group" id="sex">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">性别</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;" value="启用定向" id="sex-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;" value="不限制" id="sex-off">
+                  </div> 
+              </div>
+              <div class="form-group hidden" id="sex-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                      <label class="checkbox-inline">
+                        <input type="checkbox" name="sex" value="0"> 男
+                      </label>
+                      <label class="checkbox-inline">
+                        <input type="checkbox" name="sex" value="1"> 女
+                      </label>
+                  </div>
+              </div>
+              <!-- 用户年龄 -->
+              <div class="form-group" id="age">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">用户年龄</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;" value="启用定向" id="age-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;" value="不限制" id="age-off">
+                  </div> 
+              </div>
+              <div class="form-group hidden" id="age-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10">
+                      <label class="checkbox-inline">
+                        <input type="checkbox" name="age" value="0"> 儿童
+                      </label>
+                      <label class="checkbox-inline">
+                        <input type="checkbox" name="age" value="1"> 少年
+                      </label>
+                      <label class="checkbox-inline">
+                        <input type="checkbox" name="age" value="2"> 青年
+                      </label>
+                      <label class="checkbox-inline">
+                        <input type="checkbox" name="age" value="3"> 中年
+                      </label>
+                  </div>
+              </div>
+              <!-- 频道 -->
+              <div class="form-group" id="channel">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">频道</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;" value="启用定向" id="channel-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;" value="不限制" id="channel-off">
+                  </div> 
+              </div>
+              <div class="form-group hidden" id="channel-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10">
+                  </div>
+              </div>
+              <!-- 类别 -->
+              <div class="form-group" id="category">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">类别</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;" value="启用定向" id="category-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;" value="不限制" id="category-off">
+                  </div> 
+              </div>
+              <div class="form-group hidden" id="category-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10">
+                  </div>
+              </div>
+              <!-- 用户学历 -->
+              <!-- <div class="form-group" id="education">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">用户学历</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="education-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="education-off">
+                  </div> 
+              </div>
+               <div class="form-group hidden" id="education-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                   <label class="checkbox-inline">
+                        <input type="checkbox" name="education" value="博士"> 博士
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="education" value="硕士"> 硕士
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="education" value="本科"> 本科
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="education" value="专科"> 专科
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="education" value="高中"> 高中
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="education" value="初中"> 初中
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="education" value="小学"> 小学
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="education" value="未知"> 未知
+                    </label>
+                  </div>
+              </div> -->
+              <!-- 婚姻状态 -->
+              <!-- <div class="form-group" id="marriage">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">婚姻状态</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="marriage-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="marriage-off">
+                  </div> 
+              </div>
+               <div class="form-group hidden" id="marriage-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                   <label class="checkbox-inline">
+                        <input type="checkbox" name="marriage" value="已婚"> 已婚
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="marriage" value="单身"> 单身
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="marriage" value="新婚"> 新婚
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="marriage" value="育儿"> 育儿
+                    </label>
+                  </div>
+              </div> -->
+              <!-- 工作状态 -->
+              <!-- <div class="form-group" id="work">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">工作状态</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="work-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="work-off">
+                  </div> 
+              </div>
+               <div class="form-group hidden" id="work-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                   <label class="checkbox-inline">
+                        <input type="checkbox" name="work" value="在职"> 在职
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="work" value="在校大学生"> 在校大学生
+                    </label>
+                  </div>
+              </div> -->
+              <!-- 商业兴趣 -->
+              <!-- <div class="form-group" id="business-interest">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">商业兴趣</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="business-interest-on" disabled title="暂不可用">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="business-interest-off">
+                  </div> 
+              </div>
+               <div class="form-group hidden" id="business-interest-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                  </div>
+              </div> -->
+              <!-- 楼盘兴趣 -->
+              <!-- <div class="form-group" id="house">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">楼盘兴趣</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="house-on" disabled title="暂不可用">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="house-off">
+                  </div> 
+              </div>
+               <div class="form-group hidden" id="house-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                    <input type="text" name="" id="house-lat-lng" class="input-sm form-control" readonly placeholder="经纬度" style="width: 220px; display: inline-block;">
+                    <input type="text" name="" id="house-city" class="input-sm form-control" readonly placeholder="城市名" style="width: 110px; display: inline-block;">
+                    <input type="text" name="" id="house-name" class="input-sm form-control" readonly placeholder="楼盘名" style="width: 160px; display: inline-block;">
+                    <button class="btn btn-xs btn-link" id="choose-house" style="outline: none;">选择</button>
+                  </div>
+              </div> -->
+              <!-- 居住社区价格 -->
+              <!-- <div class="form-group" id="house-price">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">居住社区价格（元/m^2）</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;" value="启用定向" id="house-price-on" disabled title="暂不可用">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;" value="不限制" id="house-price-off">
+                  </div> 
+              </div>
+              <div class="form-group hidden" id="house-price-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                      <label style="margin-left: 10px;"><input type="radio" name="house-price" value="0-5000" checked> 0-5000</label>
+                      <label style="margin-left: 10px;"><input type="radio" name="house-price" value="5001-8000"> 5001-8000</label>
+                      <label style="margin-left: 10px;"><input type="radio" name="house-price" value="8001-15000"> 8001-15000</label>
+                      <label style="margin-left: 10px;"><input type="radio" name="house-price" value="15001-30000"> 15001-30000</label>
+                      <label style="margin-left: 10px;"><input type="radio" name="house-price" value="30001-50000"> 30001-50000</label>
+                      <label style="margin-left: 10px;"><input type="radio" name="house-price" value="50001-100000"> 50001-100000</label>
+                      <label style="margin-left: 10px;"><input type="radio" name="house-price" value="100000以上"> 100000以上</label>
+                  </div>
+              </div> -->
+              <!-- ad-select -->
+              <div class="form-group" id="ad-select">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">关键词</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="ad-select-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="ad-select-off">
+                  </div>
+                  <label class="col-sm-5 col-md-5 col-lg-5 crontrol-label" style="margin-top:7px">*请以英文逗号分隔关键词</label>  
+              </div>
+              <div class="form-group hidden" id="ad-select-panel">
+              <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10">
+                  <div class="ad-select-context">
+                      <div class="prefered-list"></div>
+                      <div class="user-defined"></div>
+                      <div class="prefer-list"></div>
+                  </div>
+                  </div>
+              </div>
+              <!-- Cycle -->
+              <div class="form-group" id="cycle">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">投放时段</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="cycle-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="cycle-off">
+                  </div> 
+              </div>
+              <div class="form-group hidden" id="cycle-panel">
+                  <div class="col-sm-12 col-md-12 col-lg-12 "  >
+                   <div class="schedule" unselectable="on" onselectstart="return false;">
+                   </div>
+                  </div>
+              </div>
+              <!-- cookies -->
+              <div class="form-group" id="cookies">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">Cookies</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="cookies-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="cookies-off">
+                  </div>
+                  <label class="col-sm-5 col-md-5 col-lg-5 crontrol-label" style="margin-top:7px">*请以英文逗号分隔Cookies</label> 
+              </div>
+              <div class="form-group hidden" id="cookies-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                    <textarea class="form-control" rows="3" id="cookies-context"></textarea>
+                  </div>
+              </div>
+              <!-- blocked-cookies -->
+              <div class="form-group" id="blocked-cookies">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">Cookies黑名单</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="blocked-cookies-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="blocked-cookies-off">
+                  </div>
+                  <label class="col-sm-5 col-md-5 col-lg-5 crontrol-label" style="margin-top:7px">*请以英文逗号分隔禁止Cookies</label> 
+              </div>
+              <div class="form-group hidden" id="blocked-cookies-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                    <textarea class="form-control" rows="3" id="blocked-cookies-context"></textarea>
+                  </div>
+              </div>
+             
+             <!-- sites -->
+              <div class="form-group" id="sites">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">站点</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="sites-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="sites-off">
+                  </div> 
+                  
+                  <label class="col-sm-5 col-md-5 col-lg-5 crontrol-label" style="margin-top:7px">*请以英文逗号分隔站点</label>
+                  
+              </div>
+              <div class="form-group hidden" id="sites-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                    <textarea class="form-control" rows="3" id="sites-context"></textarea>
+                  </div>
+              </div>
+               <!-- blocked-sites -->
+              <div class="form-group" id="blocked-sites">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">站点黑名单</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="blocked-sites-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="blocked-sites-off">
+                  </div>
+                  <label class="col-sm-5 col-md-5 col-lg-5 crontrol-label" style="margin-top:7px">*请以英文逗号分隔站点黑名单</label> 
+              </div>
+              <div class="form-group hidden" id="blocked-sites-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                    <textarea class="form-control" rows="3" id="blocked-sites-context"></textarea>
+                  </div>
+              </div>
+              <!-- ip -->
+              <div class="form-group" id="ip">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label">IP</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="ip-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="ip-off">
+                  </div> 
+                  <label class="col-sm-5 col-md-5 col-lg-5 crontrol-label" style="margin-top:7px">*请以英文逗号分隔IP</label>
+              </div>
+              <div class="form-group hidden" id="ip-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10">
+                    <textarea class="form-control" rows="3" id="ip-context"></textarea>
+                  </div>
+              </div>
+               <!-- blocked-ip -->
+              <div class="form-group" id="blocked-ip">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">IP黑名单</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="blocked-ip-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="blocked-ip-off">
+                  </div>
+                  <label class="col-sm-5 col-md-5 col-lg-5 crontrol-label" style="margin-top:7px">*请以英文逗号分隔IP黑名单</label> 
+              </div>
+              <div class="form-group hidden" id="blocked-ip-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                    <textarea class="form-control" rows="3" id="blocked-ip-context"></textarea>
+                  </div>
+              </div>
+              <!-- os -->
+              <div class="form-group" id="os">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">操作系统</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="os-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="os-off">
+                  </div> 
+              </div>
+               <div class="form-group hidden" id="os-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                   <label class="checkbox-inline">
+                        <input type="checkbox" name="os" value="WINDOWS"> WINDOWS
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="os" value="MAC"> MAC
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="os" value="LINUX"> LINUX
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="os" value="IOS"> IOS
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="os" value="ANDROID"> ANDROID
+                    </label>
+                  </div>
+               </div>   
+              <!-- carrier -->
+              <div class="form-group" id="carrier">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">运营商</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="carrier-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="carrier-off">
+                  </div> 
+              </div>
+               <div class="form-group hidden" id="carrier-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                   <label class="checkbox-inline">
+                        <input type="checkbox" name="carrier" value="电信"> 电信
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="carrier" value="移动"> 移动
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="carrier" value="联通"> 联通
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="carrier" value="网通"> 网通
+                    </label>
+                  </div>
+              </div>
+              <!-- connection-type -->
+              <div class="form-group" id="connection-type">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">联网类型</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="connection-type-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="connection-type-off">
+                  </div> 
+              </div>
+               <div class="form-group hidden" id="connection-type-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                   <label class="checkbox-inline">
+                        <input type="checkbox" name="connection-type" value="WIFI"> WIFI
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="connection-type" value="2G"> 2G
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="connection-type" value="3G"> 3G
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="connection-type" value="4G"> 4G
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="connection-type" value="Ethernet"> Ethernet
+                    </label>
+                  </div>
+              </div>
+              <!-- start-time -->
+               <div class="form-group" id="start-time">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">起始时间</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="start-time-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="start-time-off">
+                  </div> 
+              </div>
+              <div class="form-group hidden" id="start-time-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-6 col-md-6 col-lg-6 "  >
+                    <div class="input-group date form_datetime">
+                      <input class="form-control input-sm" size="16" type="text" id="start-time-context" value="" readonly>
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                    </div>
+                  </div>
+              </div>
+              <!-- end-time -->
+               <div class="form-group" id="end-time">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">终止时间</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="end-time-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="end-time-off">
+                  </div> 
+              </div>
+              <div class="form-group hidden" id="end-time-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-6 col-md-6 col-lg-6 "  >
+                    <div class="input-group date form_datetime">
+                      <input class="form-control input-sm" size="16" type="text" id="end-time-context" value="" readonly>
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                    </div>
+                  </div>
+              </div>
+               <!-- adslot -->
+              <div class="form-group" id="adslot">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">广告位</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="adslot-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="adslot-off">
+                  </div>
+                  <label class="col-sm-5 col-md-5 col-lg-5 crontrol-label" style="margin-top:7px">*请以英文逗号分隔广告位</label> 
+              </div>
+              <div class="form-group hidden" id="adslot-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                    <textarea class="form-control" rows="3" id="adslot-context"></textarea>
+                  </div>
+              </div>
+              <!-- experiment -->
+              <div class="form-group" id="exper">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">实验</label>
+                  <div class="col-sm-5 col-md-5 col-lg-5 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="exper-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="exper-off">
+                  </div>
+                  <label class="col-sm-5 col-md-5 col-lg-5 crontrol-label" style="margin-top:7px">*请以英文逗号分隔实验</label>  
+              </div>
+              <div class="form-group hidden" id="exper-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                    <textarea class="form-control" rows="3" id="exper-context"></textarea>
+                  </div>
+              </div>
+               <!-- browser -->
+              <div class="form-group" id="browser">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">浏览器</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="browser-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="browser-off">
+                  </div> 
+              </div>
+               <div class="form-group hidden" id="browser-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                   <label class="checkbox-inline">
+                        <input type="checkbox" name="browser" value="微软IE"> 微软IE
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="browser" value="Chrome"> Chrome
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="browser" value="FireFox"> FireFox
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="browser" value="Safari"> Safari
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="browser" value="Opera"> Opera
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="browser" value="微软Edge"> 微软Edge
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="browser" value="微信浏览器"> 微信浏览器
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="browser" value="QQ浏览器"> QQ浏览器
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="browser" value="360浏览器"> 360浏览器
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="browser" value="UC浏览器"> UC浏览器
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="browser" value="搜狗浏览器"> 搜狗浏览器
+                    </label>
+                  </div>
+              </div>
+              <!-- retargeting -->
+              <div class="form-group" id="retarget">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">用户重定向</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="retarget-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="retarget-off">
+                  </div> 
+              </div>
+               <div class="form-group hidden" id="retarget-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                    <!-- <label class="checkbox-inline">
+                        <input type="checkbox" name="retarget" value="三星TV贴片"> 三星TV贴片
+                    </label> -->
+                  </div>
+              </div>
+              <!-- 手机型号 -->
+              <div class="form-group" id="phone-model">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">手机型号</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="phone-model-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="phone-model-off">
+                  </div> 
+              </div>
+               <div class="form-group hidden" id="phone-model-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                  </div>
+              </div>
+              <!-- LBS -->
+              <div class="form-group" id="lbs">
+                  <label  class="col-sm-2 col-md-2 col-lg-2 control-label">LBS</label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 btn-group">
+                    <input type="button" class="select-btn btn btn-default " style="width:110px;"  value="启动定向"  id="lbs-on">
+                    <input type="button" class="select-btn btn btn-default btn-primary" style="width:110px;"  value="不限制" id="lbs-off">
+                  </div> 
+              </div>
+               <div class="form-group hidden" id="lbs-panel">
+                  <label class="col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                  <div class="col-sm-10 col-md-10 col-lg-10 "  >
+                    <input type="text" name="" id="lbs-lat-lng" class="input-sm form-control" readonly placeholder="请选择经纬度" style="width: 220px; display: inline-block;">
+                    <button class="btn btn-xs btn-link" id="choose-lbs" style="outline: none;">选择</button>
+                    <input id="lbs-radius" class="form-control input-sm" type="number" name="" min="1" max="30" style="width: 130px; display: inline-block; margin-left: 10px;" placeholder="半径[1-30](km)">
+                  </div>
+              </div>
+            </form>
+            </div>
+            <div id="target-form-modal-body-con"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取消</button>
+              <button type="button" id="submit-unit-target-form" class="btn btn-primary btn-sm">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- modals finish -->
+
+
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="/jquery/jquery.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/bootstrap/js/bootstrap-switch.min.js"></script>
+  <script src="/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+  <script src="/jquery/extend/jquery-editable-select.min.js"></script>
+  <script src="/js/moment.min.js"></script>
+  <script>window.current_tab = "unit";window.current_nav = "ad";</script>
+  <script src="/js/constants.js"></script>
+  <script src="/js/tools.js"></script>
+  <script src="/js/component.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/tab-config.js"></script>
+  <script src="/js/ad/unit.js"></script>
+</body>
+</html>

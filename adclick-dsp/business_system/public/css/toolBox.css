@@ -1,0 +1,133 @@
+body {
+  background-color: #f2f3f4; }
+  body .container-fluid {
+    padding: 0; }
+
+.boxContainer {
+  margin-left: 150px;
+  float: left;
+  width: calc(100% - 150px); }
+  .boxContainer .account-help {
+    margin-left: 15px; }
+    .boxContainer .account-help .item {
+      float: left;
+      width: 280px;
+      height: 65px;
+      border: 1px solid #dddfe1;
+      color: #333;
+      font-size: 12px;
+      background-color: white;
+      border-radius: 9px;
+      padding: 6px;
+      box-shadow: 0 1px 0 #E6E7E8;
+      margin-right: 15px;
+      margin-bottom: 10px; }
+      .boxContainer .account-help .item a {
+        float: left;
+        text-decoration: none;
+        font-size: 40px;
+        color: white;
+        background-color: #2b7ed1;
+        padding: 5px;
+        border-radius: 5px;
+        margin-right: 10px; }
+      .boxContainer .account-help .item p {
+        margin-bottom: 5px; }
+      .boxContainer .account-help .item:hover {
+        cursor: pointer;
+        background-color: #f9f9f9; }
+  .boxContainer .tools-detail {
+    display: none; }
+    .boxContainer .tools-detail .tools-header {
+      width: 100%;
+      height: 40px;
+      background-color: #fff;
+      border-bottom: 1px solid #dddfe1;
+      color: #333;
+      display: flex;
+      justify-content: flex-start;
+      font-size: 16px; }
+      .boxContainer .tools-detail .tools-header .go-back {
+        margin-left: 15px;
+        margin-right: 30px;
+        height: 40px;
+        line-height: 40px;
+        cursor: pointer; }
+        .boxContainer .tools-detail .tools-header .go-back:hover {
+          color: #2b7ed1; }
+      .boxContainer .tools-detail .tools-header .header-nav {
+        width: 120px;
+        margin-right: 30px;
+        vertical-align: middle;
+        cursor: pointer;
+        letter-spacing: 3px;
+        text-align: center;
+        height: 40px;
+        line-height: 40px; }
+        .boxContainer .tools-detail .tools-header .header-nav:hover {
+          color: #2b7ed1;
+          border-bottom: 3px solid #2b7ed1; }
+      .boxContainer .tools-detail .tools-header .active {
+        color: #2b7ed1;
+        border-bottom: 3px solid #2b7ed1; }
+    .boxContainer .tools-detail .detail-container {
+      margin-left: 15px; }
+      .boxContainer .tools-detail .detail-container .priviledge-add {
+        justify-content: space-between;
+        display: flex;
+        margin-bottom: 20px; }
+        .boxContainer .tools-detail .detail-container .priviledge-add .add-box {
+          width: 48.5%;
+          height: 315px;
+          margin-top: 10px;
+          border: 1px solid #dddfe1;
+          background-color: #fff; }
+          .boxContainer .tools-detail .detail-container .priviledge-add .add-box h4 {
+            padding-left: 15px;
+            border-bottom: 1px solid #dddfe1;
+            padding-bottom: 8px; }
+          .boxContainer .tools-detail .detail-container .priviledge-add .add-box p {
+            display: flex;
+            padding-left: 15px; }
+            .boxContainer .tools-detail .detail-container .priviledge-add .add-box p span {
+              margin-right: 10px;
+              width: 85px; }
+            .boxContainer .tools-detail .detail-container .priviledge-add .add-box p label {
+              margin-right: 8px;
+              display: flex; }
+              .boxContainer .tools-detail .detail-container .priviledge-add .add-box p label .radio {
+                margin-right: 8px; }
+          .boxContainer .tools-detail .detail-container .priviledge-add .add-box .add-left {
+            margin-left: 95px; }
+            .boxContainer .tools-detail .detail-container .priviledge-add .add-box .add-left button {
+              height: 35px; }
+        .boxContainer .tools-detail .detail-container .priviledge-add .add-box-left {
+          margin-right: 15px; }
+      .boxContainer .tools-detail .detail-container .select-toolbar {
+        display: flex; }
+        .boxContainer .tools-detail .detail-container .select-toolbar label {
+          display: flex;
+          margin-right: 20px; }
+          .boxContainer .tools-detail .detail-container .select-toolbar label .radio {
+            margin-right: 10px; }
+      .boxContainer .tools-detail .detail-container #invite-list {
+        width: 100%; }
+        .boxContainer .tools-detail .detail-container #invite-list .datas {
+          margin-right: 15px; }
+          .boxContainer .tools-detail .detail-container #invite-list .datas .table {
+            width: 100%;
+            border: 1px solid #dddfe1; }
+            .boxContainer .tools-detail .detail-container #invite-list .datas .table tbody {
+              background-color: #fff; }
+      .boxContainer .tools-detail .detail-container #current-list {
+        width: 100%;
+        display: none; }
+        .boxContainer .tools-detail .detail-container #current-list .datas {
+          margin-right: 15px; }
+          .boxContainer .tools-detail .detail-container #current-list .datas .table {
+            width: 100%;
+            border: 1px solid #dddfe1; }
+            .boxContainer .tools-detail .detail-container #current-list .datas .table tbody {
+              background-color: #fff; }
+
+/*# sourceMappingURL=toolBox.css.map */

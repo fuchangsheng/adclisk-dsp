@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-eqiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags-->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/icon/favicon.ico">
+    <title>AdClick DSP 管理中心</title>
+    <!-- Bootstrap core css-->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="/bootstrap/css/navbar-fixed-side.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap-treeview.min.css" rel="styleshtte" />
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/jquery/css/jquery-editable-select.min.css" rel="stylesheet"/>
+    <link href="/css/user-check.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <!-- Nav part-->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <img class="navbar-brand-logo navbar-left" alt="Brand" src="/icon/logo.png">
+            <a class="navbar-brand" href="/">AdClick 管理中心</a>
+        </div>
+        <ul class="nav navbar-nav" id="navbar">
+          <li><a href="#"><span id="weluser">欢迎您:</span></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a id="logout"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="sidenav" id="sidenav"></div>
+    <!--your main panel-->
+    <div id="main">
+      <div class="main-menu" id="treeview"></div>
+      <div class="row " style="height: 100%; margin-left: 200px;">
+        <div id="content">
+          <div class="clearfix" style="margin-bottom:20px;"> 
+            <select class="input-sm pull-right" id="sort">
+              <option value="创建时间增序">创建时间增序</option>
+              <option value="创建时间减序">创建时间减序</option>
+            </select>
+          </div>
+          <div>
+            <table id="finvoice-list" class="table table-striped table-bordered table-hover table-condensed small">
+              <thead>
+                <tr class="text-muted">
+                  <th>日期</th>
+                  <th>发票抬头</th>
+                  <th>开票项目</th>
+                  <th>开票金额</th> 
+                  <th>开票状态</th>
+                  <th>操作人</th>
+                  <th>备注</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+              <tfoot></tfoot>
+            </table>
+          </div>
+        </div>
+        <!-- modals audit start -->
+        <div class="modal fade" id="modal-audit-form" tabindex="-1" role="dialog" aria-labelledby="audit-form-label" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="audit-form-label"></h4>
+              </div>
+              <div class="modal-body" id="audit-form-modal-body">
+                <form class="form-horizontal" role="form">
+                  <div class="form-group">
+                    <label  class="col-sm-3 col-md-3 col-lg-3 control-label">审核结果</label>
+                    <div class="col-sm-9 col-md-9 col-lg-9 btn-group">
+                      <input type="button" class="select-btn btn btn-default btn-primary" value="审核通过" id="audit-pass">
+                      <input type="button" class="select-btn btn btn-default" value="审核失败" id="audit-not-pass">
+                    </div> 
+                  </div>
+                  <div class="form-group" id="note-panel" style="display: none">
+                    <label for="input-note" class="col-sm-3 col-md-3 col-lg-3 control-label">未通过原因</label>
+                    <div class="col-sm-9 col-md-9 col-lg-9">
+                      <input type="text" id="input-note" class="form-control input-sm" value="">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取消</button>
+                <button type="button" id="submit-audit-form" class="btn btn-primary btn-sm">确定</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- modals invoice process start -->
+        <div class="modal fade" id="modal-process-form" tabindex="-1" role="dialog" aria-labelledby="process-form-label" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="process-form-label"></h4>
+              </div>
+              <div class="modal-body" id="process-form-modal-body">
+                <form class="form-horizontal" role="form">
+                  <div class="form-group">
+                    <label for="input-ticket-id" class="col-sm-3 col-md-3 col-lg-3 control-label">发票号</label>
+                    <div class="col-sm-9 col-md-9 col-lg-9">
+                      <input type="text" id="input-ticket-id" class="form-control input-sm">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取消</button>
+                <button type="button" id="submit-process-form" class="btn btn-primary btn-sm">确定</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- modals invoice deliver start -->
+        <div class="modal fade" id="modal-deliver-form" tabindex="-1" role="dialog" aria-labelledby="deliver-form-label" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="deliver-form-label"></h4>
+              </div>
+              <div class="modal-body" id="deliver-form-modal-body">
+                <form class="form-horizontal" role="form">
+                  <div class="form-group">
+                    <label for="input-deliver-name" class="col-sm-3 col-md-3 col-lg-3 control-label">快递名称</label>
+                    <div class="col-sm-9 col-md-9 col-lg-9">
+                      <input type="text" id="input-deliver-name" class="form-control input-sm" placeholder="请输入快递名称">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="input-deliver-id" class="col-sm-3 col-md-3 col-lg-3 control-label">快递运单号</label>
+                    <div class="col-sm-9 col-md-9 col-lg-9">
+                      <input type="text" id="input-deliver-id" class="form-control input-sm" placeholder="请输入运单号">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">取消</button>
+                <button type="button" id="submit-deliver-form" class="btn btn-primary btn-sm">确定</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    <!-- Bootstrap core JavaScript ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/bootstrap/js/bootstrap-treeview.js"></script>
+    <script>window.current_nav = "invoice";</script>
+    <script src="/js/main.js"></script>
+    <script src="/js/constants.js"></script>
+    <script src="/js/tools.js"></script>
+    <script src="/js/invoice.js"></script>
+    <script src="/js/component.js"></script>
+    <script src="/js/init-user-list.js"></script>
+  </body>
+</html>
+

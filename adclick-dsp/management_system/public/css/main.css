@@ -1,0 +1,252 @@
+body {
+    padding-top: 50px;
+    font-family: 'Microsoft YaHei', 'Arial'; 
+    min-width:1024px;
+}
+
+#weluser{
+    color: #fff;
+}
+
+.navbar-fixed-top{
+    min-width:768px;
+}
+
+.navbar-header{
+    margin-left: 10px;
+    float: left;
+}
+
+.navbar-nav{
+    float: left;
+    margin: 0;
+}
+
+.navbar-right {
+    float: right;
+    margin-right: -15px;
+}
+
+.navbar-left {
+    float: left!important;
+}
+
+.navbar-nav>li {
+    float: left;
+}
+
+.navbar-nav>li>a{
+    padding-top: 15px;
+}
+
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    width: 150px;
+}
+
+.sidenav a {
+    padding: 5px 5px 5px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav a:hover,
+.sidenav a.active,
+.offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+} */
+
+#main {
+    margin-left: 150px;
+}
+
+#content {
+    padding: 20px;
+}
+
+.row{
+    margin:0;
+}
+
+.spin-loader {
+    text-align: center;
+}
+
+.spin-loader img {
+    clear: both;
+    display: block;
+    margin: auto;
+}
+.hidden{
+    display: none;
+}
+.main-menu li:first-child{
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+#logout{
+    cursor: pointer;
+}
+
+.treeview li{
+    overflow: hidden;
+}
+
+.pagination span{
+    float:left;
+    padding: 5px 12px;
+}
+.pagination span input{
+    width:30px; 
+    border: 1px solid #ccc;
+}
+
+/*alert confirm*/
+#alertShield,
+#confirmShield{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    text-align: center;
+    z-index: 1050;
+    opacity: 0.4;
+}
+
+#alertFram,
+#confirmFram{
+    position: fixed;
+    left: 50%; top: 50%;
+    margin-left: -215px;
+    margin-top: -165px;
+    width: 430px;
+    text-align: center;
+    z-index: 1051;
+}
+
+#alertFram ul,
+#confirmFram ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 6px;
+}
+
+#alertFram ul>li,
+#confirmFram ul>li{
+    display: block;
+}
+
+#alertFram ul>li:first-child,
+#confirmFram ul>li:first-child{
+    text-align:left;
+    padding-left:20px;
+    font-size:18px;
+    height:60px;
+    line-height:60px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+#alertFram ul>li:last-child,
+#confirmFram ul>li:last-child{
+    text-align: right;
+    height: 60px;
+    line-height: 0;
+    border-top: none;
+}
+
+li#alert-message,
+li#confirm-message{
+    text-align: center;
+    font-size:14px;
+    height:210px;
+    color:#090909;
+    padding: 90px 20px;
+}
+
+#alertFram a.close-modal,
+#confirmFram a.close-modal{
+    display: block;
+    float: right;
+    font-size: 21px;
+    line-height: 1;
+    text-decoration: none;
+    color: #000;
+    opacity: .2;
+    margin: 18px 20px 0 0;
+}
+
+#alertFram a.close-modal:hover,
+#confirmFram a.close-modal:hover{
+    opacity: .5;
+}
+
+#alertFram a.confirm-btn,
+#confirmFram a.confirm-btn{
+    display: inline-block;
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+    text-decoration: none;
+    text-align: center;
+    margin: 0 20px 20px 30px;
+    color: #252525;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#alertFram a.confirm-btn:hover,
+#confirmFram a.confirm-btn:hover{
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+#confirmFram a.cancel-btn{
+    display: block;
+    float: right;
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+    text-decoration: none;
+    text-align: center;
+    margin: 0 20px 20px 10px;
+    color: #fff;
+    background-color: #e70012;
+    border-radius: 4px;
+}
+
+#confirmFram a.cancel-btn:hover{
+    background-color: #c9302c;
+}

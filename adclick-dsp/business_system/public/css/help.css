@@ -1,0 +1,111 @@
+body{
+  background-color: #f5f5f5;
+}
+/* nav header */
+.help-nav{
+  margin: 0;
+  text-align: center;
+  height: 80px;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+}
+.navbar-header{
+  width: 1080px;
+  margin:15px auto 0 auto;
+  float: none;
+}
+
+.navbar-header img{
+  margin-left:-8px;
+}
+
+.help-nav a{
+  font-size: 28px;
+}
+/* nav header end */
+
+/* main */
+.row{
+  width: 1080px;
+  margin: 80px auto 0 auto;
+}
+/* 设置div等高 */
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.row-eq-height > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+/* 等高end */
+
+.side-nav,
+.main-content{
+  padding: 0;
+  border: 1px solid #ddd;
+  border-top: 0;
+}
+
+.main-content{
+  border-left: 0;
+}
+
+.sidebar-menu>a:hover,
+.sidebar-menu>a:focus{
+  text-decoration: none;
+}
+
+.sidebar-menu>a{
+  height: 60px;
+  font-size: 16px;
+  position: relative;
+  display: block;
+  padding: 22px 15px;
+  color: #000;
+  border-bottom: 1px solid #ddd;
+}
+
+.sidebar-menu>a.active{
+  color: #337ab7;
+}
+
+.nav>li>a{
+  padding-left: 40px;
+  color: #666;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav>li>a.active{
+  background-color: #337ab7;
+  color: #fff;
+}
+
+.menu-icon{
+  position: absolute;
+  right: 10px;
+  top: 22px;
+}
+
+.content{
+  padding: 40px;
+}
+
+.content-item h3{
+  margin-top: 0;
+  margin-bottom: 35px;
+  font-size: 20px;
+}
+
+.content-item>p>img{
+  width: 100%;
+}
+
+/* footer */
+.footer-text{
+  text-align: center;
+  margin-top: 30px;
+}

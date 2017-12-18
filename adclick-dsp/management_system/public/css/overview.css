@@ -1,0 +1,40 @@
+.main-menu{
+    width: 200px;
+    font-size: 12px;
+    background: #e1e5e9;
+    height: 100%;
+    border-radius:5px;
+    position: fixed;
+    top: 92px;
+    left: 150px;
+    overflow-y: auto;
+    padding-bottom: 90px;
+    z-index: 99;
+}
+
+#tabs{
+    position: fixed;
+    top: 50px;
+    left: 150px;
+    width: 100%;
+    z-index: 99;
+    background-color: #fff;
+}
+.treeview .list-group-item {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.panel-heading{
+    padding: 5px 15px;
+}
+
+.form-choose{
+    margin-top: 5px;
+    padding: 0 40px;
+}
+
+.download-report{
+    margin-bottom: 20px;
+}

@@ -1,0 +1,6 @@
+目录 scripts/realtime
+collect_rwadata.py 读取当天日志文件入库 4份：bidding,imp,click,action
+bidding_single.py realtime_bidding当天表分表
+collect_rawdata.py 整合当天日志表的数据入adclick_dsp_realtime表
+check_table.py 检查当天的表是否存在，如果不存在则发邮件警报
+adclick_dsp_dashboard表中有5个定时任务，分别生成当天的日志表 realtime_action,realtime_bidding,realtime_bidding_single,realtime_click,realtime_imp

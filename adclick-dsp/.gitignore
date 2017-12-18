@@ -1,0 +1,9 @@
+cap_img
+
+#scss middle files
+back/view/.sass-cache
+back/view/css/*.map
+tools
+*.log
+/.project
+/.buildpath

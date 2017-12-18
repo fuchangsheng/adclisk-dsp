@@ -1,0 +1,154 @@
+.alert{
+  padding: 10px 35px 10px 15px;
+}
+
+.main-menu {
+  width: 200px;
+  border-right: 1px solid #d1d4d7;
+  font-size: 12px;
+  background: #e1e5e9;
+  height: 100%;
+  border-radius: 5px;
+  position: fixed;
+  overflow-y: auto;
+  padding-bottom: 50px;
+}
+.main-menu li{
+  height: 39px;
+}
+
+.treeview .list-group-item {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+#tabs a{
+  cursor: pointer;
+}
+
+.lump{
+  border: 1px solid #DDDFE1;
+  background-color: #fff;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 0 rgba(230,231,232,1);
+}
+.lump-hd{
+  border-bottom: 1px solid #E5E6E7;
+  height: 30px;
+  padding: 0 0 0 20px;
+}
+.lump-hd h3{
+  font-size:16px;
+  color: #343434;
+  font-weight: 700;
+}
+.lump-bd{
+  margin:0;
+  padding:0;
+}
+.infomations{
+  margin: 0 30px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.info-bd{
+  padding-top:23px;
+}
+.info-bd span{
+  color: #000;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.buttons{
+  padding: 20px 30px;
+}
+.account-list{
+  padding: 20px 0 0 28px;
+  padding-bottom: 15px;
+}
+.account-list li{
+  margin-bottom:15px;
+  list-style:none;
+}
+.account-list .account-list-name{
+  color: #999;
+}
+.account-list .account-list-con{
+  margin-top:4px;
+}
+.account-list .account-list-con .account-text{
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.btn-group>button{
+  margin-right: 10px;
+}
+
+button[disabled]{
+  cursor: not-allowed;
+}
+
+.audit-content{
+  padding:7px 15px 0px 5px;
+}
+
+#invoice-btn-group input,
+#qul-btn-group input,
+#user-btn-group input{
+  height: 30px;
+}
+
+.showdata{
+  margin-top: 10px;
+  height: auto;
+  overflow: auto;
+  width: 100%;
+  margin-bottom:20px;
+}
+
+.datalist li{
+  list-style:none;
+  display: inline;
+  height: 76px;
+  width: 158px;
+  border: 1px solid #e3e8ed;
+  background: #f7f8f9;
+  float: left;
+  margin-right: 10px;
+}
+
+
+.fixed-form .form-group{
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.fixed-form .form-group label.col-sm-1{
+  width: 100px;
+}
+
+.fixed-form .form-group div.col-sm-3 input{
+  width:300px;
+}
+
+#user-type{
+  width: 17px;
+  height: 17px;
+  display: inline-block;
+  vertical-align: bottom;
+  cursor: pointer;
+}
+
+#user-type.normal-user{
+  background-image: url(/icon/20x20/v-01.png);
+  background-size: 17px 17px;
+  
+}
+
+#user-type.vip-user{
+  background-image: url(/icon/20x20/v-02.png);
+  background-size: 17px 17px;
+}

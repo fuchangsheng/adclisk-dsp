@@ -1,0 +1,249 @@
+/* public css of ad */
+.schedule{
+  width:720px;
+  border:1px solid #cdcdcd;
+  font-size:12px;
+  background:#eee;
+  padding:6px 0 8px 10px;
+  -moz-user-select:none;
+}
+
+.schedule-off{
+  background:#fff;
+}
+
+.schedule-on{
+  background:#cfc
+}
+
+.schedule-chosen{
+  background:#fda
+}
+
+.modal-header i{
+  font-size:14px;
+}
+
+li{
+  cursor:pointer;
+}
+
+.alert{
+  margin-bottom: 0;
+  padding: 10px 35px 10px 15px;
+}
+
+/* ad plan */
+#form-plan .modal-dialog{
+  min-width:900px
+}
+
+/* ad unit */
+#modal-unit-target-form .modal-dialog{
+  min-width:750px
+}
+
+.checkbox-inline{
+  margin-left:10px !important;
+}
+.checkbox-inline input{
+  margin-top:2px;
+}
+
+/* ad idea */
+#form-idea .modal-dialog{
+  min-width:700px
+}
+
+.material-item{
+  width:100px;
+  height:100px;
+  border:1px solid #D1D1D1;
+  float:left;
+  margin:4px 6px 0 0;
+  padding:5px;
+}
+
+.material-item-choosed{
+  border:1px solid #FF0000
+}
+
+/* .radio-inline{
+  padding:0 0 0 15px !important; 
+  font-size:10px;
+}
+.radio-inline input[type=radio]{
+  margin-left:-15px;
+} */
+
+/* target */
+#modal-target-form .modal-dialog{
+  min-width:750px
+}
+
+/* region-list */
+#regions-panel ul,
+#blocked-regions-panel ul,
+#business-interest-panel ul,
+#phone-model-panel ul,
+#retarget-panel ul,
+.prefer-list ul{
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+#regions-panel ul li,
+#blocked-regions-panel ul li,
+#business-interest-panel ul li,
+#phone-model-panel ul li,
+#retarget-panel ul li,
+.prefer-list ul li{
+  display: inline-block;
+  padding-left: 15px;
+  position: relative;
+  margin-right: 10px;
+}
+
+ul li span.regions-addon{
+  background-image: url(/img/style.png);
+  background-position: -82px 0;
+  background-repeat: no-repeat;
+  width: 11px;
+  height: 11px;
+  position: absolute;
+  top: 3px;
+  left: 1px;
+}
+
+ul li span.regions-check{
+  background-image: url(/img/style.png);
+  background-position: -150px 0;
+  background-repeat: no-repeat;
+  width: 11px;
+  height: 11px;
+  position: absolute;
+  top: 3px;
+  left: 1px;
+}
+
+div.region-city,
+div.regionsall,
+.prefer-list div.label_l2{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 15px;
+  width: 590px;
+  min-height: 100%;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.prefer-list div.label_l2{
+  left: 0;
+  width: 100%;
+}
+
+div.regionsall{
+  padding-right: 20px;
+}
+
+.region-city a,
+.regionsall a,
+.label_l2 a{
+  text-decoration: none;
+  color: #1c4587;
+  position: relative;
+  padding-left: 15px;
+  margin-right: 10px;
+}
+
+.regionsall a.close-btn{
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  padding: 0 5px;
+  margin: 0;
+  line-height: 13px;
+}
+
+.regionsall a.close-btn:hover{
+  color: #000;
+  opacity: .5;
+}
+
+.regionsall label{
+  padding-left: 10px;
+  margin: 0;
+}
+
+.region-city a span.region-add,
+.label_l2 a span.label-add{
+  background-image: url(/img/style.png);
+  background-position: -133px 0;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  top: 10px;
+  left: 0;
+}
+
+/*广告优选标签处样式*/
+.ad-select-context{
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  min-height: 80px;
+  border-radius: 4px;
+}
+
+.prefered-list{
+  margin-bottom: 10px;
+}
+
+.prefered-list label{
+  display: inline-block;
+  height: 20px;
+  border: 1px solid #ccc;
+  margin: 0 5px 0 0;
+  padding: 0 0 0 5px;
+  font-size: 10px;
+  font-weight: normal;
+  /*cursor: pointer;*/
+  margin-top: 5px;
+}
+
+.prefered-list label span.label-remove{
+  display: inline-block;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 1s;
+  font-size: 12px;
+  -webkit-transform-origin-x: 0;
+  -webkit-transform: scale(0.80);
+  padding: 0 2px;
+}
+
+.prefered-list label:hover span.label-remove{
+  opacity: .7;
+}
+
+.prefered-list::after{
+  content: "";
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  border: 1px dashed #337ab7;
+  vertical-align: bottom;
+}
+
+.prefer-list{
+  position: relative;
+}
+
+.user-defined{
+  margin-bottom: 10px;
+}

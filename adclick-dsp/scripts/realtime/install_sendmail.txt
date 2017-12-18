@@ -1,0 +1,15 @@
+1:yum install -y sendmail
+2:service sendmail start
+3:编写发送脚本
+#!/bin/sh
+#send report
+from_name="OceanBrowser"
+from="service@OceanBrowser.cc"
+to=$1
+email_content=$2
+if [ ! -n "$1" ]; then
+    echo "1st email_content is empty!"
+else
+    email_subject="邮箱主题"
+    echo -e "To: ${to}\nFrom: \"${from_name}\" <${from}>\nSubject: ${email_subject}\n\n ${email_content}" | /usr/sbin/sendmail -t
+fi

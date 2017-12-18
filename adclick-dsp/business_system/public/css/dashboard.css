@@ -1,0 +1,92 @@
+.main-menu{
+    width: 200px;
+    border-right: 1px solid #d1d4d7;
+    font-size: 12px;
+    height: 100%;
+    border-radius:5px;
+    position: fixed;
+    overflow-y: auto;
+    padding-bottom: 50px;
+    z-index: 99;
+}
+.main-menu li{
+    padding-left:0px;
+}
+
+.treeview .list-group-item {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.showechart{
+    margin:20px 5px;
+}
+.showechart table td{
+    width:120px; 
+}
+.tit{
+    font-size: 14px;
+    font-weight: 900;
+}
+.subtit{
+    color:#999;
+}
+.showdata{
+    margin-top: 5px;
+    margin-bottom: 20px;
+    height: auto;
+    overflow: auto;
+    width: 100%;
+}
+
+.datalist li{
+    list-style:none;
+    display: inline;
+    height: 76px;
+    width: 158px;
+    border: 1px solid #e3e8ed;
+    background: #f7f8f9;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.info{
+    float:left;
+    line-height: 25px;
+    color: #666;
+    margin-bottom: 10px;
+    margin-left: 40px;
+}
+.item{
+    display:inline-block;
+    float: left;
+    font-weight: 600;
+}
+.itemcon{
+    display:inline-block;
+    float: left;
+}
+.itemcon ul{
+    margin-left:-40px;
+}
+.itemcon li {
+    list-style:none;
+}
+
+.panel-heading{
+    padding: 5px 15px;
+}
+
+.panel-heading h3{
+    margin-top :5px;
+    display: inline-block;
+}
+
+.form-choose{
+    margin-top: 5px;
+    padding: 0 40px;
+}
+
+.download-report{
+    margin-bottom: 20px;
+}

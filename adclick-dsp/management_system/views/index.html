@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-eqiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags-->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/icon/favicon.ico">
+    <title>
+      AdClick DSP 管理中心
+    </title>
+    <!-- Bootstrap core css-->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="/bootstrap/css/navbar-fixed-side.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <!-- Nav part-->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <img class="navbar-brand-logo navbar-left" alt="Brand" src="/icon/logo.png">
+          <a class="navbar-brand" href="/">
+          AdClick 管理中心</a>
+        </div>
+        <ul class="nav navbar-nav" id="navbar">
+          <li>
+            <a href="#">
+            <span id="weluser">
+            欢迎您:</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a id="logout">
+            <span class="glyphicon glyphicon-log-out">
+            </span>
+            退出</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="sidenav" id="sidenav"></div>
+    <!-- Bootstrap core JavaScript==================================================-->
+    <!-- Placed at the end of the document so the pages load faster-->
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/constants.js"></script>
+    <script src="/js/tools.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+       window.onload = function(){
+           window.location.href="/overview_all.html"
+       }
+  </script>
+  </body>
+</html>

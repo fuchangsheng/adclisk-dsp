@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-eqiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags-->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/icon/favicon.ico">
+    <title>
+      AdClick DSP 管理中心
+    </title>
+    <!-- Bootstrap core css-->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="/bootstrap/css/bootstrap-switch.min.css" rel="stylesheet"/>
+    <link href="/bootstrap/css/navbar-fixed-side.css" rel="stylesheet">
+    <link href="/css/daterangepicker.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/overview.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <!-- Nav part-->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <img class="navbar-brand-logo navbar-left" alt="Brand" src="/icon/logo.png">
+          <a class="navbar-brand" href="/">
+          AdClick 管理中心</a>
+        </div>
+        <ul class="nav navbar-nav" id="navbar">
+          <li>
+            <a href="#">
+            <span id="weluser">
+            欢迎您:</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a id="logout">
+            <span class="glyphicon glyphicon-log-out">
+            </span>
+            退出</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="sidenav" id="sidenav"></div>
+       <div id="main">
+        <div id="tabs" class="row" ></div>
+        <div class="row" style="margin-top:42px;">
+        <div id="content" class="col-md-12 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix">
+                <select
+                  id='address' class="input-sm pull-right"
+                  onchange="selectchange()">
+                 </select>
+                 <select
+                  id='series' class="input-sm pull-right"
+                  onchange="selectchange()">
+                  <option value='totalstat'>总体统计</option>
+                  <option value='secondstat'>每秒统计</option>
+                 </select>
+                 <select
+                  id='timezone' class="input-sm pull-right"
+                  onchange="selectchange()">
+                  <option value='all'>所有数据</option>
+                  <option value='mouth'>前30天</option>
+                  <option value='day'>前24小时</option>
+                  <option value='hour'>前1小时</option>
+                  <option value='minute'>前1分钟</option>
+                 </select>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="bid_req" style="width: 100%; height: 280px"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="bid" style="width: 100%; height: 280px"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="imp" style="width: 100%; height: 280px;margin-top:30px"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="click" style="width: 100%; height: 280px;margin-top:30px"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="cost" style="width: 100%; height: 280px;margin-top:30px"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="cost_cpm" style="width: 100%; height: 280px;margin-top:30px"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="cost_cpc" style="width: 100%; height: 280px;margin-top:30px"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="cost_cpd" style="width: 100%; height: 280px;margin-top:30px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    <!-- Bootstrap core JavaScript==================================================-->
+    <!-- Placed at the end of the document so the pages load faster-->
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/bootstrap/js/bootstrap-switch.min.js"></script>
+    <script src="/echarts/echarts.min.js"></script>
+    <script src="/js/moment.min.js"></script>
+    <script src="/js/jquery.daterangepicker.js"></script>
+    <script src="/bootstrap/js/bootstrap-treeview.js"></script>
+    <script>window.current_tab = "realtime_allt";window.current_nav = "realtime";</script>
+    <script src="/js/constants.js"></script>
+    <script src="/js/tools.js"></script>
+    <script src="/js/component.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/realtime_allt.js"></script>
+  </body>
+</html>

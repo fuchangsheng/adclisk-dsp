@@ -1,0 +1,1022 @@
+[
+    {
+        "role": "主账号",
+        "categories": [
+            {
+                "subcategories": [
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "广告列表"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "活动记录"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "账户余额"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "涉及金额的投放数据"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "创建规则"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "导出报告"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "保存报告"
+                    }
+                ],
+                "name": "广告管理"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "规则列表"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "活动记录"
+                    }
+                ],
+                "name": "自动规则"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "定向模板"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "自定义受众"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "素材库"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "广告报告"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "导出报告"
+                    }
+                ],
+                "name": "工具箱"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "账户余额"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "充值"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "财务记录"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "发票管理"
+                    }
+                ],
+                "name": "财务管理"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "账户基本信息"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "账户资质"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "密码重置"
+                    }
+                ],
+                "name": "账户设置"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "权限管理"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "协作者管理"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "操作日志"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "消息设置"
+                    }
+                ],
+                "name": "系统设置"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "查看消息"
+                    }
+                ],
+                "name": "查看消息"
+            }
+        ]
+    },
+    {
+        "role": "管理员",
+        "categories": [
+            {
+                "subcategories": [
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "广告列表"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "活动记录"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "账户余额"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "涉及金额的投放数据"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "创建规则"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "导出报告"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "保存报告"
+                    }
+                ],
+                "name": "广告管理"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "规则列表"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "活动记录"
+                    }
+                ],
+                "name": "自动规则"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "定向模板"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "自定义受众"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "素材库"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "广告报告"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "导出报告"
+                    }
+                ],
+                "name": "工具箱"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "账户余额"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "充值"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "财务记录"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "发票管理"
+                    }
+                ],
+                "name": "财务管理"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "账户基本信息"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "账户资质"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "密码重置"
+                    }
+                ],
+                "name": "账户设置"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "权限管理"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "协作者管理"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "操作日志"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "消息设置"
+                    }
+                ],
+                "name": "系统设置"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "查看消息"
+                    }
+                ],
+                "name": "查看消息"
+            }
+        ]
+    },
+    {
+        "role": "操作员",
+        "categories": [
+            {
+                "subcategories": [
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "广告列表"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "活动记录"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "账户余额"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "涉及金额的投放数据"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "创建规则"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "导出报告"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "保存报告"
+                    }
+                ],
+                "name": "广告管理"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "规则列表"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "活动记录"
+                    }
+                ],
+                "name": "自动规则"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "定向模板"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "自定义受众"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "素材库"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "广告报告"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "导出报告"
+                    }
+                ],
+                "name": "工具箱"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "账户余额"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NONE",
+                        "name": "充值"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "财务记录"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "发票管理"
+                    }
+                ],
+                "name": "财务管理"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "账户基本信息"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "账户资质"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "密码重置"
+                    }
+                ],
+                "name": "账户设置"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "权限管理"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "协作者管理"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "操作日志"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "消息设置"
+                    }
+                ],
+                "name": "系统设置"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "查看消息"
+                    }
+                ],
+                "name": "查看消息"
+            }
+        ]
+    },
+    {
+        "role": "观察员",
+        "categories": [
+            {
+                "subcategories": [
+                    {
+                        "writable": "NO",
+                        "readable": "YES",
+                        "name": "广告列表"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "活动记录"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "账户余额"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "涉及金额的投放数据"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NONE",
+                        "name": "创建规则"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NONE",
+                        "name": "导出报告"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NONE",
+                        "name": "保存报告"
+                    }
+                ],
+                "name": "广告管理"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "规则列表"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "活动记录"
+                    }
+                ],
+                "name": "自动规则"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "定向模板"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "自定义受众"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "素材库"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "广告报告"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NONE",
+                        "name": "导出报告"
+                    }
+                ],
+                "name": "工具箱"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "账户余额"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NONE",
+                        "name": "充值"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "财务记录"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "发票管理"
+                    }
+                ],
+                "name": "财务管理"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NO",
+                        "readable": "YES",
+                        "name": "账户基本信息"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "YES",
+                        "name": "账户资质"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "密码重置"
+                    }
+                ],
+                "name": "账户设置"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "权限管理"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "协作者管理"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "操作日志"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "消息设置"
+                    }
+                ],
+                "name": "系统设置"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "查看消息"
+                    }
+                ],
+                "name": "查看消息"
+            }
+        ]
+    },
+    {
+        "role": "财务人员",
+        "categories": [
+            {
+                "subcategories": [
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "广告列表"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "活动记录"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "账户余额"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "涉及金额的投放数据"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NONE",
+                        "name": "创建规则"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NONE",
+                        "name": "导出报告"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NONE",
+                        "name": "保存报告"
+                    }
+                ],
+                "name": "广告管理"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "规则列表"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "活动记录"
+                    }
+                ],
+                "name": "自动规则"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "定向模板"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "自定义受众"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "素材库"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "广告报告"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NONE",
+                        "name": "导出报告"
+                    }
+                ],
+                "name": "工具箱"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "账户余额"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "充值"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "财务记录"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "YES",
+                        "name": "发票管理"
+                    }
+                ],
+                "name": "财务管理"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NO",
+                        "readable": "YES",
+                        "name": "账户基本信息"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "YES",
+                        "name": "账户资质"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "密码重置"
+                    }
+                ],
+                "name": "账户设置"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "权限管理"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "协作者管理"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "操作日志"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "消息设置"
+                    }
+                ],
+                "name": "系统设置"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NONE",
+                        "readable": "YES",
+                        "name": "查看消息"
+                    }
+                ],
+                "name": "查看消息"
+            }
+        ]
+    },
+    {
+        "role": "客户",
+        "categories": [
+            {
+                "subcategories": [
+                    {
+                        "writable": "NO",
+                        "readable": "YES",
+                        "name": "广告列表"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "活动记录"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "账户余额"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "涉及金额的投放数据"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NONE",
+                        "name": "创建规则"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "导出报告"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NONE",
+                        "name": "保存报告"
+                    }
+                ],
+                "name": "广告管理"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "规则列表"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "活动记录"
+                    }
+                ],
+                "name": "自动规则"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "定向模板"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "自定义受众"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "素材库"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "广告报告"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NONE",
+                        "name": "导出报告"
+                    }
+                ],
+                "name": "工具箱"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "账户余额"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NONE",
+                        "name": "充值"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "财务记录"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "发票管理"
+                    }
+                ],
+                "name": "财务管理"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "账户基本信息"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "账户资质"
+                    },
+                    {
+                        "writable": "YES",
+                        "readable": "NONE",
+                        "name": "密码重置"
+                    }
+                ],
+                "name": "账户设置"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "权限管理"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "协作者管理"
+                    },
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "操作日志"
+                    },
+                    {
+                        "writable": "NO",
+                        "readable": "NO",
+                        "name": "消息设置"
+                    }
+                ],
+                "name": "系统设置"
+            },
+            {
+                "subcategories": [
+                    {
+                        "writable": "NONE",
+                        "readable": "NO",
+                        "name": "查看消息"
+                    }
+                ],
+                "name": "查看消息"
+            }
+        ]
+    }
+]

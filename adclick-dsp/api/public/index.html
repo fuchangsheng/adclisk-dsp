@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>V3.0 API 文档</title>
+    <meta charset="utf-8">
+    <meta name="Content-Type" content="text/html">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <script type="text/javascript" src="/javascripts/marked.js"></script>
+</head>
+
+<body>
+    <div class="menu-container">
+        <h4 class="text-center title">AdClick DSP 3.0 API 文档</h4>
+        <ul id="accordion" class="accordion">
+            <li class="sig-t">
+                <div class="link click" data-md="/introduction"><i class="fa fa-paint-brush"></i>简介<i class="fa fa-chevron-down"></i></div>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/errorCode"><i class="fa fa-paint-brush"></i>ErrorCode<i class="fa fa-chevron-down"></i></div>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/database/modify"><i class="fa fa-paint-brush"></i>数据库表结构修改记录<i class="fa fa-chevron-down"></i></div>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/AdConstants"><i class="fa fa-paint-brush"></i>AdConstants<i class="fa fa-chevron-down"></i></div>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/user/readme"><i class="fa fa-paint-brush"></i>用户接口<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li class="click" data-md="/user/register"><a href="javascript:void(0)">1.1 注册</a></li>
+                    <li class="click" data-md="/user/login"><a href="javascript:void(0)">1.2 登录</a></li>
+                    <li class="click" data-md="/user/captha_request"><a href="javascript:void(0)">1.3 验证码请求</a></li>
+                    <li class="click" data-md="/user/captha_request_img"><a href="javascript:void(0)">1.4 验证码图片</a></li>
+                    <li class="click" data-md="/user/captha_verify"><a href="javascript:void(0)">1.5 验证码验证</a></li>
+                    <li class="click" data-md="/user/sms_request"><a href="javascript:void(0)">1.6 请求短信验证码</a></li>
+                    <li class="click" data-md="/user/password_forget"><a href="javascript:void(0)">1.7 忘记密码</a></li>
+                    <li class="click" data-md="/user/password_reset"><a href="javascript:void(0)">1.8 重置密码</a></li>
+                    <li class="click" data-md="/user/logout"><a href="javascript:void(0)">1.9 退出登录</a></li>
+                    <li class="click" data-md="/user/check_login"><a href="javascript:void(0)">1.10 检查登录</a></li>
+                </ul>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/ads/summary/readme"><i class="fa fa-paint-brush"></i>账户概览<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li class="click" data-md="/ads/summary/dailylist"><a href="javascript:void(0)">2.1 按天获取广告主数据list</a></li>
+                    <li class="click" data-md="/ads/summary/optionslist"><a href="javascript:void(0)">2.2 细分数据</a></li>
+                    <li class="click" data-md="/ads/summary/download"><a href="javascript:void(0)">2.3 数据导出</a></li>
+                </ul>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/ads/plan/readme"><i class="fa fa-paint-brush"></i>广告计划<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li class="click" data-md="/ads/plan/list"><a href="javascript:void(0)">3.1 获取广告计划列表</a></li>
+                    <li class="click" data-md="/ads/plan/add"><a href="javascript:void(0)">3.2 创建广告计划</a></li>
+                    <li class="click" data-md="/ads/plan/edit"><a href="javascript:void(0)">3.3 编辑广告计划</a></li>
+                    <li class="click" data-md="/ads/plan/trash"><a href="javascript:void(0)">3.4 删除广告计划</a></li>
+                    <li class="click" data-md="/ads/plan/childs"><a href="javascript:void(0)">3.5 获取广告计划的子单元、创意</a></li>
+                    <li class="click" data-md="/ads/plan/copy"><a href="javascript:void(0)">3.6 复制广告计划</a></li>
+                    <li class="click" data-md="/ads/plan/start"><a href="javascript:void(0)">3.7 启动/暂停广告计划</a></li>
+                    <li class="click" data-md="/ads/plan/view"><a href="javascript:void(0)">3.8 获取广告计划详情</a></li>
+                    <li class="click" data-md="/ads/plan/summary"><a href="javascript:void(0)">3.9 按条件获取广告计划数据</a></li>
+                    <li class="click" data-md="/ads/plan/export"><a href="javascript:void(0)">3.10 导出表格</a></li>
+                    <li class="click" data-md="/ads/plan/report"><a href="javascript:void(0)">3.11 保存报告</a></li>
+                    <li class="click" data-md="/ads/plan/del"><a href="javascript:void(0)">3.12 彻底删除广告计划</a></li>
+
+                </ul>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/ads/unit/readme"><i class="fa fa-paint-brush"></i>广告单元<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li class="click" data-md="/ads/unit/list"><a href="javascript:void(0)">4.1 获取广告单元列表</a></li>
+                    <li class="click" data-md="/ads/unit/add"><a href="javascript:void(0)">4.2 创建广告单元</a></li>
+                    <li class="click" data-md="/ads/unit/edit"><a href="javascript:void(0)">4.3 编辑广告单元</a></li>
+                    <li class="click" data-md="/ads/unit/trash"><a href="javascript:void(0)">4.4 删除广告单元</a></li>
+                    <li class="click" data-md="/ads/unit/view"><a href="javascript:void(0)">4.5 查看广告单元详情</a></li>
+                    <li class="click" data-md="/ads/unit/target_setting_view"><a href="javascript:void(0)">4.6 获取广告单元定向设置</a></li>
+                    <li class="click" data-md="/ads/unit/target_setting_edit"><a href="javascript:void(0)">4.7 编辑广告单元定向设置</a></li>
+                    <li class="click" data-md="/ads/unit/start"><a href="javascript:void(0)">4.8 启动/暂停广告单元</a></li>
+                    <li class="click" data-md="/ads/unit/summary"><a href="javascript:void(0)">4.9按条件获取广告单元数据</a></li>
+                    <li class="click" data-md="/ads/unit/childs"><a href="javascript:void(0)">4.10获取广告单元下面的广告创意</a></li>
+                    <li class="click" data-md="/ads/unit/copy"><a href="javascript:void(0)">4.11 复制广告单元</a></li>
+                    <li class="click" data-md="/ads/unit/report"><a href="javascript:void(0)">4.12 保存报告</a></li>
+                    <li class="click" data-md="/ads/unit/export"><a href="javascript:void(0)">4.13 导出表格</a></li>
+                    <li class="click" data-md="/ads/unit/limit"><a href="javascript:void(0)">4.16 最低出价配置</a></li>
+                    <li class="click" data-md="/ads/unit/del"><a href="javascript:void(0)">4.14 彻底删除广告单元</a></li>
+                </ul>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/ads/idea/readme"><i class="fa fa-paint-brush"></i>广告创意<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li class="click" data-md="/ads/idea/list"><a href="javascript:void(0)">5.1 获取广告创意列表</a></li>
+                    <li class="click" data-md="/ads/idea/add"><a href="javascript:void(0)">5.2 创建广告创意</a></li>
+                    <li class="click" data-md="/ads/idea/edit"><a href="javascript:void(0)">5.3 编辑广告创意</a></li>
+                    <li class="click" data-md="/ads/idea/trash"><a href="javascript:void(0)">5.4 删除广告创意</a></li>
+                    <li class="click" data-md="/ads/idea/copy"><a href="javascript:void(0)">5.5 复制广告创意</a></li>
+                    <li class="click" data-md="/ads/idea/start"><a href="javascript:void(0)">5.6 启动/暂停广告创意</a></li>
+                    <li class="click" data-md="/ads/idea/summary"><a href="javascript:void(0)">5.7 按条件获取广告创意数据</a></li>
+                    <li class="click" data-md="/ads/idea/view"><a href="javascript:void(0)">5.8 查看广告创意详情</a></li>
+                    <li class="click" data-md="/ads/idea/report"><a href="javascript:void(0)">5.9 保存报告</a></li>
+                    <li class="click" data-md="/ads/idea/export"><a href="javascript:void(0)">5.10 导出表格</a></li>
+                    <li class="click" data-md="/ads/idea/del"><a href="javascript:void(0)">5.11 彻底删除广告创意</a></li>
+                </ul>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/rules/readme"><i class="fa fa-paint-brush"></i>自动规则<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li class="click" data-md="/rules/rule_list"><a href="javascript:void(0)">6.1 按条件获取规则列表</a></li>
+                    <li class="click" data-md="/rules/add"><a href="javascript:void(0)">6.2 创建自动规则</a></li>
+                    <li class="click" data-md="/rules/edit"><a href="javascript:void(0)">6.3 编辑自动规则</a></li>
+                    <li class="click" data-md="/rules/del"><a href="javascript:void(0)">6.4 删除自动规则</a></li>
+                    <li class="click" data-md="/rules/rule_view"><a href="javascript:void(0)">6.5 查看自动规则详情</a></li>
+                    <li class="click" data-md="/rules/start"><a href="javascript:void(0)">6.6 启动/暂停规则</a></li>
+                    <li class="click" data-md="/rules/activity_list"><a href="javascript:void(0)">6.7 按条件获取活动列表</a></li>
+                    <li class="click" data-md="/rules/activity_view"><a href="javascript:void(0)">6.8 查看活动详情</a></li>
+                </ul>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/utils/target_templates/readme"><i class="fa fa-paint-brush"></i>定向模板<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li class="click" data-md="/utils/target_templates/list"><a href="javascript:void(0)">7.1 按条件获取定向模板列表</a></li>
+                    <li class="click" data-md="/utils/target_templates/add"><a href="javascript:void(0)">7.2 创建定向模板</a></li>
+                    <li class="click" data-md="/utils/target_templates/edit"><a href="javascript:void(0)">7.3 编辑定向模板</a></li>
+                    <li class="click" data-md="/utils/target_templates/del"><a href="javascript:void(0)">7.4 删除定向模板</a></li>
+                    <li class="click" data-md="/utils/target_templates/view"><a href="javascript:void(0)">7.5 获取定向模板详情</a></li>
+                </ul>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/utils/assets/readme"><i class="fa fa-paint-brush"></i>素材库<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li class="click" data-md="/utils/assets/list"><a href="javascript:void(0)">8.1 按条件获取素材列表</a></li>
+                    <li class="click" data-md="/utils/assets/upload_img"><a href="javascript:void(0)">8.2 上传图片素材</a></li>
+                    <li class="click" data-md="/utils/assets/upload_flash"><a href="javascript:void(0)">8.3 上传Flash素材</a></li>
+                    <li class="click" data-md="/utils/assets/upload_video"><a href="javascript:void(0)">8.4 上传视频素材</a></li>
+                    <li class="click" data-md="/utils/assets/view"><a href="javascript:void(0)">8.5 获取素材详情</a></li>
+                    <li class="click" data-md="/utils/assets/search"><a href="javascript:void(0)">8.6 搜索素材</a></li>
+                    <li class="click" data-md="/utils/assets/edit"><a href="javascript:void(0)">8.7 编辑素材</a></li>
+                    <li class="click" data-md="/utils/assets/del"><a href="javascript:void(0)">8.8 删除素材</a></li>
+                    <li class="click" data-md="/utils/assets/add"><a href="javascript:void(0)">8.9 新建素材</a></li>
+                </ul>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/utils/reports/readme"><i class="fa fa-paint-brush"></i>广告报告<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li class="click" data-md="/utils/reports/list"><a href="javascript:void(0)">9.1 按条件获取广告报告列表</a></li>
+                    <li class="click" data-md="/utils/reports/del"><a href="javascript:void(0)">9.2 删除广告报告</a></li>
+                    <li class="click" data-md="/utils/reports/view"><a href="javascript:void(0)">9.3 查看广告报告详情</a></li>
+                </ul>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/utils/custom_audience/readme"><i class="fa fa-paint-brush"></i>自定义受众<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li class="click" data-md="/utils/custom_audience/list"><a href="javascript:void(0)">10.1 获取自定义受众列表</a></li>
+                    <li class="click" data-md="/utils/custom_audience/del"><a href="javascript:void(0)">10.2 删除自定义受众</a></li>
+                    <li class="click" data-md="/utils/custom_audience/view"><a href="javascript:void(0)">10.3 查看受众详情</a></li>
+                    <li class="click" data-md="/utils/custom_audience/add"><a href="javascript:void(0)">10.4 创建自定义受众</a></li>
+                    <li class="click" data-md="/utils/custom_audience/upload"><a href="javascript:void(0)">10.5 上传受众号码包</a></li>
+                </ul>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/settings/account/readme"><i class="fa fa-paint-brush"></i>账户设置<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li class="click" data-md="/settings/account/info"><a href="javascript:void(0)">11.1 获取广告主基本信息</a></li>
+                    <li class="click" data-md="/settings/account/contact_info"><a href="javascript:void(0)">11.2 获取广告主联系人信息</a></li>
+                    <li class="click" data-md="/settings/account/info_edit"><a href="javascript:void(0)">11.3 编辑广告主基本信息</a></li>
+                    <li class="click" data-md="/settings/account/upload_license"><a href="javascript:void(0)">11.4 上传营业执照</a></li>
+                    <li class="click" data-md="/settings/account/qualification_view"><a href="javascript:void(0)">11.5 获取广告主行业资质</a></li>
+                    <li class="click" data-md="/settings/account/qualification_edit"><a href="javascript:void(0)">11.6 编辑广告主行业资质</a></li>
+                    <li class="click" data-md="/settings/account/qualification_upload"><a href="javascript:void(0)">11.7 上传行业资质</a></li>
+                </ul>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/settings/finance/readme"><i class="fa fa-paint-brush"></i>财务管理<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li class="click" data-md="/settings/finance/wechat_pay"><a href="javascript:void(0)">12.1 微信支付</a></li>
+                    <li class="click" data-md="/settings/finance/wechat_notify"><a href="javascript:void(0)">12.2 微信支付通知</a></li>
+                    <li class="click" data-md="/settings/finance/wechat_return"><a href="javascript:void(0)">12.3 微信支付结果查询</a></li>
+                    <li class="click" data-md="/settings/finance/alipay"><a href="javascript:void(0)">12.4 支付宝支付</a></li>
+                    <li class="click" data-md="/settings/finance/alipay_notify"><a href="javascript:void(0)">12.5 支付宝回调</a></li>
+                    <li class="click" data-md="/settings/finance/alipay_return"><a href="javascript:void(0)">12.6 支付宝结果查询</a></li>
+                    <li class="click" data-md="/settings/finance/recharge_list"><a href="javascript:void(0)">12.7 充值记录列表获取</a></li>
+                    <li class="click" data-md="/settings/finance/cost_list"><a href="javascript:void(0)">12.8 消费记录获取</a></li>
+                    <li class="click" data-md="/settings/finance/invoice_info_list"><a href="javascript:void(0)">12.9 获取广告主发票信息列表 </a></li>
+                    <li class="click" data-md="/settings/finance/invoice_info_add"><a href="javascript:void(0)">12.10 新增发票信息 </a></li>
+                    <li class="click" data-md="/settings/finance/invoice_info_edit"><a href="javascript:void(0)">12.11 编辑发票信息 </a></li>
+                    <li class="click" data-md="/settings/finance/invoice_info_del"><a href="javascript:void(0)">12.12 删除发票信息 </a></li>
+                    <li class="click" data-md="/settings/finance/invoice_add"><a href="javascript:void(0)">12.13 开票 </a></li>
+                    <li class="click" data-md="/settings/finance/invoice_amount"><a href="javascript:void(0)">12.14 获取可开票余额 </a></li>
+                    <li class="click" data-md="/settings/finance/invoice_list"><a href="javascript:void(0)">12.15 获取开票记录列表 </a></li>
+                    <li class="click" data-md="/settings/finance/invoice_accept"><a href="javascript:void(0)">12.16 发票签收 </a></li>
+                    <li class="click" data-md="/settings/finance/amount"><a href="javascript:void(0)">12.17 账户余额</a></li>
+                    <li class="click" data-md="/settings/finance/payinfo"><a href="javascript:void(0)">12.18 web端查询支付宝支付结果</a></li>
+                </ul>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/settings/system/readme"><i class="fa fa-paint-brush"></i>权限管理<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li class="click" data-md="/settings/system/role_list"><a href="javascript:void(0)">13.1 获取广告主拥有的角色列表</a></li>
+                    <li class="click" data-md="/settings/system/role_add"><a href="javascript:void(0)">13.2 给广告主添加角色(新建权限角色)</a></li>
+                    <li class="click" data-md="/settings/system/role_edit"><a href="javascript:void(0)">13.3 编辑某个角色</a></li>
+                    <li class="click" data-md="/settings/system/role_del"><a href="javascript:void(0)">13.4 删除某个角色</a></li>
+                    <li class="click" data-md="/settings/system/role_view"><a href="javascript:void(0)">13.5 查看某个角色</a></li>
+                    <li class="click" data-md="/settings/system/operator_add"><a href="javascript:void(0)">13.6 添加协作者</a></li>
+                    <li class="click" data-md="/settings/system/operator_edit"><a href="javascript:void(0)">13.7 编辑协作者</a></li>
+                    <li class="click" data-md="/settings/system/operator_del"><a href="javascript:void(0)">13.8 删除协作者</a></li>
+                    <li class="click" data-md="/settings/system/operator_list"><a href="javascript:void(0)">13.9 获取已添加的协作者列表</a></li>
+                </ul>
+            </li>        
+            <li class="sig-t">
+                <div class="link click" data-md="/settings/system/readme"><i class="fa fa-paint-brush"></i>消息设置<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li class="click" data-md="/settings/system/msg_receiver_list"><a href="javascript:void(0)">14.1 获取消息接收人列表</a></li>
+                    <li class="click" data-md="/settings/system/msg_receiver_add"><a href="javascript:void(0)">14.2 新增消息接收人</a></li>
+                    <li class="click" data-md="/settings/system/msg_receiver_sms_verify"><a href="javascript:void(0)">14.3 验证消息接收人</a></li>
+                    <li class="click" data-md="/settings/system/msg_receiver_del"><a href="javascript:void(0)">14.4 删除消息接收人</a></li>
+                    <li class="click" data-md="/settings/system/msg_settings_view"><a href="javascript:void(0)">14.5 获取消息接收配置</a></li>
+                    <li class="click" data-md="/settings/system/msg_settings_edit"><a href="javascript:void(0)">14.6 编辑消息接收配置</a></li>
+                    <li class="click" data-md="/settings/system/msg_receiver_email_verify"><a href="javascript:void(0)">14.7 邮件验证</a></li>
+                    <li class="click" data-md="/settings/system/msg_unread_num"><a href="javascript:void(0)">14.8 获取未读消息条数</a></li>
+                    <li class="click" data-md="/settings/system/msg_status"><a href="javascript:void(0)">14.9 标记消息读取状态</a></li>
+                    <li class="click" data-md="/settings/system/msg_list"><a href="javascript:void(0)">14.10 获取消息列表</a></li>
+                    <li class="click" data-md="/settings/system/email_request"><a href="javascript:void(0)">14.11 重发邮件</a></li>
+                </ul>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/records/readme"><i class="fa fa-paint-brush"></i>活动记录<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li class="click" data-md="/records/plan_records"><a href="javascript:void(0)">15.1 获取广告计划活动记录</a></li>
+                    <li class="click" data-md="/records/idea_records"><a href="javascript:void(0)">15.2 获取广告创意活动记录</a></li>
+                    <li class="click" data-md="/records/unit_records"><a href="javascript:void(0)">15.3 获取广告单元活动记录</a></li>
+                    <li class="click" data-md="/records/all_records"><a href="javascript:void(0)">15.4 获取账户活动记录</a></li>
+                    <li class="click" data-md="/records/logs"><a href="javascript:void(0)">15.5 获取操作日志</a></li>
+                </ul>
+            </li>
+            <li class="sig-t">
+                <div class="link click" data-md="/database/readme"><i class="fa fa-paint-brush"></i>数据库表结构<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                    <li class="click" data-md="/database/adclick_dsp_business"><a href="javascript:void(0)">adclick_dsp_business</a></li>
+                    <li class="click" data-md="/database/adlib"><a href="javascript:void(0)">dsp_adlib</a></li>
+                    <li class="click" data-md="/database/dsp-mgr"><a href="javascript:void(0)">adclick_dsp_mgr</a></li>
+                    <li class="click" data-md="/database/dsp_tags"><a href="javascript:void(0)">dsp_tags</a></li>
+                    <li class="click" data-md="/database/dsp_adx"><a href="javascript:void(0)">dsp_adx</a></li>
+                    <li class="click" data-md="/database/dsp_audit"><a href="javascript:void(0)">dsp_audit</a></li>
+                    <li class="click" data-md="/database/dsp_palo"><a href="javascript:void(0)">dsp_palo</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="content-md"></div>
+    <script type="text/javascript">
+        $.get('/api', { name: './public/api/introduction.md' }, function(data, status) {
+            $('#content-md').html(marked(data));
+        });
+    </script>
+    <script type="text/javascript" src="/javascripts/menu.js"></script>
+    <script type="text/javascript">
+        var lastclick = '';
+        $('.click').click(function() {
+            var name = $(this).data('md');
+            if (name) {
+                name = './public/api' + name + '.md';
+                $.get('/api', { name: name }, function(data, status) {
+                    $('#content-md').html(marked(data));
+                });
+            }
+        });
+        $('.sig-t').click(function(){
+            var name = $(this).find('.link').text();
+            if(lastclick != name){
+                lastclick = name;
+                $('.sig-t').removeClass('open');
+                $(this).addClass('open');
+            }
+        });
+    </script>
+</body>
+
+</html>

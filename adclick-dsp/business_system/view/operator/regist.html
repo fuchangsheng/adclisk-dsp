@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/icon/favicon.ico">
+  
+  <title>AdClick regist</title>
+  
+  <!-- Bootstrap core CSS -->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="/css/login-regist.css" rel="stylesheet"/>
+  <style>body{background-image: url(/img/bg.jpg);}.footer{position: fixed;bottom: 0;}</style>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+      <img alt="Brand" class="navbar-brand-logo  navbar-left" src="/icon/logo.png">
+      <a class="navbar-brand" href="/">AdClick投放系统</a>
+    </div>
+  </nav>
+  
+
+  <div class="container" style="padding-bottom:60px;"> 
+    <div class="page-header"> 
+    <h1>注册</h1>
+  </div>
+  
+  <div class="panel panel-primary"> 
+    <div class="panel-heading">
+      <h3 class="panel-title">请输入注册信息</h3>
+    </div>
+    <div class="panel-body"> 
+      <form action="" role="form" method="post"> 
+      <fieldset>
+        <div class="form-group has-feedback">
+          <label for="username" class="sr-only">用户名</label>
+          <input type="text" class="form-control" id="reg-username" name="username" placeholder="请输入用户名(主账号登录用户名)">
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        
+        <div class="form-group has-feedback pass">
+          <label for="password" class="sr-only">密码</label>
+          <input type="password" class="form-control" id="reg-password" name="password" placeholder="请输入密码(包含大小写，数字，长度6-16)" autocomplete="new-password">
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        
+        <div class="form-group has-feedback">
+          <label class="sr-only">确认密码</label>
+          <input type="password" class="form-control" id="reg-repassword" placeholder="请确认密码" autocomplete="new-password">
+          <span class="glyphicon glyphicon-repeat form-control-feedback"></span>
+        </div>
+        
+        <div class="form-group has-feedback">
+          <label class="sr-only">公司名</label>
+          <input type="text" class="form-control" id="reg-companyName" placeholder="请输入公司名称">
+          <span class="glyphicon glyphicon-home form-control-feedback"></span>
+        </div>
+      
+        <div class="form-group has-feedback">
+          <label class="sr-only">手机号</label>
+          <input type="text" class="form-control phone-number" id="reg-mobile" placeholder="请输入手机号">
+          <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+        </div>
+      
+        <div class="form-group sms">
+          <label class="sr-only">验证码</label>
+          <input type="text" class="form-control" id="reg-smsCode" placeholder="请输入验证码" autocomplete="new-password">       
+        </div>
+        <input type="button" class="btn btn-primary getpass" id="getSms" value="获取验证码"/>
+      
+        <div style="margin-top:10px;margin-bottom:10px;">
+          <input type="checkbox" id="user-agree-chk" checked>
+          <span>阅读并接受用户协议</span>
+          <a href="/static/AdClick用户协议.html" target="_blank">《AdClick用户协议》</a>
+        </div>
+      </fieldset>
+    </form>
+    <div id="err-msg"></div>
+    </div>
+    <div class="panel-footer" style="text-align:center">
+      <input type="button" class="btn btn-primary btn-block" id="regist" value="确认注册">
+      <div class="bottom">
+        <a href="/index.html">返回登录</a>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  <footer class="footer">
+    <div class="container footer-text">
+      <p class="text-muted">Copyright © 2012-2017 上海数凹科技有限公司. 版权所有</p>
+    </div>
+  </footer>
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="/jquery/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/js/sha1.js"></script>
+  <script src="/js/constants.js"></script>
+  <script src="/js/tools.js"></script>
+  <script src="/js/operator/getSms.js"></script>
+  <script src="/js/operator/regist.js"></script>
+</body>
+</html>

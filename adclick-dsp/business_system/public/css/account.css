@@ -1,0 +1,60 @@
+/* 财务信息 */
+#rechage-help dl{
+  margin: 0;
+}
+
+button[class*='choosed']{
+  border-color: #2e6da4;
+  background-color: #e6e6e6;
+}
+
+#amount-form{
+  display: none;
+  padding: 20px 20px;
+  background-color: #f2f2f2;
+  margin-bottom: 10px;
+}
+
+#amount-form input{
+  display: inline-block;
+  width: auto;
+  max-width: 120px;
+}
+
+/* 发票开具 */
+#billing label{
+  font-weight: normal;
+}
+
+.item-list{
+  border-bottom: 1px solid #EBEBEB;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+}
+
+form div{
+  margin-bottom: 10px;
+}
+
+#billing label{
+  padding: 7px 25px 0 15px;
+  width: 100px;
+} 
+
+#billing-form .form-control{
+  display: inline-block;
+  width: 200px;
+}
+
+.radio-inline{
+  padding-right: 0 !important;
+}
+
+.radio-inline input[type=radio] {
+  margin-left: -15px;
+}
+
+.contactor-content{
+  color: #909090;
+  padding: 7px 0 0 0 !important;
+}
